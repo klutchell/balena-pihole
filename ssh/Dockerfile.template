@@ -1,0 +1,22 @@
+FROM resin/%%RESIN_MACHINE_NAME%%-alpine:latest
+
+# install git, openssh, and rsync
+RUN apk add --no-cache \
+	openssh \
+	rsync
+
+# install filesystem overlay
+COPY . ./
+
+# adjust sshd config
+RUN sed -i \
+    -e 's/#PasswordAuthentication yes/PasswordAuthentication no/' \
+    -e 's/#GatewayPorts no/GatewayPorts yes/' \
+    /etc/ssh/sshd_config
+
+# set timezone
+RUN apk add --no-cache tzdata
+ENV TZ=America/Toronto
+
+CMD ["/bin/bash", "start.sh"]
+

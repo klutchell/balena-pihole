@@ -1,0 +1,37 @@
+version: '2.1'
+
+volumes:
+  pihole-data:
+  ssh-data:
+  dnsmasq-data:
+
+services:
+
+  pihole:
+    image: diginc/pi-hole-multiarch:debian_armhf
+    ports:
+      - '192.168.86.12:80:80'
+      - '192.168.86.12:53:53/tcp'
+      - '192.168.86.12:53:53/udp'
+    volumes:
+      - 'pihole-data:/etc/pihole/'
+      - 'dnsmasq-data:/etc/dnsmasq.d/'
+    healthcheck:
+      disable: true
+
+  cloud9:
+    build: ./cloud9
+    ports:
+      - '8080:8080'
+    volumes:
+      - 'pihole-data:/workspace'
+      - 'ssh-data:/root/.ssh'
+
+  ssh:
+    build: ./ssh
+    ports:
+      - '22:22'
+    volumes:
+      - 'pihole-data:/workspace'
+      - 'ssh-data:/root/.ssh'
+
