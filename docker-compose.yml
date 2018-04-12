@@ -16,8 +16,6 @@ services:
     volumes:
       - 'pihole-data:/etc/pihole/'
       - 'dnsmasq-data:/etc/dnsmasq.d/'
-    healthcheck:
-      disable: true
 
   cloud9:
     build: ./cloud9
