@@ -33,3 +33,9 @@ services:
       - 'pihole-data:/workspace'
       - 'ssh-data:/root/.ssh'
 
+  rsnapshot:
+    build: ./rsnapshot
+    volumes: 
+      - 'ssh-data:/root/.ssh'
+    privileged: true
+
