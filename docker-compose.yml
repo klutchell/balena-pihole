@@ -22,7 +22,7 @@ services:
     ports:
       - '8080:8080'
     volumes:
-      - 'pihole-data:/workspace'
+      - 'pihole-data:/data'
       - 'ssh-data:/root/.ssh'
 
   ssh:
@@ -30,7 +30,7 @@ services:
     ports:
       - '22:22'
     volumes:
-      - 'pihole-data:/workspace'
+      - 'pihole-data:/data'
       - 'ssh-data:/root/.ssh'
 
   rsnapshot:

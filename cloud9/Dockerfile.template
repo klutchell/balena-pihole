@@ -1,7 +1,7 @@
 FROM resin/%%RESIN_MACHINE_NAME%%-node:latest
 
 # set defaults
-ENV C9_WORKSPACE /workspace
+ENV C9_WORKSPACE /data
 ENV TZ America/Toronto
 
 # set the correct uname for rpi3
