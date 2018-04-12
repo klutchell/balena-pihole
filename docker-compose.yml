@@ -24,6 +24,7 @@ services:
     volumes:
       - 'pihole-data:/data'
       - 'ssh-data:/root/.ssh'
+    privileged: true
 
   ssh:
     build: ./ssh
@@ -37,5 +38,5 @@ services:
     build: ./rsnapshot
     volumes: 
       - 'ssh-data:/root/.ssh'
-    privileged: true
+    # privileged: true
 
