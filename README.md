@@ -1,30 +1,68 @@
 # resin-pihole
 
 [resin.io](https://resin.io/) stack with the following services:
-* pi-hole dns server
-* cloud9 ide
-* secure shell
-* rsnapshot
+* [pi-hole dns server](https://pi-hole.net/)
+* [rsnapshot backups](http://rsnapshot.org/)
+* [cloud9 web ide](c9.io)
+* [ssh server](https://www.ssh.com/ssh/)
 
 ## Getting Started
 
-* https://github.com/pi-hole/pi-hole/wiki/Getting-Started
 * https://docs.resin.io/learn/getting-started
-* https://docs.c9.io/docs/getting-started
-* http://rsnapshot.org/rsnapshot/docs/docbook/rest.html
 
 ## Deployment
 
-```bash
-git push resin master
+```yaml
+# example docker-compose.yml
+version: '2.1'
+
+volumes:
+  pihole-data:
+  ssh-data:
+  dnsmasq-data:
+
+services:
+
+  pihole:
+    image: diginc/pi-hole-multiarch:debian_armhf
+    ports:
+      - '192.168.86.12:80:80'
+      - '192.168.86.12:53:53/tcp'
+      - '192.168.86.12:53:53/udp'
+    volumes:
+      - 'pihole-data:/etc/pihole/'
+      - 'dnsmasq-data:/etc/dnsmasq.d/'
+
+  cloud9:
+    build: ./cloud9
+    ports:
+      - '8080:8080'
+    volumes:
+      - 'pihole-data:/data'
+      - 'ssh-data:/root/.ssh'
+
+  ssh:
+    build: ./ssh
+    ports:
+      - '22:22'
+    volumes:
+      - 'pihole-data:/data'
+      - 'ssh-data:/root/.ssh'
+
+  rsnapshot:
+    build: ./rsnapshot
+    volumes: 
+      - 'pihole-data:/data'
+      - 'ssh-data:/root/.ssh'
+    privileged: true
 ```
 
 ## Usage
 
-* http://your-device-ip:80 for pi-hole admin
-* http://your-device-ip:8080 for cloud9 ide
-* root@your-device-ip:22 for secure shell
-* https://github.com/klutchell/resin-rsnapshot/blob/master/README.md
+* [docker-pi-hole](https://github.com/diginc/docker-pi-hole)
+* [cloud9](ssh/README.md)
+* [ssh](ssh/README.md)
+* [rsnapshot](rsnapshot/README.md)
 
 ## Author
 
@@ -36,6 +74,4 @@ _tbd_
 
 ## Acknowledgments
 
-* https://github.com/c9/install
-* https://github.com/hwegge2/rpi-cloud9-ide
-* https://github.com/resin-io-projects/resin-openssh
+* https://github.com/diginc/docker-pi-hole
