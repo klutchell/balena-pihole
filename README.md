@@ -60,7 +60,7 @@ services:
 ## Usage
 
 * [docker-pi-hole](https://github.com/diginc/docker-pi-hole)
-* [cloud9](ssh/README.md)
+* [cloud9](cloud9/README.md)
 * [ssh](ssh/README.md)
 * [rsnapshot](rsnapshot/README.md)
 
