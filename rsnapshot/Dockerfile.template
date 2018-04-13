@@ -18,3 +18,4 @@ ENV TZ=America/Toronto
 RUN mkdir /snapshots
 
 CMD ["/bin/bash", "start.sh"]
+

@@ -35,5 +35,5 @@ RUN scripts/install-sdk.sh
 # set timezone
 RUN echo $TZ > /etc/timezone && dpkg-reconfigure tzdata
 
-CMD node server.js -p 8080 -w $C9_WORKSPACE -l 0.0.0.0 -a root:resin
+CMD node server.js -p 8080 -w $C9_WORKSPACE -l 0.0.0.0 -a :
 
