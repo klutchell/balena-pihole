@@ -1,6 +1,6 @@
 # resin-cloud9
 
-[cloud9 ide](c9.io) service for [resin.io](https://resin.io/) stacks.
+[cloud9 ide](https://c9.io/) service for [resin.io](https://resin.io/) stacks.
 
 ## Getting Started
 
