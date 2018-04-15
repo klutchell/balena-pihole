@@ -1,0 +1,3 @@
+[submodule "rsnapshot"]
+	path = rsnapshot
+	url = git@github.com:klutchell/resin-rsnapshot.git
