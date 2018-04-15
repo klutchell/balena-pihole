@@ -15,7 +15,7 @@ services:
       - '192.168.86.12:53:53/tcp'
       - '192.168.86.12:53:53/udp'
     volumes:
-      - 'pi-hole-data:/etc/pi-hole'
+      - 'pi-hole-data:/etc/pihole'
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
   cloud9:
