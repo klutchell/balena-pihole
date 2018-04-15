@@ -1,5 +1,0 @@
-
-0 */4  * * *   /usr/bin/rsnapshot -c /etc/rsnapshot.conf alpha
-30 3   * * *   /usr/bin/rsnapshot -c /etc/rsnapshot.conf beta
-0  3   * * 1   /usr/bin/rsnapshot -c /etc/rsnapshot.conf gamma
-30 2   1 * *   /usr/bin/rsnapshot -c /etc/rsnapshot.conf delta
