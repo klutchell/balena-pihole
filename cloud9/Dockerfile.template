@@ -9,7 +9,7 @@ RUN cp "$(which uname)" "/bin/uname.orig" \
 	&& echo '#!/bin/sh\n/bin/uname.orig $* | sed "s/armv8l/armv7l/"' > "$(which uname)"
 
 # install updates and common utilities
-RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
 	apt-transport-https \
 	bash-completion \
 	ca-certificates \

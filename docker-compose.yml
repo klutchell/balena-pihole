@@ -1,28 +1,29 @@
 version: '2.1'
 
 volumes:
-  pihole-data:
-  ssh-data:
+
+  pi-hole-data:
   dnsmasq-data:
+  ssh-data:
 
 services:
 
-  pihole:
+  pi-hole:
     image: diginc/pi-hole-multiarch:debian_armhf
     ports:
-      - '192.168.86.12:80:80'
+      - '80:80'
       - '192.168.86.12:53:53/tcp'
       - '192.168.86.12:53:53/udp'
     volumes:
-      - 'pihole-data:/etc/pihole/'
-      - 'dnsmasq-data:/etc/dnsmasq.d/'
+      - 'pi-hole-data:/etc/pi-hole'
+      - 'dnsmasq-data:/etc/dnsmasq.d'
 
   cloud9:
     build: ./cloud9
     ports:
       - '8080:8080'
     volumes:
-      - 'pihole-data:/data'
+      - 'pi-hole-data:/data'
       - 'ssh-data:/root/.ssh'
 
   ssh:
@@ -30,13 +31,13 @@ services:
     ports:
       - '22:22'
     volumes:
-      - 'pihole-data:/data'
+      - 'pi-hole-data:/data'
       - 'ssh-data:/root/.ssh'
 
   rsnapshot:
     build: ./rsnapshot
     volumes: 
-      - 'pihole-data:/data'
+      - 'pi-hole-data:/data'
       - 'ssh-data:/root/.ssh'
     privileged: true
 
