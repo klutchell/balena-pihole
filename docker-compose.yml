@@ -23,9 +23,8 @@ services:
     ports:
       - '8080:8080'
     volumes:
+      - 'ssh-data:/root/.ssh'
       - 'pi-hole-data:/data'
-    volumes_from:
-      - ssh
 
   ssh:
     build: ./ssh
@@ -33,12 +32,11 @@ services:
       - '22:22'
     volumes:
       - 'ssh-data:/root/.ssh'
-    volumes_from:
-      - cloud9
+      - 'pi-hole-data:/data'
 
   rsnapshot:
     build: ./rsnapshot
     privileged: true
-    volumes_from: 
-      - ssh
+    volumes:
+      - 'ssh-data:/root/.ssh'
 
