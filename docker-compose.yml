@@ -34,9 +34,3 @@ services:
       - 'ssh-data:/root/.ssh'
       - 'pi-hole-data:/data'
 
-  rsnapshot:
-    build: ./rsnapshot
-    privileged: true
-    volumes:
-      - 'ssh-data:/root/.ssh'
-
