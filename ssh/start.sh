@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # create ssh dir if it doesn't exist
 if [ ! -d "${HOME}/.ssh" ]
