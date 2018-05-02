@@ -42,7 +42,7 @@ services:
       - 'pi-hole-data:/data'
 
   ssh:
-    build: ./ssh
+    image: klutchell/resin-ssh
     ports:
       - '22:22'
     volumes:
@@ -54,7 +54,7 @@ services:
 
 * [docker-pi-hole](https://github.com/diginc/docker-pi-hole)
 * [cloud9](cloud9/README.md)
-* [ssh](ssh/README.md)
+* [ssh](https://github.com/klutchell/resin-ssh)
 
 ## Author
 
