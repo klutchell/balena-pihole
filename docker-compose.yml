@@ -4,6 +4,7 @@ volumes:
 
   pi-hole-data:
   dnsmasq-data:
+  cloud9-workspace:
   ssh-data:
 
 services:
@@ -19,12 +20,14 @@ services:
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
   cloud9:
-    build: ./cloud9
+    image: klutchell/resin-cloud9
     ports:
       - '8080:8080'
     volumes:
       - 'ssh-data:/root/.ssh'
-      - 'pi-hole-data:/data'
+      - 'cloud9-workspace:/cloud9-workspace'
+      - 'pi-hole-data:/pi-hole-data'
+      - 'dnsmasq-data:/dnsmasq-data'
 
   ssh:
     image: klutchell/resin-ssh
@@ -32,5 +35,7 @@ services:
       - '22:22'
     volumes:
       - 'ssh-data:/root/.ssh'
-      - 'pi-hole-data:/data'
+      - 'cloud9-workspace:/cloud9-workspace'
+      - 'pi-hole-data:/pi-hole-data'
+      - 'dnsmasq-data:/dnsmasq-data'
 

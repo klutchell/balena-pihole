@@ -11,50 +11,11 @@
 
 ## Deployment
 
-```yaml
-# example docker-compose.yml
-version: '2.1'
-
-volumes:
-
-  pi-hole-data:
-  dnsmasq-data:
-  ssh-data:
-
-services:
-
-  pi-hole:
-    image: diginc/pi-hole-multiarch:debian_armhf
-    ports:
-      - '80:80'
-      - '192.168.86.12:53:53/tcp'
-      - '192.168.86.12:53:53/udp'
-    volumes:
-      - 'pi-hole-data:/etc/pihole'
-      - 'dnsmasq-data:/etc/dnsmasq.d'
-
-  cloud9:
-    build: ./cloud9
-    ports:
-      - '8080:8080'
-    volumes:
-      - 'ssh-data:/root/.ssh'
-      - 'pi-hole-data:/data'
-
-  ssh:
-    image: klutchell/resin-ssh
-    ports:
-      - '22:22'
-    volumes:
-      - 'ssh-data:/root/.ssh'
-      - 'pi-hole-data:/data'
-```
+see example [docker-compose.yaml](docker-compose.yaml)
 
 ## Usage
 
-* [docker-pi-hole](https://github.com/diginc/docker-pi-hole)
-* [cloud9](cloud9/README.md)
-* [ssh](https://github.com/klutchell/resin-ssh)
+browse to `http://<device-ip>:80` to access the pi-hole admin interface
 
 ## Author
 
