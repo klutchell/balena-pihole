@@ -20,7 +20,7 @@ services:
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
   cloud9:
-    image: klutchell/resin-cloud9
+    image: klutchell/resin-cloud9:latest
     ports:
       - '8080:8080'
     volumes:
@@ -30,7 +30,7 @@ services:
       - 'dnsmasq-data:/dnsmasq-data'
 
   ssh:
-    image: klutchell/resin-ssh
+    image: klutchell/resin-ssh:latest
     ports:
       - '22:22'
     volumes:
