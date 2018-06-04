@@ -21,7 +21,8 @@ services:
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
   caddy:
-    image: resin/caddy:v1.0.0
+    build:
+      context: github.com/klutchell/resin-caddy.git
     ports:
       - '80:80'
       - '443:443'
