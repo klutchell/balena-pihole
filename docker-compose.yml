@@ -21,7 +21,7 @@ services:
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
   caddy:
-    image: resin/caddy
+    image: resin/caddy:v1.0.0
     ports:
       - '80:80'
       - '443:443'
