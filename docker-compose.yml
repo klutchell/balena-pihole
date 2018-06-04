@@ -4,7 +4,8 @@ volumes:
 
   pi-hole-data:
   dnsmasq-data:
-  cloud9-workspace:
+  caddy-data:
+  caddy-certs:
   ssh-data:
 
 services:
@@ -12,30 +13,28 @@ services:
   pi-hole:
     image: diginc/pi-hole-multiarch:debian_armhf
     ports:
-      - '80:80'
+      - '8080:80'
       - '192.168.86.12:53:53/tcp'
       - '192.168.86.12:53:53/udp'
     volumes:
       - 'pi-hole-data:/etc/pihole'
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
-  cloud9:
-    image: klutchell/resin-cloud9:latest
+  caddy:
+    image: resin/caddy
     ports:
-      - '8080:8080'
+      - '80:80'
+      - '443:443'
     volumes:
-      - 'ssh-data:/root/.ssh'
-      - 'cloud9-workspace:/cloud9-workspace'
-      - 'pi-hole-data:/pi-hole-data'
-      - 'dnsmasq-data:/dnsmasq-data'
+      - 'caddy-data:/var/lib/caddy'
+      - 'caddy-certs:/root/.caddy'
 
   ssh:
-    image: klutchell/resin-ssh:latest
+    image: klutchell/resin-ssh
     ports:
       - '22:22'
     volumes:
       - 'ssh-data:/root/.ssh'
-      - 'cloud9-workspace:/cloud9-workspace'
-      - 'pi-hole-data:/pi-hole-data'
-      - 'dnsmasq-data:/dnsmasq-data'
+      - 'pi-hole-data:/pi-hole-data:ro'
+      - 'dnsmasq-data:/dnsmasq-data:ro'
 
