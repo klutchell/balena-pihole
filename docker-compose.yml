@@ -21,7 +21,7 @@ services:
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
   caddy:
-    image: klutchell/caddy:rpi3-5e12b0b
+    image: klutchell/caddy:rpi3-972a045
     ports:
       - '80:80'
       - '443:443'
