@@ -4,7 +4,7 @@ volumes:
 
   pi-hole-data:
   dnsmasq-data:
-  # caddy-data:
+  caddy-data:
   caddy-certs:
   ssh-data:
 
@@ -26,7 +26,7 @@ services:
       - '80:80'
       - '443:443'
     volumes:
-      # - 'caddy-data:/usr/src/app'
+      - 'caddy-data:/usr/src/app'
       - 'caddy-certs:/root/.caddy'
 
   ssh:
@@ -37,5 +37,5 @@ services:
       - 'ssh-data:/root/.ssh'
       - 'pi-hole-data:/pi-hole-data:ro'
       - 'dnsmasq-data:/dnsmasq-data:ro'
-      # - 'caddy-data:/caddy-data:ro'
+      - 'caddy-data:/caddy-data:ro'
 
