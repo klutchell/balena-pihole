@@ -21,12 +21,12 @@ services:
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
   caddy:
-    image: klutchell/caddy:rpi3-972a045
+    image: klutchell/caddy:rpi3-b239f5d
     ports:
       - '80:80'
       - '443:443'
     volumes:
-      - 'caddy-data:/var/lib/caddy'
+      - 'caddy-data:/usr/src/app'
       - 'caddy-certs:/root/.caddy'
 
   ssh:
