@@ -21,7 +21,7 @@ services:
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
   caddy:
-    image: klutchell/resin-caddy:81c7ba8
+    image: klutchell/caddy:rpi3-5e12b0b
     ports:
       - '80:80'
       - '443:443'
@@ -30,7 +30,7 @@ services:
       - 'caddy-certs:/root/.caddy'
 
   ssh:
-    image: klutchell/resin-ssh:a41a358
+    image: klutchell/ssh:rpi3-a0b03c9
     ports:
       - '22:22'
     volumes:
