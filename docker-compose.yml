@@ -37,5 +37,5 @@ services:
       - 'ssh-data:/root/.ssh'
       - 'pi-hole-data:/pi-hole-data:ro'
       - 'dnsmasq-data:/dnsmasq-data:ro'
-      - 'caddy-data:/caddy-data:ro'
+      - 'caddy-data:/caddy-data'
 
