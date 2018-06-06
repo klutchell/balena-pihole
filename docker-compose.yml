@@ -12,8 +12,9 @@ services:
 
   pi-hole:
     image: diginc/pi-hole-multiarch:debian_armhf
+    expose:
+      - '80'
     ports:
-      - '8080:80'
       - '192.168.86.12:53:53/tcp'
       - '192.168.86.12:53:53/udp'
     volumes:
@@ -23,8 +24,8 @@ services:
   caddy:
     image: klutchell/caddy:rpi3-3f448fe
     ports:
-      - '80:80'
-      - '443:443'
+      - '192.168.86.12:80:80'
+      - '192.168.86.12:443:443'
     volumes:
       - 'caddy-data:/usr/src/app'
       - 'caddy-certs:/root/.caddy'
@@ -35,7 +36,7 @@ services:
       - '22:22'
     volumes:
       - 'ssh-data:/root/.ssh'
-      - 'pi-hole-data:/pi-hole-data:ro'
-      - 'dnsmasq-data:/dnsmasq-data:ro'
+      - 'pi-hole-data:/pi-hole-data'
+      - 'dnsmasq-data:/dnsmasq-data'
       - 'caddy-data:/caddy-data'
 
