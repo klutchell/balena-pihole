@@ -11,7 +11,7 @@ services:
   pi-hole:
     image: diginc/pi-hole-multiarch:debian_armhf
     ports:
-      - '8080:80'
+      - '80:80'
       - '192.168.86.12:53:53/tcp'
       - '192.168.86.12:53:53/udp'
     volumes:
