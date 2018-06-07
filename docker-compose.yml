@@ -19,7 +19,7 @@ services:
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
   ssh:
-    image: klutchell/ssh:armhf-0.0.11
+    image: klutchell/ssh:armhf-0.0.13
     ports:
       - '22:22'
     volumes:
