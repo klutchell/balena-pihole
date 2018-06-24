@@ -4,7 +4,7 @@ volumes:
 
   pi-hole-data:
   dnsmasq-data:
-  ssh-data:
+  volumerize_cache:
 
 services:
 
@@ -18,12 +18,11 @@ services:
       - 'pi-hole-data:/etc/pihole'
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
-  ssh:
-    image: klutchell/ssh:armhf-0.0.13
-    ports:
-      - '22:22'
+  volumerize:
+    image: klutchell/volumerize
     volumes:
-      - 'ssh-data:/root/.ssh'
-      - 'pi-hole-data:/pi-hole-data'
-      - 'dnsmasq-data:/dnsmasq-data'
-
+      - 'volumerize_cache:/volumerize-cache'
+      - 'pi-hole-data:/volumes/pi-hole-data:ro'
+      - 'dnsmasq-data:/volumes/dnsmasq-data:ro'
+    environment:
+      - "VOLUMERIZE_SOURCE=/volumes"
