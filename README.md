@@ -6,19 +6,17 @@
 
 ## Getting Started
 
-* https://docs.resin.io/learn/getting-started
+see https://docs.resin.io/learn/getting-started
 
 ## Deployment
 
-see example [docker-compose.yaml](docker-compose.yaml)
-
-## Application Environment Variables
+### Application Environment Variables
 
 |Name|Value|
 |---|---|
 |TZ|America/Toronto|
 
-## Service Variables
+### Service Variables
 
 |Service|Name|Value|
 |---|---|---|
