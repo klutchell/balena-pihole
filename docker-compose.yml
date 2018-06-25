@@ -19,10 +19,10 @@ services:
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
   volumerize:
-    image: klutchell/volumerize
+    image: klutchell/volumerize:armhf
     volumes:
       - 'volumerize_cache:/volumerize-cache'
       - 'pi-hole-data:/volumes/pi-hole-data:ro'
       - 'dnsmasq-data:/volumes/dnsmasq-data:ro'
     environment:
-      - "VOLUMERIZE_SOURCE=/volumes"
+      - 'VOLUMERIZE_SOURCE=/volumes'
