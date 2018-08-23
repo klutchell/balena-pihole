@@ -4,7 +4,6 @@ volumes:
 
   pi-hole-data:
   dnsmasq-data:
-  volumerize_cache:
 
 services:
 
@@ -18,11 +17,10 @@ services:
       - 'pi-hole-data:/etc/pihole'
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
-  volumerize:
-    image: klutchell/volumerize:armhf
+  duplicati:
+    image: lsioarmhf/duplicati
+    ports:
+      - '8200:8200'
     volumes:
-      - 'volumerize_cache:/volumerize-cache'
-      - 'pi-hole-data:/volumes/pi-hole-data:ro'
-      - 'dnsmasq-data:/volumes/dnsmasq-data:ro'
-    environment:
-      - 'VOLUMERIZE_SOURCE=/volumes'
+      - 'pi-hole-data:/source/pi-hole-data:ro'
+      - 'dnsmasq-data:/source/dnsmasq-data:ro'
