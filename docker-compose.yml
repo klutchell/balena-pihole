@@ -17,6 +17,11 @@ services:
       - 'pi-hole-data:/etc/pihole'
       - 'dnsmasq-data:/etc/dnsmasq.d'
 
+  cloudflared:
+    image: visibilityspots/cloudflared:arm
+    ports:
+      - '54:54'
+
   duplicati:
     image: lsioarmhf/duplicati
     ports:
