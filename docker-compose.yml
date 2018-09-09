@@ -4,6 +4,7 @@ volumes:
 
   pi-hole-data:
   dnsmasq-data:
+  duplicati-data:
 
 services:
 
@@ -29,3 +30,4 @@ services:
     volumes:
       - 'pi-hole-data:/source/pi-hole-data:ro'
       - 'dnsmasq-data:/source/dnsmasq-data:ro'
+      - 'duplicati-data:/config'
