@@ -9,7 +9,7 @@ volumes:
 services:
 
   # https://github.com/pi-hole/docker-pi-hole/
-  # https://hub.docker.com/r/pihole/pihole/tags/
+  # https://hub.docker.com/r/pihole/pihole/
   pi-hole:
     image: pihole/pihole:v4.0_armhf
     ports:
