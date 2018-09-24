@@ -14,9 +14,9 @@ services:
     image: pihole/pihole:v4.0_armhf
     ports:
       - '80:80'
-      - '192.168.86.0/24:67:67/udp'
-      - '192.168.86.0/24:53:53/tcp'
-      - '192.168.86.0/24:53:53/udp'
+      - '172.19.0.1:67:67/udp'
+      - '172.19.0.1:53:53/tcp'
+      - '172.19.0.1:53:53/udp'
     volumes:
       - 'pi-hole-data:/etc/pihole'
       - 'dnsmasq-data:/etc/dnsmasq.d'
