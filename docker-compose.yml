@@ -12,14 +12,19 @@ services:
   # https://hub.docker.com/r/pihole/pihole/
   pi-hole:
     image: pihole/pihole:v4.0_armhf
-    ports:
-      - '80:80'
-      - '192.168.86.22:67:67/udp'
-      - '192.168.86.22:53:53/tcp'
-      - '192.168.86.22:53:53/udp'
+    # ports:
+    #   - '80:80'
+    #   - '192.168.86.22:67:67/udp'
+    #   - '192.168.86.22:53:53/tcp'
+    #   - '192.168.86.22:53:53/udp'
+    # expose:
+    #   - '80'
+    #   - '53'
+    #   - '67'
     volumes:
       - 'pi-hole-data:/etc/pihole'
       - 'dnsmasq-data:/etc/dnsmasq.d'
+    network_mode: host
 
   cloudflared:
     image: visibilityspots/cloudflared:arm
