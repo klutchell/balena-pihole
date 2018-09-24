@@ -14,21 +14,17 @@ services:
     image: pihole/pihole:v4.0_armhf
     ports:
       - '80:80'
-      - '192.168.86.22:67:67/udp'
-      - '192.168.86.22:53:53/tcp'
-      - '192.168.86.22:53:53/udp'
+      - '192.168.86.0/24:67:67/udp'
+      - '192.168.86.0/24:53:53/tcp'
+      - '192.168.86.0/24:53:53/udp'
     volumes:
       - 'pi-hole-data:/etc/pihole'
       - 'dnsmasq-data:/etc/dnsmasq.d'
-    networks:
-      - myvlan
 
   cloudflared:
     image: visibilityspots/cloudflared:arm
     ports:
       - '54:54'
-    networks:
-      - myvlan
 
   duplicati:
     image: lsioarmhf/duplicati
@@ -38,12 +34,3 @@ services:
       - 'pi-hole-data:/source/pi-hole-data:ro'
       - 'dnsmasq-data:/source/dnsmasq-data:ro'
       - 'duplicati-data:/config'
-      
-  networks:
-    myvlan:
-      driver: macvlan
-      driver_opts:
-        parent: eth0
-      ipam:
-        config:
-          - subnet: 192.168.86.0/24
