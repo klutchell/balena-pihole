@@ -12,17 +12,17 @@ services:
   # https://hub.docker.com/r/pihole/pihole/
   pi-hole:
     image: pihole/pihole:v4.0_armhf
-    # ports:
-    #   - '80:80/tcp'
-    #   - '192.168.86.22:443:443/tcp'
-    #   - '192.168.86.22:53:53/tcp'
-    #   - '192.168.86.22:53:53/udp'
-    network_mode: host
     ports:
       - '80:80/tcp'
-      - '443:443/tcp'
-      - '53:53/tcp'
-      - '53:53/udp'
+      - '192.168.86.22:443:443/tcp'
+      - '192.168.86.22:53:53/tcp'
+      - '192.168.86.22:53:53/udp'
+    # network_mode: host
+    # ports:
+    #   - '80:80/tcp'
+    #   - '443:443/tcp'
+    #   - '53:53/tcp'
+    #   - '53:53/udp'
     volumes:
       - 'pi-hole-data:/etc/pihole'
       - 'dnsmasq-data:/etc/dnsmasq.d'
