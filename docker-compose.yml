@@ -20,13 +20,15 @@ services:
     volumes:
       - 'pi-hole-data:/etc/pihole'
       - 'dnsmasq-data:/etc/dnsmasq.d'
-    network: myvlan
+    networks:
+      - myvlan
 
   cloudflared:
     image: visibilityspots/cloudflared:arm
     ports:
       - '54:54'
-    network: myvlan
+    networks:
+      - myvlan
 
   duplicati:
     image: lsioarmhf/duplicati
