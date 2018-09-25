@@ -2,20 +2,20 @@ version: '2.1'
 
 volumes:
 
-  pi-hole-data:
-  dnsmasq-data:
-  duplicati-data:
+  pihole_config:
+  dnsmasq_config:
+  duplicati_config:
 
 services:
 
   # https://github.com/pi-hole/docker-pi-hole/
   # https://hub.docker.com/r/pihole/pihole/
-  pi-hole:
+  pihole:
     image: pihole/pihole:v4.0_armhf
     network_mode: host
     volumes:
-      - 'pi-hole-data:/etc/pihole'
-      - 'dnsmasq-data:/etc/dnsmasq.d'
+      - 'pihole_config:/etc/pihole'
+      - 'dnsmasq_config:/etc/dnsmasq.d'
     entrypoint: ['/bin/bash', '-c', 'echo "bind-interfaces" >> /etc/dnsmasq.conf; /s6-init']
 
   # https://github.com/visibilityspots/dockerfile-cloudflared
@@ -23,15 +23,15 @@ services:
   cloudflared:
     image: visibilityspots/cloudflared:arm
     ports:
-      - '54:54'
+      - '54:54/tcp'
 
   # https://github.com/linuxserver/docker-duplicati-armhf
   # https://hub.docker.com/r/lsioarmhf/duplicati/
   duplicati:
     image: lsioarmhf/duplicati
     ports:
-      - '8200:8200'
+      - '8200:8200/tcp'
     volumes:
-      - 'pi-hole-data:/source/pi-hole-data:ro'
-      - 'dnsmasq-data:/source/dnsmasq-data:ro'
-      - 'duplicati-data:/config'
+      - 'pihole_config:/source/pihole_config:ro'
+      - 'dnsmasq_config:/source/dnsmasq_config:ro'
+      - 'duplicati_config:/config'
