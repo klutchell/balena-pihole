@@ -18,11 +18,11 @@ services:
     #   - '192.168.86.22:53:53/tcp'
     #   - '192.168.86.22:53:53/udp'
     network_mode: host
-    # ports:
-    #   - '80:80/tcp'
-    #   - '443:443/tcp'
-    #   - '53:53/tcp'
-    #   - '53:53/udp'
+    ports:
+      - '80:80/tcp'
+      - '443:443/tcp'
+      - '53:53/tcp'
+      - '53:53/udp'
     volumes:
       - 'pi-hole-data:/etc/pihole'
       - 'dnsmasq-data:/etc/dnsmasq.d'
