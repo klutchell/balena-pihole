@@ -5,6 +5,7 @@ volumes:
   pihole_config:
   dnsmasq_config:
   duplicati_config:
+  ssh_config:
 
 services:
 
@@ -35,3 +36,12 @@ services:
       - 'pihole_config:/source/pihole_config:ro'
       - 'dnsmasq_config:/source/dnsmasq_config:ro'
       - 'duplicati_config:/config'
+  
+  # https://github.com/klutchell/docker-ssh
+  # https://hub.docker.com/r/klutchell/ssh/
+  ssh:
+    image: klutchell/ssh:armhf
+    ports:
+      - '22:22/tcp'
+    volumes:
+      - 'ssh_config:/root/.ssh
