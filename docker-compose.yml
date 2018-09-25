@@ -6,6 +6,7 @@ volumes:
   dnsmasq_config:
   duplicati_config:
   ssh_config:
+  ssh_workspace:
 
 services:
 
@@ -35,6 +36,7 @@ services:
     volumes:
       - 'pihole_config:/source/pihole_config:ro'
       - 'dnsmasq_config:/source/dnsmasq_config:ro'
+      - 'ssh_workspace:/source/ssh_workspace:ro'
       - 'duplicati_config:/config'
   
   # https://github.com/klutchell/docker-ssh
@@ -44,4 +46,6 @@ services:
     ports:
       - '22:22/tcp'
     volumes:
-      - 'ssh_config:/root/.ssh
+      - 'ssh_config:/root/.ssh'
+      - 'ssh_workspace:/workspace'
+      
