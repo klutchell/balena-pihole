@@ -6,7 +6,8 @@ volumes:
   dnsmasq_config:
   duplicati_config:
   ssh_config:
-  ssh_workspace:
+  cloud9_workspace:
+  cloud9_home:
 
 services:
 
@@ -14,11 +15,11 @@ services:
   # https://hub.docker.com/r/pihole/pihole/
   pihole:
     image: pihole/pihole:v4.0_armhf
-    network_mode: host
     volumes:
       - 'pihole_config:/etc/pihole'
       - 'dnsmasq_config:/etc/dnsmasq.d'
     entrypoint: ['/bin/bash', '-c', 'echo "bind-interfaces" >> /etc/dnsmasq.conf; /s6-init']
+    network_mode: host
 
   # https://github.com/visibilityspots/dockerfile-cloudflared
   # https://hub.docker.com/r/visibilityspots/cloudflared/
@@ -37,7 +38,8 @@ services:
     volumes:
       - 'pihole_config:/source/pihole_config:ro'
       - 'dnsmasq_config:/source/dnsmasq_config:ro'
-      - 'ssh_workspace:/source/ssh_workspace:ro'
+      - 'cloud9_workspace:/source/cloud9_workspace:ro'
+      - 'cloud9_home:/source/cloud9_home:ro'
       - 'duplicati_config:/config'
   
   # https://github.com/klutchell/docker-ssh
@@ -48,5 +50,13 @@ services:
       - '22:22/tcp'
     volumes:
       - 'ssh_config:/root/.ssh'
-      - 'ssh_workspace:/workspace'
-      
+
+  cloud9:
+    image: klutchell/cloud9:armhf
+    ports:
+      - '8080:8080'
+    volumes:
+      - 'cloud9_workspace:/workspace'
+      - 'cloud9_home:/root'
+    privileged: true
+    network_mode: host
