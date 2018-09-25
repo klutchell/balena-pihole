@@ -26,6 +26,7 @@ services:
     image: visibilityspots/cloudflared:arm
     ports:
       - '54:54/tcp'
+      - '54:54/udp'
 
   # https://github.com/linuxserver/docker-duplicati-armhf
   # https://hub.docker.com/r/lsioarmhf/duplicati/
