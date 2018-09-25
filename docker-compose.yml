@@ -16,7 +16,7 @@ services:
     volumes:
       - 'pi-hole-data:/etc/pihole'
       - 'dnsmasq-data:/etc/dnsmasq.d'
-    entrypoint: ['/bin/bash', '-c', 'echo "bind-interfaces" >> /etc/dnsmasq.conf; /s6-init']
+    entrypoint: ['/bin/bash', '-c', 'echo -e "bind-interfaces\nexcept-interface=lo" >> /etc/dnsmasq.conf; /s6-init']
 
   # https://github.com/visibilityspots/dockerfile-cloudflared
   # https://hub.docker.com/r/visibilityspots/cloudflared/
