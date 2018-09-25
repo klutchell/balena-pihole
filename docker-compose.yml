@@ -16,12 +16,17 @@ services:
     volumes:
       - 'pi-hole-data:/etc/pihole'
       - 'dnsmasq-data:/etc/dnsmasq.d'
+    entrypoint: ['/bin/bash', '-c', 'echo "bind-interfaces" > /etc/dnsmasq.conf; /s6-init']
 
+  # https://github.com/visibilityspots/dockerfile-cloudflared
+  # https://hub.docker.com/r/visibilityspots/cloudflared/
   cloudflared:
     image: visibilityspots/cloudflared:arm
     ports:
       - '54:54'
 
+  # https://github.com/linuxserver/docker-duplicati-armhf
+  # https://hub.docker.com/r/lsioarmhf/duplicati/
   duplicati:
     image: lsioarmhf/duplicati
     ports:
