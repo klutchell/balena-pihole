@@ -50,13 +50,16 @@ services:
       - '22:22/tcp'
     volumes:
       - 'ssh_config:/root/.ssh'
+      - 'cloud9_workspace:/workspace'
 
+  # https://github.com/klutchell/docker-cloud9
+  # https://hub.docker.com/r/klutchell/cloud9/
   cloud9:
     image: klutchell/cloud9:armhf
     ports:
-      - '8080:8080'
+      - '8080:8080/tcp'
     volumes:
-      - 'cloud9_workspace:/workspace'
       - 'cloud9_home:/root'
+      - 'cloud9_workspace:/workspace'
     privileged: true
     network_mode: host
