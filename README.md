@@ -49,7 +49,7 @@ Kyle Harding <kylemharding@gmail.com>
 
 ## License
 
-_tbd_
+[MIT License](./LICENSE)
 
 ## Acknowledgments
 
