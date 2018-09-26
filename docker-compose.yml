@@ -7,7 +7,6 @@ volumes:
   duplicati_config:
   ssh_config:
   cloud9_workspace:
-  cloud9_home:
 
 services:
 
@@ -39,7 +38,6 @@ services:
       - 'pihole_config:/source/pihole_config:ro'
       - 'dnsmasq_config:/source/dnsmasq_config:ro'
       - 'cloud9_workspace:/source/cloud9_workspace:ro'
-      - 'cloud9_home:/source/cloud9_home:ro'
       - 'duplicati_config:/config'
   
   # https://github.com/klutchell/docker-ssh
@@ -59,7 +57,7 @@ services:
     ports:
       - '8080:8080/tcp'
     volumes:
-      - 'cloud9_home:/root'
+      - 'ssh_config:/root/.ssh'
       - 'cloud9_workspace:/workspace'
     privileged: true
     network_mode: host
