@@ -57,7 +57,7 @@ services:
     ports:
       - '8080:8080/tcp'
     volumes:
-      - 'ssh_config:/root/.ssh'
+      - 'ssh_config:/root/.ssh:ro'
       - 'cloud9_workspace:/workspace'
     privileged: true
     network_mode: host
