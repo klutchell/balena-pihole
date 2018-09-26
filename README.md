@@ -29,8 +29,8 @@ see https://docs.resin.io/learn/getting-started
 |`duplicati`|`PUID`|`root`|
 |`pihole`|`DNS1`|`127.0.0.1#54`|
 |`pihole`|`DNS2`|`127.0.0.1#54`|
-|`pihole`|`DNSMASQ_LISTENING`|`eth0`/`wlan0`|
-|`pihole`|`INTERFACE`|`eth0`/`wlan0`|
+|`pihole`|`DNSMASQ_LISTENING`|`eth0`|
+|`pihole`|`INTERFACE`|`eth0`|
 |`pihole`|`IPv6`|`False`|
 |`pihole`|`ServerIP`|_[external device ip]_|
 |`pihole`|`WEBPASSWORD`|_(optional)_|
