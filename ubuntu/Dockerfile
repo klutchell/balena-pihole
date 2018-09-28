@@ -57,11 +57,11 @@ WORKDIR /usr/src/app
 # copy src files
 COPY start.sh ./
 
-# volumes for home dir and docker graph
-VOLUME /root /var/lib/docker
-
 # work in home dir
 WORKDIR /root
+
+# volumes for home dir and docker graph
+VOLUME /root /var/lib/docker
 
 # run start script on boot
 CMD ["/bin/sh", "/usr/src/app/start.sh"]
