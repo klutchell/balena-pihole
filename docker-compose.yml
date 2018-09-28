@@ -5,8 +5,7 @@ volumes:
   pihole_config:
   dnsmasq_config:
   duplicati_config:
-  ssh_config:
-  cloud9_workspace:
+  ubuntu_home:
 
 services:
 
@@ -37,27 +36,14 @@ services:
     volumes:
       - 'pihole_config:/source/pihole_config:ro'
       - 'dnsmasq_config:/source/dnsmasq_config:ro'
-      - 'cloud9_workspace:/source/cloud9_workspace:ro'
+      - 'ubuntu_home:/source/ubuntu_home:ro'
       - 'duplicati_config:/config'
-  
-  # https://github.com/klutchell/docker-ssh
-  # https://hub.docker.com/r/klutchell/ssh/
-  ssh:
-    image: klutchell/ssh:armhf
+
+  ubuntu:
+    build: 'ubuntu'
     ports:
       - '22:22/tcp'
     volumes:
-      - 'ssh_config:/root/.ssh'
-      - 'cloud9_workspace:/workspace'
-
-  # https://github.com/klutchell/docker-cloud9
-  # https://hub.docker.com/r/klutchell/cloud9/
-  cloud9:
-    image: klutchell/cloud9:armhf
-    ports:
-      - '8080:8080/tcp'
-    volumes:
-      - 'ssh_config:/root/.ssh'
-      - 'cloud9_workspace:/workspace'
+      - 'ubuntu_home:/root'
     privileged: true
     network_mode: host
