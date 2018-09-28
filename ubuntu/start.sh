@@ -10,9 +10,6 @@ then
 	ssh-keygen -q -N '' -f "/root/.ssh/id_rsa"
 fi
 
-# generate ssh host keys
-/usr/bin/ssh-keygen -A
-
 # if a github username was provided and authorized_keys does not exist
 if [ -n "${GITHUB_USER}" ] && [ ! -e "/root/.ssh/authorized_keys" ]
 then
