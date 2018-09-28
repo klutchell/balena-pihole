@@ -63,5 +63,5 @@ VOLUME /root /var/lib/docker
 WORKDIR /root
 
 # run start script on boot
-CMD ["/bin/sh", "start.sh"]
+CMD ["/bin/sh", "/usr/src/app/start.sh"]
 
