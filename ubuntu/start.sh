@@ -13,7 +13,7 @@ fi
 # if a github username was provided and authorized_keys does not exist
 if [ ! -f "/root/.ssh/authorized_keys" ] && [ -n "${GITHUB_USER}" ]
 then
-	curl "https://github.com/${GITHUB_USER}.keys" > "/root/.ssh/authorized_keys"
+	curl -s "https://github.com/${GITHUB_USER}.keys" > "/root/.ssh/authorized_keys"
 fi
 
 # set permissions on ssh dir
