@@ -42,8 +42,9 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # add custom flags to docker service
-RUN sed -r -i -e "s|^(ExecStart=.+)$|\1 ${DIND_OPTS}|" \
-	/lib/systemd/system/docker.service
+RUN sed -r \
+	-e "s|^(ExecStart=.+)$|\1 ${DIND_OPTS}|" \
+	-i /lib/systemd/system/docker.service
 
 # disable ssh password auth
 RUN sed -r \
