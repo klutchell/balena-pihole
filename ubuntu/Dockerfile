@@ -14,9 +14,6 @@ ENV INITSYSTEM on
 # avoid prompts during package installation
 ENV DEBIAN_FRONTEND noninteractive
 
-# allow building on x86
-# RUN [ "cross-build-start" ]
-
 # install updates and common utilities
 RUN apt-get update && apt-get install -yq --no-install-recommends \
 	apt-transport-https \
@@ -64,7 +61,4 @@ VOLUME /root /var/lib/docker
 
 # run start script on boot
 CMD ["/bin/sh", "start.sh"]
-
-# end cross build
-# RUN [ "cross-build-end" ]
 
