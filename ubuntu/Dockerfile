@@ -15,7 +15,7 @@ ENV INITSYSTEM on
 ENV DEBIAN_FRONTEND noninteractive
 
 # allow building on x86
-RUN [ "cross-build-start" ]
+# RUN [ "cross-build-start" ]
 
 # install updates and common utilities
 RUN apt-get update && apt-get install -yq --no-install-recommends \
@@ -66,5 +66,5 @@ VOLUME /root /var/lib/docker
 CMD ["/bin/sh", "start.sh"]
 
 # end cross build
-RUN [ "cross-build-end" ]
+# RUN [ "cross-build-end" ]
 
