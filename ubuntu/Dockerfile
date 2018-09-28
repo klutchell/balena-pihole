@@ -59,6 +59,9 @@ COPY start.sh ./
 # volumes for home dir and docker graph
 VOLUME /root /var/lib/docker
 
+# work in home dir
+WORKDIR /root
+
 # run start script on boot
 CMD ["/bin/sh", "start.sh"]
 
