@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 	software-properties-common \
 	sudo \
 	tmux \
+	wget \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -45,6 +46,10 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 RUN sed -r \
 	-e "s|^(ExecStart=.+)$|\1 ${DIND_OPTS}|" \
 	-i /lib/systemd/system/docker.service
+
+# install rmate
+RUN wget https://raw.github.com/aurora/rmate/master/rmate -O /usr/local/bin/rmate \
+	&& chmod a+x /usr/local/bin/rmate
 
 # disable ssh password auth
 RUN sed -r \
