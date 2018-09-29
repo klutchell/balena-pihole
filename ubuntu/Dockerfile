@@ -48,7 +48,7 @@ RUN sed -r \
 	-i /lib/systemd/system/docker.service
 
 # install rmate
-RUN wget https://raw.github.com/aurora/rmate/master/rmate -O /usr/local/bin/rmate \
+RUN curl https://raw.githubusercontent.com/aurora/rmate/master/rmate -o /usr/local/bin/rmate \
 	&& chmod a+x /usr/local/bin/rmate
 
 # disable ssh password auth
