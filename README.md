@@ -3,6 +3,7 @@
 [resin.io](https://resin.io/) stack with the following services:
 * [pihole](https://hub.docker.com/r/pihole/pihole/)
 * [cloudflared](https://hub.docker.com/r/visibilityspots/cloudflared/)
+* [unbound](https://hub.docker.com/r/klutchell/unbound/)
 * [duplicati](https://hub.docker.com/r/lsioarmhf/duplicati/)
 * [ubuntu](https://hub.docker.com/r/resin/raspberrypi3-ubuntu/)
 
@@ -54,3 +55,4 @@ Kyle Harding <kylemharding@gmail.com>
 * https://github.com/pi-hole/docker-pi-hole/
 * https://github.com/visibilityspots/dockerfile-cloudflared
 * https://github.com/linuxserver/docker-duplicati-armhf
+* https://github.com/MatthewVance/unbound-docker
