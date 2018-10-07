@@ -26,7 +26,7 @@ see https://docs.resin.io/learn/getting-started
 |`duplicati`|`PGID`|`root`|
 |`duplicati`|`PUID`|`root`|
 |`pihole`|`DNS1`|`127.0.0.1#1053`|
-|`pihole`|`DNS2`|`127.0.0.1#54`|
+|`pihole`|`DNS2`|`127.0.0.1#1053`|
 |`pihole`|`DNSMASQ_LISTENING`|`eth0`|
 |`pihole`|`INTERFACE`|`eth0`|
 |`pihole`|`IPv6`|`False`|

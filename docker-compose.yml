@@ -24,8 +24,8 @@ services:
   cloudflared:
     image: visibilityspots/cloudflared:arm
     ports:
-      - '54:54/tcp'
-      - '54:54/udp'
+      - '1054:54/tcp'
+      - '1054:54/udp'
 
   # https://github.com/klutchell/unbound-docker
   # https://hub.docker.com/r/klutchell/unbound/
