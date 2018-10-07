@@ -32,8 +32,8 @@ services:
   unbound:
     image: klutchell/unbound:armhf
     ports:
-      - '53535:53/tcp'
-      - '53535:53/udp'
+      - '1053:53/tcp'
+      - '1053:53/udp'
 
   # https://github.com/linuxserver/docker-duplicati-armhf
   # https://hub.docker.com/r/lsioarmhf/duplicati/
