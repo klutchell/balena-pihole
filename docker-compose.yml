@@ -30,7 +30,7 @@ services:
   # https://github.com/klutchell/unbound-docker
   # https://hub.docker.com/r/klutchell/unbound/
   unbound:
-    image: klutchell/unbound:armhf-0.1.3
+    image: klutchell/unbound:armhf
     ports:
       - '1053:53/tcp'
       - '1053:53/udp'
