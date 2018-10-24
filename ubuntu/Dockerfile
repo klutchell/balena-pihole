@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 	software-properties-common \
 	sudo \
 	tmux \
+	tzdata \
 	wget \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
