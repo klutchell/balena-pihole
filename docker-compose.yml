@@ -5,7 +5,7 @@ volumes:
   pihole_config:
   dnsmasq_config:
   duplicati_config:
-  ubuntu_home:
+  dind_home:
 
 services:
 
@@ -46,14 +46,16 @@ services:
     volumes:
       - 'pihole_config:/source/pihole_config:ro'
       - 'dnsmasq_config:/source/dnsmasq_config:ro'
-      - 'ubuntu_home:/source/ubuntu_home:ro'
+      - 'dind_home:/source/dind_home:ro'
       - 'duplicati_config:/config'
-
-  ubuntu:
-    build: 'ubuntu'
+  
+  # https://github.com/klutchell/dind
+  # https://cloud.docker.com/repository/docker/klutchell/dind
+  dind:
+    image: klutchell/dind:armhf
     ports:
       - '22:22/tcp'
     volumes:
-      - 'ubuntu_home:/root'
+      - 'dind_home:/home/dind'
     privileged: true
     network_mode: host
