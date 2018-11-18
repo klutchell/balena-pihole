@@ -3,7 +3,7 @@ FROM resin/raspberrypi3-ubuntu
 LABEL maintainer="kylemharding@gmail.com"
 
 # start cross-build
-RUN [ "cross-build-start" ]
+# RUN [ "cross-build-start" ]
 
 # default timezone
 ENV TZ America/Toronto
@@ -58,7 +58,7 @@ RUN adduser --disabled-password --gecos '' dind \
 	&& echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # end cross-build
-RUN [ "cross-build-end" ]
+# RUN [ "cross-build-end" ]
 
 # switch to dind user
 USER dind
