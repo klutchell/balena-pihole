@@ -1,4 +1,4 @@
-FROM resin/raspberrypi3-debian
+FROM resin/raspberrypi3-ubuntu
 
 LABEL maintainer="kylemharding@gmail.com"
 

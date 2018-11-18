@@ -20,5 +20,4 @@ fi
 sudo /usr/sbin/sshd -p 22 -D &
 
 # start docker daemon in the foreground
-sudo cgroupfs-mount
 sudo /usr/bin/dockerd ${DIND_OPTS}
