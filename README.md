@@ -1,15 +1,15 @@
-# resin-pihole
+# balena-pihole
 
-[resin.io](https://resin.io/) stack with the following services:
+[balena.io](https://www.balena.io/) stack with the following services:
 * [pihole](https://hub.docker.com/r/pihole/pihole/)
 * [cloudflared](https://hub.docker.com/r/visibilityspots/cloudflared/)
 * [unbound](https://hub.docker.com/r/klutchell/unbound/)
 * [duplicati](https://hub.docker.com/r/lsioarmhf/duplicati/)
-* [ubuntu](https://hub.docker.com/r/resin/raspberrypi3-ubuntu/)
+* [dind](https://hub.docker.com/r/klutchell/dind/)
 
 ## Getting Started
 
-see https://docs.resin.io/learn/getting-started
+see https://www.balena.io/docs/learn/getting-started
 
 ## Deployment
 
@@ -32,13 +32,13 @@ see https://docs.resin.io/learn/getting-started
 |`pihole`|`IPv6`|`False`|
 |`pihole`|`ServerIP`|_[external device ip]_|
 |`pihole`|`WEBPASSWORD`|_(optional)_|
-|`ubuntu`|`GITHUB_USER`|_(optional)_|
+|`dind`|`GITHUB_USER`|_(optional)_|
 
 ## Usage
 
 * browse to `http://<device-ip>:80/admin` to access the pi-hole admin interface
 * browse to `http://<device-ip>:8200` to access the duplicati admin interface
-* providing a `GITHUB_USER` value to the `ubuntu` service will download your authorized keys
+* providing a `GITHUB_USER` value to the `dind` service will sync your authorized keys
 
 ## Author
 
@@ -50,8 +50,8 @@ Kyle Harding <kylemharding@gmail.com>
 
 ## Acknowledgments
 
-* https://github.com/resin-io-projects/multicontainer-getting-started
-* https://github.com/resin-io-playground/resin-openssh
+* https://github.com/balena-io-projects/multicontainer-getting-started
+* https://github.com/balena-io-playground/balena-openssh
 * https://github.com/pi-hole/docker-pi-hole/
 * https://github.com/visibilityspots/dockerfile-cloudflared
 * https://github.com/linuxserver/docker-duplicati-armhf
