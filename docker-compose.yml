@@ -52,7 +52,7 @@ services:
   # https://github.com/klutchell/dind
   # https://cloud.docker.com/repository/docker/klutchell/dind
   dind:
-    image: klutchell/dind:armhf
+    image: klutchell/dind:armhf-1.0.3-0-g1ef92db
     ports:
       - '22:22/tcp'
     volumes:
