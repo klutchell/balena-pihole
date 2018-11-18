@@ -53,10 +53,10 @@ services:
   # https://github.com/klutchell/dind
   # https://cloud.docker.com/repository/docker/klutchell/dind
   dind:
-    image: klutchell/dind:armhf-1.0.3-5-g63880a6
+    # image: klutchell/dind:armhf-1.0.3-5-g63880a6
+    build: dind
     ports:
       - '22:22/tcp'
     volumes:
       - 'dind_home:/home/dind'
     privileged: true
-    network_mode: host
