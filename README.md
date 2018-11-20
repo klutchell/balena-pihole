@@ -32,13 +32,12 @@ see https://www.balena.io/docs/learn/getting-started
 |`pihole`|`IPv6`|`False`|
 |`pihole`|`ServerIP`|_[external device ip]_|
 |`pihole`|`WEBPASSWORD`|_(optional)_|
-|`dind`|`GITHUB_USER`|_(optional)_|
 
 ## Usage
 
 * browse to `http://<device-ip>:80/admin` to access the pi-hole admin interface
 * browse to `http://<device-ip>:8200` to access the duplicati admin interface
-* providing a `GITHUB_USER` value to the `dind` service will sync your authorized keys
+* ssh to `dind@<device-ip>` to access the docker-in-docker secure shell
 
 ## Author
 
