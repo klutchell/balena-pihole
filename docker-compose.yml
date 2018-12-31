@@ -12,7 +12,7 @@ services:
   # https://github.com/pi-hole/docker-pi-hole/
   # https://hub.docker.com/r/pihole/pihole/
   pihole:
-    image: pihole/pihole:4.1_armhf
+    image: pihole/pihole:4.1.1_armhf
     ports:
       - '80:80/tcp'
       - '80:80/udp'
