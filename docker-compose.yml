@@ -7,7 +7,6 @@ volumes:
 
 services:
 
-  # https://github.com/pi-hole/docker-pi-hole/
   # https://hub.docker.com/r/pihole/pihole/
   pihole:
     image: pihole/pihole:4.1.1_armhf
@@ -20,10 +19,9 @@ services:
     entrypoint: ['/bin/bash', '-c', 'echo "bind-interfaces" >> /etc/dnsmasq.conf; /s6-init']
     network_mode: host
 
-  # https://github.com/klutchell/unbound-docker
   # https://hub.docker.com/r/klutchell/unbound/
   unbound:
-    image: klutchell/unbound:armv7hf-1.0.1
+    image: klutchell/unbound:armv7hf-1.1.1
     ports:
       - '1053:53/tcp'
       - '1053:53/udp'
