@@ -6,7 +6,7 @@
 
 ## Getting Started
 
-see https://www.balena.io/docs/learn/getting-started
+https://www.balena.io/docs/learn/getting-started
 
 ## Deployment
 
@@ -30,7 +30,7 @@ see https://www.balena.io/docs/learn/getting-started
 
 ## Usage
 
-browse to `http://<device-ip>:80/admin` to access the pi-hole admin interface
+https://docs.pi-hole.net/guides/unbound/
 
 ## Author
 
