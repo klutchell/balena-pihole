@@ -17,12 +17,12 @@ services:
       - '/bin/bash'
       - '-c'
       - 'echo "bind-interfaces" >> /etc/dnsmasq.conf; /s6-init'
-    network: host
     cap_add:
-      - NET_ADMIN
+      - 'NET_ADMIN'
     dns:
-      - 127.0.0.1
-      - 1.1.1.1
+      - '127.0.0.1'
+      - '1.1.1.1'
+    network_mode: host
 
   # https://hub.docker.com/r/klutchell/unbound/
   unbound:
