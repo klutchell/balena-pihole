@@ -26,7 +26,7 @@ services:
 
   # https://hub.docker.com/r/klutchell/unbound/
   unbound:
-    image: klutchell/unbound:armv7hf-1.2.0
+    image: klutchell/unbound:armv7hf-2.0.1
     ports:
       - '1053:53/tcp'
       - '1053:53/udp'
