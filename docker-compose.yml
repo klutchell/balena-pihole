@@ -16,7 +16,7 @@ services:
     entrypoint:
       - '/bin/bash'
       - '-c'
-      - 'echo "bind-interfaces" >> /etc/dnsmasq.conf; /s6-init'
+      - 'grep -q "bind-interfaces" /etc/dnsmasq.conf || echo "bind-interfaces" >> /etc/dnsmasq.conf; /s6-init'
     cap_add:
       - 'NET_ADMIN'
     dns:
