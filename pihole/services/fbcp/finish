@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bash
+
+s6-echo "Stopping fbcp"
+killall -9 fbcp

@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bash
+
+s6-echo "Starting PADD"
+/usr/src/padd.sh 2> /dev/null > /dev/tty1
