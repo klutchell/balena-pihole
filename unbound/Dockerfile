@@ -1,4 +1,4 @@
-FROM balenalib/armv7hf-alpine:edge-build AS build
+FROM balenalib/raspberrypi3-alpine:latest-build AS build
 
 ENV LIBRESSL_VERSION="2.8.3"
 ENV LIBRESSL_SHA="3967e08b3dc2277bf77057ea1f11148df7f96a2203cd21cf841902f2a1ec11320384a001d01fa58154d35612f7981bf89d5b1a60a2387713d5657677f76cc682"
@@ -71,7 +71,7 @@ RUN RANLIB="gcc-ranlib" \
 
 # ----------------------------------------------------------------------------
 
-FROM balenalib/armv7hf-alpine:edge-run
+FROM balenalib/raspberrypi3-alpine:latest-run
 
 # install runtime dependencies
 RUN install_packages libevent expat

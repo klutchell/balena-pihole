@@ -56,7 +56,11 @@ Kyle Harding <kylemharding@gmail.com>
 
 ## Acknowledgments
 
-* https://github.com/balena-io-projects/multicontainer-getting-started
-* https://github.com/balena-io-playground/balena-openssh
 * https://github.com/pi-hole/docker-pi-hole/
-* https://github.com/klutchell/unbound-docker
+* https://docs.pi-hole.net/guides/unbound/
+* https://github.com/folhabranca/docker-unbound
+* https://github.com/MatthewVance/unbound-docker
+* https://nlnetlabs.nl/documentation/unbound/howto-anchor/
+* https://nlnetlabs.nl/documentation/unbound/howto-setup/
+* http://www.linuxfromscratch.org/blfs/view/svn/server/unbound.html
+
