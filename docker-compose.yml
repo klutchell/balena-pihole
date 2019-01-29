@@ -7,7 +7,6 @@ volumes:
 
 services:
 
-  # https://hub.docker.com/r/pihole/pihole/
   pihole:
     build: ./pihole
     privileged: true
@@ -25,9 +24,8 @@ services:
       - '1.1.1.1'
     network_mode: host
 
-  # https://hub.docker.com/r/klutchell/unbound/
   unbound:
-    image: klutchell/unbound:armv7hf-2.0.1
+    build: ./unbound
     ports:
       - '1053:53/tcp'
       - '1053:53/udp'
