@@ -13,7 +13,7 @@ balenaCloud is a free service to remotely manage and update your Raspberry Pi th
 
 To get started you'll first need to sign up for a free balenaCloud account and flash your device.
 
-https://www.balena.io/docs/learn/getting-started
+<https://www.balena.io/docs/learn/getting-started>
 
 ## Deployment
 
@@ -43,11 +43,11 @@ Service variables are set to apply only to a specific service within the applica
 
 ## Usage
 
-https://docs.pi-hole.net/guides/unbound/
+<https://docs.pi-hole.net/guides/unbound/>
 
 ## Help
 
-If you're having trouble getting the project running, submit an issue or post on the forums at https://forums.balena.io.
+If you're having trouble getting the project running, submit an issue or post on the forums at <https://forums.balena.io>.
 
 ## Author
 
@@ -55,13 +55,13 @@ Kyle Harding <kylemharding@gmail.com>
 
 ## Acknowledgments
 
-* https://github.com/pi-hole/docker-pi-hole/
-* https://docs.pi-hole.net/guides/unbound/
-* https://github.com/folhabranca/docker-unbound
-* https://github.com/MatthewVance/unbound-docker
-* https://nlnetlabs.nl/documentation/unbound/howto-anchor/
-* https://nlnetlabs.nl/documentation/unbound/howto-setup/
-* http://www.linuxfromscratch.org/blfs/view/svn/server/unbound.html
+* <https://github.com/pi-hole/docker-pi-hole/>
+* <https://docs.pi-hole.net/guides/unbound/>
+* <https://github.com/folhabranca/docker-unbound>
+* <https://github.com/MatthewVance/unbound-docker>
+* <https://nlnetlabs.nl/documentation/unbound/howto-anchor/>
+* <https://nlnetlabs.nl/documentation/unbound/howto-setup/>
+* <http://www.linuxfromscratch.org/blfs/view/svn/server/unbound.html>
 
 ## License
 
