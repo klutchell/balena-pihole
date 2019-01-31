@@ -14,7 +14,7 @@ fi
 # update it whenever we think it is a good idea. Note: there is no point in
 # doing it more often then every 6 months.
 echo "Downloading the list of primary root servers..."
-curl https://www.internic.net/domain/named.root -o "/opt/unbound/etc/unbound/root.hints"
+curl -sSL https://www.internic.net/domain/named.root -o "/opt/unbound/etc/unbound/root.hints"
 echo "Done."
 
 echo "Updating the root trust anchor for DNSSEC validation..."
@@ -27,4 +27,3 @@ echo "Done."
 
 echo "Starting the unbound daemon..."
 /opt/unbound/sbin/unbound -d -c "/opt/unbound/etc/unbound/unbound.conf"
-echo "Done."
