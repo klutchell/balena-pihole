@@ -2,7 +2,7 @@ FROM balenalib/raspberrypi3-debian:latest-build AS build
 
 WORKDIR /usr/src
 
-RUN install_packages cmake libraspberrypi-dev rsyslog
+RUN install_packages cmake libraspberrypi-dev
 
 RUN curl -sSL https://raw.githubusercontent.com/tasanakorn/rpi-fbcp/master/CMakeLists.txt -O
 RUN curl -sSL https://raw.githubusercontent.com/tasanakorn/rpi-fbcp/master/main.c -O
