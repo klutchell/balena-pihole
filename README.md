@@ -35,7 +35,7 @@ Service variables are set to apply only to a specific service within the applica
 |---|---|---|---|
 |`pihole`|`DNS1`|`127.0.0.1#1053`|To tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the Unbound project here but you can specify your own.|
 |`pihole`|`DNS2`|`127.0.0.1#1053`|Secondary DNS server - see above.|
-|`pihole`|`DNSMASQ_LISTENING`|`eth0`|We set this to `eth0` to indicate we want DNSMASQ to listen on the ethernet interface of the Raspberry Pi. If you're connecting to your network replace this with `wlan0`|
+|`pihole`|`DNSMASQ_LISTENING`|`eth0`|We set this to `eth0` to indicate we want DNSMASQ to listen on the ethernet interface of the Raspberry Pi. If you're connecting to your network with WiFi replace this with `wlan0`|
 |`pihole`|`INTERFACE`|`eth0`|As above|
 |`pihole`|`IPv6`|`False`|We’re not using IPv6 internally here.|
 |`pihole`|`ServerIP`|_[external device ip]_|Set this to the local IP address of your Pi-hole device to enable full ad-blocking. [Blocking modes are explained here](https://docs.pi-hole.net/ftldns/blockingmode/). `0.0.0.0` provides unspecified IP blocking.
