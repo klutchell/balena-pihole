@@ -19,6 +19,7 @@ COPY --from=build /opt/vc/lib/* /opt/vc/lib/
 COPY --from=build /usr/src/build/fbcp /usr/src/
 COPY --from=build /usr/bin/bc /usr/bin/bc
 COPY services/ /etc/services.d/
+COPY init/ /etc/cont-init.d/
 
 RUN sed -i '/$AUTHORIZED_HOSTNAMES = array(/ a "balena-devices.com",' /var/www/html/admin/scripts/pi-hole/php/auth.php
 
