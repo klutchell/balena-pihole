@@ -13,10 +13,6 @@ services:
     volumes:
       - 'pihole_config:/etc/pihole'
       - 'dnsmasq_config:/etc/dnsmasq.d'
-    entrypoint:
-      - '/bin/bash'
-      - '-c'
-      - 'grep -q "bind-interfaces" /etc/dnsmasq.conf || echo "bind-interfaces" >> /etc/dnsmasq.conf; /s6-init'
     cap_add:
       - 'NET_ADMIN'
     dns:
