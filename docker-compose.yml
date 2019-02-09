@@ -1,12 +1,10 @@
 version: '2.1'
 
 volumes:
-
   pihole_config:
   dnsmasq_config:
 
 services:
-
   pihole:
     build: ./pihole
     privileged: true
