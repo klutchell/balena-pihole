@@ -19,7 +19,7 @@ services:
     network_mode: host
 
   unbound:
-    build: ./unbound
+    image: klutchell/unbound:1.9.0-arm
     ports:
       - '1053:53/tcp'
       - '1053:53/udp'
