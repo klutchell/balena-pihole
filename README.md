@@ -43,6 +43,8 @@ Service variables are set to apply only to a specific service within the applica
 
 ## Usage
 
+Check out the following guide from the Pi-hole docs.
+
 <https://docs.pi-hole.net/guides/unbound/>
 
 ## Help
@@ -57,11 +59,6 @@ Kyle Harding <kylemharding@gmail.com>
 
 * <https://github.com/pi-hole/docker-pi-hole/>
 * <https://docs.pi-hole.net/guides/unbound/>
-* <https://github.com/folhabranca/docker-unbound>
-* <https://github.com/MatthewVance/unbound-docker>
-* <https://nlnetlabs.nl/documentation/unbound/howto-anchor/>
-* <https://nlnetlabs.nl/documentation/unbound/howto-setup/>
-* <http://www.linuxfromscratch.org/blfs/view/svn/server/unbound.html>
 
 ## License
 
