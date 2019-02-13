@@ -77,7 +77,7 @@ RUN curl -fsSL "${UNBOUND_DOWNLOAD_URL}" -o unbound.tar.gz \
 
 # ----------------------------------------------------------------------------
 
-FROM balenalib/raspberrypi3-alpine:latest-build
+FROM balenalib/raspberrypi3-alpine:latest-run
 
 # create unbound group and user
 RUN addgroup unbound && adduser -D -H -s /sbin/nologin -G unbound unbound
