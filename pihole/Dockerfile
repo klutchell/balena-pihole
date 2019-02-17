@@ -29,3 +29,6 @@ RUN echo "bind-interfaces" >> /etc/dnsmasq.conf
 
 RUN curl -sSL https://raw.githubusercontent.com/jpmck/PADD/master/padd.sh -O \
 	&& chmod +x padd.sh
+
+# use wally3k's ticked list from https://firebog.net/
+RUN curl -sSL https://v.firebog.net/hosts/lists.php?type=tick -o /etc/pihole/adlists.list

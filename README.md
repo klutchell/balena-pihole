@@ -59,9 +59,8 @@ Kyle Harding <kylemharding@gmail.com>
 * <https://docs.pi-hole.net/guides/unbound/>
 * <https://github.com/folhabranca/docker-unbound>
 * <https://github.com/MatthewVance/unbound-docker>
-* <https://nlnetlabs.nl/documentation/unbound/howto-anchor/>
-* <https://nlnetlabs.nl/documentation/unbound/howto-setup/>
-* <http://www.linuxfromscratch.org/blfs/view/svn/server/unbound.html>
+* <https://nlnetlabs.nl/documentation/unbound>
+* <https://firebog.net/>
 
 ## License
 
