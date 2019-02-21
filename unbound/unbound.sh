@@ -21,12 +21,6 @@ then
 	chown unbound:unbound /opt/unbound/etc/unbound/var
 fi
 
-# download the list of primary root servers.
-# unbound ships its own list but we can also download the most recent list and
-# update it whenever we think it is a good idea.
-# note: there is no point in doing it more often then every 6 months.
-curl -fsSL https://www.internic.net/domain/named.root -o /opt/unbound/etc/unbound/var/root.hints
-
 # update the root trust anchor for DNSSEC validation.
 # this tool exits with value 1 if the root anchor was updated using the
 # certificate or if the builtin root-anchor was used.
