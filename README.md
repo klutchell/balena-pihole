@@ -6,6 +6,7 @@ This project is a [balenaCloud](https://www.balena.io/cloud) stack with the foll
 
 * [Pi-hole](https://hub.docker.com/r/pihole/pihole/) (including [PADD](https://github.com/jpmck/PADD))
 * [Unbound](https://nlnetlabs.nl/projects/unbound/about/)
+* [Dohnut](https://help.commons.host/dohnut/)
 
 balenaCloud is a free service to remotely manage and update your Raspberry Pi through an online dashboard interface, as well as providing remote access to the Pi-hole web interface without any additional configuation.
 
