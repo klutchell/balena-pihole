@@ -33,4 +33,4 @@ services:
     ports:
       - '5053:53/tcp'
       - '5053:53/udp'
-    command: --listen 0.0.0.0:53 --doh cleanbrowsing cloudflare quad9 mozilla
+    command: --listen 0.0.0.0:53 --doh quad9 cloudflare commonshost
