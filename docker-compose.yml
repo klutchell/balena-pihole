@@ -18,19 +18,27 @@ services:
       - '1.1.1.1'
     network_mode: host
 
-  # optional upstream resolver
-  # point pi-hole to 127.0.0.1:1053 for Unbound upstream DNS
+  # optional upstream resolver: https://unbound.net/
+  # point pi-hole to 127.0.0.1:1053 to use this for upstream DNS
+  # otherwise comment out this block
   unbound:
     image: klutchell/unbound:1.9.0-arm
     ports:
-      - '1053:53/tcp'
       - '1053:53/udp'
 
-  # optional upstream resolver
-  # point pi-hole to 127.0.0.1:5053 for Dohnut upstream DNS
+  # optional upstream resolver: https://github.com/jedisct1/dnscrypt-proxy
+  # point pi-hole to 127.0.0.1:2053 to use this for upstream DNS
+  # otherwise comment out this block
+  dnscrypt-proxy:
+    image: klutchell/dnscrypt-proxy:2.0.19-arm
+    ports:
+      - '2053:53/udp'
+
+  # optional upstream resolver: https://help.commons.host/dohnut/
+  # point pi-hole to 127.0.0.1:3053 to use this for upstream DNS
+  # otherwise comment out this block
   dohnut:
     image: klutchell/dohnut:v4.4.1-arm
     ports:
-      - '5053:53/tcp'
-      - '5053:53/udp'
+      - '3053:53/udp'
     command: --listen 0.0.0.0:53 --doh quad9 cloudflare commonshost
