@@ -24,6 +24,7 @@ services:
   unbound:
     image: klutchell/unbound:1.9.0-arm
     ports:
+      - '1053:53/tcp'
       - '1053:53/udp'
 
   # optional upstream resolver: https://github.com/jedisct1/dnscrypt-proxy
@@ -32,6 +33,7 @@ services:
   dnscrypt-proxy:
     image: klutchell/dnscrypt-proxy:2.0.19-arm
     ports:
+      - '2053:53/tcp'
       - '2053:53/udp'
 
   # optional upstream resolver: https://help.commons.host/dohnut/
@@ -40,5 +42,6 @@ services:
   dohnut:
     image: klutchell/dohnut:v4.4.1-arm
     ports:
+      - '3053:53/tcp'
       - '3053:53/udp'
     command: --listen 0.0.0.0:53 --doh quad9 cloudflare commonshost
