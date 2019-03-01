@@ -40,7 +40,7 @@ services:
   # point pi-hole to 127.0.0.1:3053 to use this for upstream DNS
   # otherwise comment out this block
   dohnut:
-    image: klutchell/dohnut:v4.4.1-arm
+    image: commonshost/dohnut:v4.4.1-arm
     ports:
       - '3053:53/tcp'
       - '3053:53/udp'
