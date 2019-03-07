@@ -23,15 +23,15 @@ Once your account is set up, deployment is carried out by downloading the projec
 
 Application envionment variables apply to all services within the application, and can be applied fleet-wide to apply to multiple devices.
 
-|Name|Value|Purpose|
+|Name|Example|Purpose|
 |---|---|---|
-|`TZ`|Example: `America/Toronto`|To inform both `pihole` and `unbound` services of the timezone in your location, in order to set times and dates within the applications correctly. Find a [list of all timezone values here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).|
+|`TZ`|`America/Toronto`|To inform both `pihole` and `unbound` services of the timezone in your location, in order to set times and dates within the applications correctly. Find a [list of all timezone values here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).|
 
 ### Service Variables
 
 Service variables are set to apply only to a specific service within the application, but can also be set to apply to all devices in the fleet.
 
-|Service|Name|Value|Purpose|
+|Service|Name|Example|Purpose|
 |---|---|---|---|
 |`pihole`|`DNSMASQ_LISTENING`|`eth0`|We set this to `eth0` to indicate we want DNSMASQ to listen on the ethernet interface of the Raspberry Pi. If you're connecting to your network with WiFi replace this with `wlan0`|
 |`pihole`|`INTERFACE`|`eth0`|As above.|
@@ -43,7 +43,7 @@ Service variables are set to apply only to a specific service within the applica
 
 ## Usage
 
-<https://docs.pi-hole.net/guides/unbound/>
+<https://www.balena.io/blog/deploy-network-wide-ad-blocking-with-pi-hole-and-a-raspberry-pi/>
 
 ## Help
 
@@ -56,10 +56,7 @@ Kyle Harding <kylemharding@gmail.com>
 ## Acknowledgments
 
 * <https://github.com/pi-hole/docker-pi-hole/>
-* <https://docs.pi-hole.net/guides/unbound/>
-* <https://github.com/folhabranca/docker-unbound>
-* <https://github.com/MatthewVance/unbound-docker>
-* <https://nlnetlabs.nl/documentation/unbound>
+* <https://github.com/jedisct1/dnscrypt-proxy>
 * <https://firebog.net/>
 
 ## License
