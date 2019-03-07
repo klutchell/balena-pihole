@@ -5,8 +5,7 @@ If you're looking for a way to quickly and easily get up and running with a Pi-h
 This project is a [balenaCloud](https://www.balena.io/cloud) stack with the following services:
 
 * [Pi-hole](https://hub.docker.com/r/pihole/pihole/) (including [PADD](https://github.com/jpmck/PADD))
-* [Unbound](https://nlnetlabs.nl/projects/unbound/about/) (optional)
-* [Dohnut](https://help.commons.host/dohnut/) (optional)
+* [dnscrypt-proxy](https://github.com/jedisct1/dnscrypt-proxy) _(optional)_
 
 balenaCloud is a free service to remotely manage and update your Raspberry Pi through an online dashboard interface, as well as providing remote access to the Pi-hole web interface without any additional configuation.
 
@@ -26,7 +25,7 @@ Application envionment variables apply to all services within the application, a
 
 |Name|Value|Purpose|
 |---|---|---|
-|`TZ`|E.g. `America/Toronto`, find a [list of all timezone values here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).|To inform both `pihole` and `unbound` services of the timezone in your location, in order to set times and dates within the applications correctly.|
+|`TZ`|Example: `America/Toronto`|To inform both `pihole` and `unbound` services of the timezone in your location, in order to set times and dates within the applications correctly. Find a [list of all timezone values here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).|
 
 ### Service Variables
 
@@ -34,13 +33,13 @@ Service variables are set to apply only to a specific service within the applica
 
 |Service|Name|Value|Purpose|
 |---|---|---|---|
-|`pihole`|`DNS1`|`127.0.0.1#1053`|To tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the Unbound project here but you can specify your own.|
-|`pihole`|`DNS2`|`127.0.0.1#1053`|Secondary DNS server - see above.|
 |`pihole`|`DNSMASQ_LISTENING`|`eth0`|We set this to `eth0` to indicate we want DNSMASQ to listen on the ethernet interface of the Raspberry Pi. If you're connecting to your network with WiFi replace this with `wlan0`|
-|`pihole`|`INTERFACE`|`eth0`|As above|
+|`pihole`|`INTERFACE`|`eth0`|As above.|
 |`pihole`|`IPv6`|`False`|We’re not using IPv6 internally here.|
 |`pihole`|`ServerIP`|_[external device ip]_|Set this to the local IP address of your Pi-hole device to enable full ad-blocking. [Blocking modes are explained here](https://docs.pi-hole.net/ftldns/blockingmode/). `0.0.0.0` provides unspecified IP blocking.
-|`pihole`|`WEBPASSWORD`|`mysecretpassword`|__Optional__ password for accessing the web-based interface of Pi-hole - you won’t be able to access the admin panel without defining a password here.
+|`pihole`|`WEBPASSWORD`|`mysecretpassword`|_(optional)_ password for accessing the web-based interface of Pi-hole - you won’t be able to access the admin panel without defining a password here.
+|`pihole`|`DNS1`|`127.0.0.1#5300`|_(optional)_ Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the [dnscrypt-proxy](https://github.com/jedisct1/dnscrypt-proxy) project here but you can specify your own.|
+|`pihole`|`DNS2`|`127.0.0.1#5300`|_(optional)_ Secondary DNS server - see above.|
 
 ## Usage
 
