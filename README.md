@@ -25,7 +25,7 @@ Application envionment variables apply to all services within the application, a
 
 |Name|Example|Purpose|
 |---|---|---|
-|`TZ`|`America/Toronto`|To inform both `pihole` and `unbound` services of the timezone in your location, in order to set times and dates within the applications correctly. Find a [list of all timezone values here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).|
+|`TZ`|`America/Toronto`|To inform services of the timezone in your location, in order to set times and dates within the applications correctly. Find a [list of all timezone values here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).|
 
 ### Service Variables
 
