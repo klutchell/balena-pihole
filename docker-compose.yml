@@ -22,7 +22,7 @@ services:
   # set pihole DNS1 and DNS2 service variables to 127.0.0.1:5300 to use this for upstream DNS
   # otherwise comment out this block to completely remove the service
   dnscrypt-proxy:
-    image: klutchell/dnscrypt-proxy:2.0.19-arm
+    build: ./dnscrypt-proxy
     ports:
       - '5300:53/tcp'
       - '5300:53/udp'
