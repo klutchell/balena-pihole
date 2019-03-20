@@ -43,7 +43,10 @@ Service variables are set to apply only to a specific service within the applica
 
 ## Usage
 
-<https://www.balena.io/blog/deploy-network-wide-ad-blocking-with-pi-hole-and-a-raspberry-pi/>
+* <https://www.balena.io/blog/deploy-network-wide-ad-blocking-with-pi-hole-and-a-raspberry-pi/>
+* <https://github.com/jedisct1/dnscrypt-proxy/wiki>
+
+Note that you can change the dnscrypt-proxy upstream servers with some minor tweaks in `dnscrypt-proxy/Dockerfile`.
 
 ## Help
 
