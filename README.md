@@ -35,8 +35,6 @@ Service variables are set to apply only to a specific service within the applica
 |---|---|---|---|
 |`pihole`|`DNSMASQ_LISTENING`|`eth0`|We set this to `eth0` to indicate we want DNSMASQ to listen on the ethernet interface of the Raspberry Pi. If you're connecting to your network with WiFi replace this with `wlan0`|
 |`pihole`|`INTERFACE`|`eth0`|As above.|
-|`pihole`|`IPv6`|`False`|We’re not using IPv6 internally here.|
-|`pihole`|`ServerIP`|_[external device ip]_|Set this to the local IP address of your Pi-hole device to enable full ad-blocking. [Blocking modes are explained here](https://docs.pi-hole.net/ftldns/blockingmode/). `0.0.0.0` provides unspecified IP blocking.
 |`pihole`|`WEBPASSWORD`|`mysecretpassword`|_(optional)_ password for accessing the web-based interface of Pi-hole - you won’t be able to access the admin panel without defining a password here.
 |`pihole`|`DNS1`|`127.0.0.1#5300`|_(optional)_ Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the [dnscrypt-proxy](https://github.com/jedisct1/dnscrypt-proxy) project here but you can specify your own.|
 |`pihole`|`DNS2`|`127.0.0.1#5300`|_(optional)_ Secondary DNS server - see above.|
