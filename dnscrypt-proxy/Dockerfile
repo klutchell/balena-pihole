@@ -1,14 +1,5 @@
 
-FROM klutchell/dnscrypt-proxy:2.0.23-arm
-
-## Servers from the "public-resolvers" source (see down below) can
-## be viewed here: https://dnscrypt.info/public-servers
-##
-## If this line is commented, all registered servers matching the require_* filt
-## will be used.
-##
-## The proxy will automatically pick the fastest, working servers from the list.
-## Remove the leading # first to enable this; lines starting with # are ignored.
+FROM klutchell/dnscrypt-proxy:2.0.24-arm
 
 ARG server_names="['scaleway-fr', 'cloudflare']"
 
