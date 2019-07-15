@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi3-debian:latest-build AS build
+FROM balenalib/raspberrypi3-debian:stretch-build AS build
 
 WORKDIR /usr/src
 
