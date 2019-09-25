@@ -1,5 +1,5 @@
 
-FROM klutchell/dnscrypt-proxy:2.0.24-arm
+FROM klutchell/dnscrypt-proxy:2.0.27-arm
 
 ARG server_names="['scaleway-fr', 'cloudflare']"
 
