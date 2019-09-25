@@ -19,9 +19,9 @@ To get started you'll first need to sign up for a free balenaCloud account and f
 
 Once your account is set up, deployment is carried out by downloading the project and pushing it to your device either via Git or the balena CLI.
 
-### Application Environment Variables
+### Device Variables
 
-Application envionment variables apply to all services within the application, and can be applied fleet-wide to apply to multiple devices.
+Device Variables apply to all services within the application, and can be applied fleet-wide to apply to multiple devices.
 
 |Name|Example|Purpose|
 |---|---|---|
@@ -31,6 +31,7 @@ Application envionment variables apply to all services within the application, a
 |`WEBPASSWORD`|`mysecretpassword`|_(optional)_ password for accessing the web-based interface of Pi-hole - you won’t be able to access the admin panel without defining a password here.
 |`DNS1`|`127.0.0.1#5300`|_(optional)_ Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the [dnscrypt-proxy](https://github.com/jedisct1/dnscrypt-proxy) project here but you can specify your own.|
 |`DNS2`|`127.0.0.1#5300`|_(optional)_ Secondary DNS server - see above.|
+|`ServerIP`|`x.x.x.x`|_(Recommended)_ Set to your server's LAN IP, used by web block modes and lighttpd bind address.|
 
 ## Usage
 
