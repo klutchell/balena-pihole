@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi3-debian:jessie-build AS build
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:jessie-build AS build
 
 WORKDIR /usr/src
 

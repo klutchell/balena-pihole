@@ -1,1 +1,0 @@
-FROM --platform=linux/arm/v6 klutchell/dnscrypt-proxy:2.0.31
