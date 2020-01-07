@@ -51,7 +51,6 @@ Kyle Harding <https://klutchell.dev>
 
 * <https://github.com/pi-hole/docker-pi-hole/>
 * <https://github.com/DNSCrypt/dnscrypt-proxy>
-* <https://firebog.net/>
 
 ## License
 

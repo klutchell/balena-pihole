@@ -12,8 +12,6 @@ services:
     volumes:
       - 'pihole_config:/etc/pihole'
       - 'dnsmasq_config:/etc/dnsmasq.d'
-    cap_add:
-      - 'NET_ADMIN'
     dns:
       - '127.0.0.1'
       - '1.1.1.1'

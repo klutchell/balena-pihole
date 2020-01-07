@@ -1,6 +1,6 @@
 # source: https://github.com/klutchell/dnscrypt-proxy/blob/master/Dockerfile
 
-FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-golang:1.12-3.10 as build
+FROM balenalib/raspberrypi3-alpine-golang:1.12-3.10 as build
 
 WORKDIR /go/src/github.com/DNSCrypt/dnscrypt-proxy/
 
