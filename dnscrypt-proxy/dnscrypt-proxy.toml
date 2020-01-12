@@ -31,6 +31,8 @@
 
 
 ## List of local addresses and ports to listen to. Can be IPv4 and/or IPv6.
+## Example with both IPv4 and IPv6:
+## listen_addresses = ['127.0.0.1:53', '[::1]:53']
 
 listen_addresses = ['0.0.0.0:5053']
 
@@ -100,9 +102,12 @@ force_tcp = false
 # http_proxy = 'http://127.0.0.1:8888'
 
 
-## How long a DNS query will wait for a response, in milliseconds
+## How long a DNS query will wait for a response, in milliseconds.
+## If you have a network with *a lot* of latency, you may need to
+## increase this. Startup may be slower if you do so.
+## Don't increase it too much. 10000 is the highest reasonable value.
 
-timeout = 2500
+timeout = 5000
 
 
 ## Keepalive for HTTP (HTTPS, HTTP/2) queries, in seconds
@@ -187,7 +192,7 @@ cert_refresh_delay = 240
 ## It will never be used if lists have already been cached, and if stamps
 ## don't include host names without IP addresses.
 ## It will not be used if the configured system DNS works.
-## A resolver supporting DNSSEC is recommended. This may become mandatory.
+## A resolver supporting DNSSEC is recommended.
 ##
 ## People in China may need to use 114.114.114.114:53 here.
 ## Other popular options include 8.8.8.8 and 1.1.1.1.
@@ -195,10 +200,9 @@ cert_refresh_delay = 240
 fallback_resolver = '9.9.9.9:53'
 
 
-## Never let dnscrypt-proxy try to use the system DNS settings;
-## unconditionally use the fallback resolver.
+## Always use the fallback resolver before the system DNS settings.
 
-ignore_system_dns = false
+ignore_system_dns = true
 
 
 ## Maximum time (in seconds) to wait for network connectivity before
@@ -254,13 +258,34 @@ log_files_max_backups = 1
 #        Filters        #
 #########################
 
+## Note: if you are using dnsmasq, disable the `dnssec` option in dnsmasq if you
+## configure dnscrypt-proxy to do any kind of filtering (including the filters
+## below and blacklists).
+## But you can still choose resolvers that do DNSSEC validation.
+
+
 ## Immediately respond to IPv6-related queries with an empty response
 ## This makes things faster when there is no IPv6 connectivity, but can
 ## also cause reliability issues with some stub resolvers.
-## Do not enable if you added a validating resolver such as dnsmasq in front
-## of the proxy.
 
 block_ipv6 = false
+
+
+## Immediately respond to A and AAAA queries for host names without a domain name
+
+block_unqualified = true
+
+
+## Immediately respond to queries for local zones instead of leaking them to
+## upstream resolvers (always causing errors or timeouts).
+
+block_undelegated = true
+
+
+## TTL for synthetic responses sent when a request has been blocked (due to
+## IPv6 or blacklists).
+
+reject_ttl = 600
 
 
 
@@ -290,6 +315,9 @@ block_ipv6 = false
 
 # cloaking_rules = 'cloaking-rules.txt'
 
+## TTL used when serving entries in cloaking-rules.txt
+
+# cloak_ttl = 600
 
 
 ###########################
@@ -303,12 +331,12 @@ cache = true
 
 ## Cache size
 
-cache_size = 512
+cache_size = 1024
 
 
 ## Minimum TTL for cached entries
 
-cache_min_ttl = 600
+cache_min_ttl = 2400
 
 
 ## Maximum TTL for cached entries
@@ -327,6 +355,37 @@ cache_neg_max_ttl = 600
 
 
 
+##################################
+#        Local DoH server        #
+##################################
+
+[local_doh]
+
+## dnscrypt-proxy can act as a local DoH server. By doing so, web browsers
+## requiring a direct connection to a DoH server in order to enable some
+## features will enable these, without bypassing your DNS proxy.
+
+## Addresses that the local DoH server should listen to
+
+# listen_addresses = ['127.0.0.1:3000']
+
+
+## Path of the DoH URL. This is not a file, but the part after the hostname
+## in the URL. By convention, `/dns-query` is frequently chosen.
+## For each `listen_address` the complete URL to access the server will be:
+## `https://<listen_address><path>` (ex: `https://127.0.0.1/dns-query`)
+
+# path = "/dns-query"
+
+
+## Certificate file and key - Note that the certificate has to be trusted.
+## See the documentation (wiki) for more information.
+
+# cert_file = "localhost.pem"
+# cert_key_file = "localhost.pem"
+
+
+
 ###############################
 #        Query logging        #
 ###############################
@@ -335,7 +394,7 @@ cache_neg_max_ttl = 600
 
 [query_log]
 
-  ## Path to the query log file (absolute, or relative to the same directory as the executable file)
+  ## Path to the query log file (absolute, or relative to the same directory as the config file)
   ## Can be /dev/stdout to log to the standard output (and set log_files_max_size to 0)
 
   # file = 'query.log'
@@ -362,7 +421,7 @@ cache_neg_max_ttl = 600
 
 [nx_log]
 
-  ## Path to the query log file (absolute, or relative to the same directory as the executable file)
+  ## Path to the query log file (absolute, or relative to the same directory as the config file)
 
   # file = 'nx.log'
 
@@ -392,7 +451,7 @@ cache_neg_max_ttl = 600
 
 [blacklist]
 
-  ## Path to the file of blocking rules (absolute, or relative to the same directory as the executable file)
+  ## Path to the file of blocking rules (absolute, or relative to the same directory as the config file)
 
   # blacklist_file = 'blacklist.txt'
 
@@ -420,7 +479,7 @@ cache_neg_max_ttl = 600
 
 [ip_blacklist]
 
-  ## Path to the file of blocking rules (absolute, or relative to the same directory as the executable file)
+  ## Path to the file of blocking rules (absolute, or relative to the same directory as the config file)
 
   # blacklist_file = 'ip-blacklist.txt'
 
@@ -448,7 +507,7 @@ cache_neg_max_ttl = 600
 
 [whitelist]
 
-  ## Path to the file of whitelisting rules (absolute, or relative to the same directory as the executable file)
+  ## Path to the file of whitelisting rules (absolute, or relative to the same directory as the config file)
 
   # whitelist_file = 'whitelist.txt'
 
@@ -529,6 +588,15 @@ cache_neg_max_ttl = 600
   minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
   prefix = ''
 
+  ## Anonymized DNS relays
+
+  [sources.'relays']
+  urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v2/relays.md', 'https://download.dnscrypt.info/resolvers-list/v2/relays.md']
+  cache_file = 'relays.md'
+  minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
+  refresh_delay = 72
+  prefix = ''
+
   ## Quad9 over DNSCrypt - https://quad9.net/
 
   # [sources.quad9-resolvers]
@@ -545,6 +613,58 @@ cache_neg_max_ttl = 600
   #  cache_file = 'parental-control.md'
   #  minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
 
+
+
+
+#########################################
+#        Servers with known bugs        #
+#########################################
+
+[broken_implementations]
+
+# Cisco servers currently cannot handle queries larger than 1472 bytes, and don't
+# truncate reponses larger than questions as expected by the DNSCrypt protocol.
+# This prevents large responses from being received, and breaks relaying.
+# A workaround for the first issue will be applied to servers in list below.
+# Do not change that list until the bugs are fixed server-side.
+
+broken_query_padding = ['cisco', 'cisco-ipv6', 'cisco-familyshield']
+
+
+
+
+################################
+#        Anonymized DNS        #
+################################
+
+[anonymized_dns]
+
+## Routes are indirect ways to reach DNSCrypt servers.
+##
+## A route maps a server name ("server_name") to one or more relays that will be
+## used to connect to that server.
+##
+## A relay can be specified as a DNS Stamp (either a relay stamp, or a
+## DNSCrypt stamp), an IP:port, a hostname:port, or a server name.
+##
+## The following example routes "example-server-1" via `anon-example-1` or `anon-example-2`,
+## and "example-server-2" via the relay whose relay DNS stamp
+## is "sdns://gRIxMzcuNzQuMjIzLjIzNDo0NDM".
+##
+## !!! THESE ARE JUST EXAMPLES !!!
+##
+## Review the list of available relays from the "relays.md` file, and, for each
+## server you want to use, define the relays you want connections to go through.
+##
+## Carefully choose relays and servers so that the are run by different entities.
+##
+## "server_name" can also be set to "*" to define a default route, but this is not
+## recommended. if you do so, keep "server_names" short and distinct from relays.
+
+# routes = [
+#    { server_name='example-server-1', via=['anon-example-1', 'anon-example-2'] },
+#    { server_name='example-server-2', via=['sdns://gRIxMzcuNzQuMjIzLjIzNDo0NDM'] }
+# ]
 
 
 ## Optional, local, static list of additional servers
