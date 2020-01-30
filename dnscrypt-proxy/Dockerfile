@@ -1,10 +1,8 @@
-# source: https://github.com/klutchell/dnscrypt-proxy/blob/master/Dockerfile
-
-FROM balenalib/raspberrypi3-alpine-golang:1.12-3.10 as build
+FROM balenalib/raspberrypi3-alpine-golang:1.13 as build
 
 WORKDIR /go/src/github.com/DNSCrypt/dnscrypt-proxy/
 
-ARG DNSCRYPT_PROXY_VERSION=2.0.36
+ARG DNSCRYPT_PROXY_VERSION=2.0.37
 ARG DNSCRYPT_PROXY_URL=https://github.com/DNSCrypt/dnscrypt-proxy/archive/
 
 ENV CGO_ENABLED 0
