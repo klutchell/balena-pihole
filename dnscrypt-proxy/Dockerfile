@@ -2,7 +2,7 @@ FROM balenalib/raspberrypi3-alpine-golang:1.13 as build
 
 WORKDIR /go/src/github.com/DNSCrypt/dnscrypt-proxy/
 
-ARG DNSCRYPT_PROXY_VERSION=2.0.38
+ARG DNSCRYPT_PROXY_VERSION=2.0.39
 ARG DNSCRYPT_PROXY_URL=https://github.com/DNSCrypt/dnscrypt-proxy/archive/
 
 ENV CGO_ENABLED 0
