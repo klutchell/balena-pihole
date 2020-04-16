@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi3-alpine-golang:1.13 as build
+FROM balenalib/armv7hf-alpine-golang:1.13 as build
 
 WORKDIR /go/src/github.com/DNSCrypt/dnscrypt-proxy/
 
