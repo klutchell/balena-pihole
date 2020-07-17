@@ -2,7 +2,7 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-golang:1.13 as build
 
 WORKDIR /go/src/github.com/DNSCrypt/dnscrypt-proxy/
 
-ARG DNSCRYPT_PROXY_VERSION=2.0.42
+ARG DNSCRYPT_PROXY_VERSION=2.0.44
 ARG DNSCRYPT_PROXY_URL=https://github.com/DNSCrypt/dnscrypt-proxy/archive/
 
 ENV CGO_ENABLED 0
