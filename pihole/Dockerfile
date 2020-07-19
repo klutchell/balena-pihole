@@ -11,7 +11,7 @@ WORKDIR /usr/src/build
 
 RUN cmake .. && make
 
-FROM pihole/pihole:v5.0-armhf
+FROM pihole/pihole:v5.1.1-armhf
 
 WORKDIR /usr/src
 
