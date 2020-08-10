@@ -11,7 +11,7 @@ WORKDIR /usr/src/build
 
 RUN cmake .. && make
 
-FROM pihole/pihole:v5.1.1-armhf
+FROM pihole/pihole:v5.1.2-armhf-stretch
 
 WORKDIR /usr/src
 
@@ -28,6 +28,6 @@ RUN sed -i '/$AUTHORIZED_HOSTNAMES = array(/ a "balena-devices.com",' /var/www/h
 RUN echo "bind-interfaces" >> /etc/dnsmasq.conf
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN curl -fsSL https://github.com/jpmck/PADD/archive/v3.1.tar.gz | tar xz --strip-components 1 \
+RUN curl -fsSL https://github.com/pi-hole/PADD/archive/v3.2.2.tar.gz | tar xz --strip-components 1 \
 	&& chmod +x padd.sh
 
