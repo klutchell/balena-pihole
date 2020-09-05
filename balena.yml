@@ -2,3 +2,6 @@ applicationEnvironmentVariables:
     - TZ: 'America/Toronto'
     - DNSMASQ_LISTENING: 'eth0'
     - INTERFACE: 'eth0'
+    - WEBPASSWORD: 'mysecretpassword'
+    - DNS1: '127.0.0.1#5053'
+    - DNS2: '127.0.0.1#5053'
