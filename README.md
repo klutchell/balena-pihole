@@ -13,7 +13,7 @@ balenaCloud is a free service to remotely manage and update your Raspberry Pi th
 
 You can one-click-deploy this project to balena using the button below:
 
-[![](https://balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy)
+[![deploy button](https://balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/klutchell/balena-pihole&defaultDeviceType=raspberry-pi)
 
 ## Manual Deployment
 
