@@ -6,16 +6,24 @@ volumes:
   dnscrypt_config:
 
 services:
+  # https://hub.docker.com/r/pihole/pihole
   pihole:
     build: ./pihole
     privileged: true
     volumes:
-      - 'pihole_config:/etc/pihole'
-      - 'dnsmasq_config:/etc/dnsmasq.d'
+      - "pihole_config:/etc/pihole"
+      - "dnsmasq_config:/etc/dnsmasq.d"
     dns:
-      - '127.0.0.1'
-      - '1.1.1.1'
+      - "127.0.0.1"
+      - "1.1.1.1"
+    environment:
+      DNSMASQ_LISTENING: eth0
+      INTERFACE: eth0
+      DNS1: 127.0.0.1#5053
+      DNS2: 127.0.0.1#5053
     network_mode: host
+    labels:
+      io.balena.features.dbus: '1'
 
   # set pihole DNS1 and DNS2 service variables to 127.0.0.1#5053 to use dnscrypt-proxy for upstream DNS
   dnscrypt-proxy:
