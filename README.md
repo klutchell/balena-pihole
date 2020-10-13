@@ -38,6 +38,8 @@ Device Variables apply to all services within the application, and can be applie
 * <https://www.balena.io/blog/deploy-network-wide-ad-blocking-with-pi-hole-and-a-raspberry-pi/>
 * <https://github.com/DNSCrypt/dnscrypt-proxy/wiki>
 
+Connect to the Pi-Hole admin interface at `http://device-ip/admin`.
+
 ## Help
 
 If you're having trouble getting the project running, submit an issue or post on the forums at <https://forums.balena.io>.
