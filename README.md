@@ -42,12 +42,6 @@ Device Variables apply to all services within the application, and can be applie
 
 If you're having trouble getting the project running, submit an issue or post on the forums at <https://forums.balena.io>.
 
-## Author
-
-Kyle Harding <https://klutchell.dev>
-
-[![](https://cdn.buymeacoffee.com/buttons/default-orange.png)](https://www.buymeacoffee.com/klutchell)
-
 ## Acknowledgments
 
 * <https://github.com/pi-hole/docker-pi-hole/>
