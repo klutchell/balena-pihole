@@ -13,7 +13,7 @@ balenaCloud is a free service to remotely manage and update your Raspberry Pi th
 
 You can one-click-deploy this project to balena using the button below:
 
-[![](https://balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy)
+[![deploy button](https://balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/klutchell/balena-pihole&defaultDeviceType=raspberrypi3)
 
 ## Manual Deployment
 
@@ -38,17 +38,11 @@ Device Variables apply to all services within the application, and can be applie
 * <https://www.balena.io/blog/deploy-network-wide-ad-blocking-with-pi-hole-and-a-raspberry-pi/>
 * <https://github.com/DNSCrypt/dnscrypt-proxy/wiki>
 
+Connect to the Pi-Hole admin interface at `http://device-ip/admin`.
+
 ## Help
 
 If you're having trouble getting the project running, submit an issue or post on the forums at <https://forums.balena.io>.
-
-## Author
-
-Kyle Harding <https://klutchell.dev>
-
-[Buy me a beer](https://kyles-tip-jar.myshopify.com/cart/31356319498262:1?channel=buy_button)
-
-[Buy me a craft beer](https://kyles-tip-jar.myshopify.com/cart/31356317859862:1?channel=buy_button)
 
 ## Acknowledgments
 
