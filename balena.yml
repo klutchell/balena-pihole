@@ -1,7 +1,25 @@
-applicationEnvironmentVariables:
+version: "2"
+slug: "balena-pihole"
+name: "balena Pi-hole"
+type: "sw.application"
+assets:
+  - url: "https://github.com/klutchell/balena-pihole"
+    name: "repository"
+  - url: "https://raw.githubusercontent.com/klutchell/balena-pihole/master/logo.jpg"
+    name: "logo"
+data:
+  description: "raspberrypi3 balenaCloud stack with Pi-hole, PADD, & dnscrypt-proxy"
+  applicationEnvironmentVariables:
     - TZ: 'America/Toronto'
     - DNSMASQ_LISTENING: 'eth0'
     - INTERFACE: 'eth0'
     - WEBPASSWORD: 'mysecretpassword'
     - DNS1: '127.0.0.1#5053'
     - DNS2: '127.0.0.1#5053'
+  defaultDeviceType: "raspberrypi3"
+  supportedDeviceTypes:
+    - "raspberry-pi2"
+    - "raspberrypi3"
+    - "raspberrypi3-64"
+    - "raspberrypi4-64"
+    - "fincm3"

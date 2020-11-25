@@ -1,4 +1,4 @@
-# balena-pihole <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/15/Pi-hole_vector_logo.svg/1200px-Pi-hole_vector_logo.svg.png" alt="Pi-hole" height="24"/>
+# balena-pihole <img src="https://raw.githubusercontent.com/klutchell/balena-pihole/master/logo.png" alt="Pi-hole" height="24"/>
 
 If you're looking for a way to quickly and easily get up and running with a Pi-hole device for your home network, this is the project for you.
 
