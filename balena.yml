@@ -5,7 +5,7 @@ type: "sw.application"
 assets:
   - url: "https://github.com/klutchell/balena-pihole"
     name: "repository"
-  - url: "https://raw.githubusercontent.com/klutchell/balena-pihole/master/logo.jpg"
+  - url: "https://raw.githubusercontent.com/klutchell/balena-pihole/master/logo.png"
     name: "logo"
 data:
   description: "raspberrypi3 balenaCloud stack with Pi-hole, PADD, & dnscrypt-proxy"
