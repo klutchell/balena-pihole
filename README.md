@@ -1,4 +1,4 @@
-# balena-pihole
+# balena-pihole <img src="./images/Vortex-R.png" alt="Pi-hole" height="24"/>
 
 If you're looking for a way to quickly and easily get up and running with a Pi-hole device for your home network, this is the project for you.
 
@@ -48,7 +48,3 @@ If you're having trouble getting the project running, submit an issue or post on
 
 * <https://github.com/pi-hole/docker-pi-hole/>
 * <https://github.com/DNSCrypt/dnscrypt-proxy>
-
-## License
-
-[MIT License](./LICENSE)
