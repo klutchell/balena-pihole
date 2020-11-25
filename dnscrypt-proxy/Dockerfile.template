@@ -8,9 +8,9 @@ ARG DNSCRYPT_PROXY_URL=https://github.com/DNSCrypt/dnscrypt-proxy/archive/
 ENV CGO_ENABLED 0
 
 RUN install_packages ca-certificates curl \
-	&& curl -L "${DNSCRYPT_PROXY_URL}${DNSCRYPT_PROXY_VERSION}.tar.gz" -o /tmp/dnscrypt-proxy.tar.gz \
+	&& curl -fsSL "${DNSCRYPT_PROXY_URL}${DNSCRYPT_PROXY_VERSION}.tar.gz" -o /tmp/dnscrypt-proxy.tar.gz \
 	&& tar xzf /tmp/dnscrypt-proxy.tar.gz --strip 1 -C /go/src/github.com/DNSCrypt \
-	&& go build -v -ldflags="-s -w"
+	&& go build -v -ldflags="-s -w" -mod vendor
 
 WORKDIR /config
 
