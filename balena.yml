@@ -1,6 +1,6 @@
 version: "2"
 slug: "balena-pihole"
-name: "balena Pi-hole"
+name: "Pi-hole"
 type: "sw.application"
 assets:
   - url: "https://github.com/klutchell/balena-pihole"
