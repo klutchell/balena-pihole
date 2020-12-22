@@ -7,6 +7,7 @@ This project is a [balenaCloud](https://www.balena.io/cloud) stack with the foll
 * [Pi-hole](https://pi-hole.net/)
 * [PADD](https://github.com/pi-hole/PADD)
 * [Unbound](https://unbound.net)
+* [Wireguard](https://wireguard.com)
 
 balenaCloud is a free service to remotely manage and update your Raspberry Pi through an online dashboard interface, as well as providing remote access to the Pi-hole web interface without any additional configuation.
 
@@ -50,6 +51,27 @@ the Public Device URL in the dashboard and append `/admin` to device URL.
 Here's a guide to add a display to your Pi-hole for monitoring and stats:
 
 <https://www.balena.io/blog/add-a-display-to-your-pi-hole-for-monitoring-and-stats/>
+
+### Wireguard
+
+To enable Wireguard, including building the required kernel
+modules, set the application environment variable `PEERS` to
+the number of Wireguard client device configs you would like
+generated.
+
+It is also recommended to set `PEERDNS` to the LAN IP of your
+Pi-hole device in order to block ads for Wireguard clients.
+
+Note that some architectures and balenaOS versions may not be
+compatible with the included wireguard module. Feel free to open
+an issue if you encounter one of these cases.
+
+Assuming the kernel module is able to compile, the client
+configs will be printed to the logs as QR codes.
+
+For more information, see the official image documentation here:
+
+<https://docs.linuxserver.io/images/docker-wireguard>
 
 ## Help
 

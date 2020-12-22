@@ -3,6 +3,7 @@ version: "2.1"
 volumes:
   pihole_config:
   dnsmasq_config:
+  wireguard:
 
 services:
   # https://hub.docker.com/r/pihole/pihole
@@ -29,3 +30,16 @@ services:
     build: ./unbound
     ports:
       - "5053:5053/udp"
+
+  # https://hub.docker.com/r/linuxserver/wireguard/
+  wireguard:
+    build: wireguard
+    privileged: true
+    environment:
+      SERVERPORT: "51820"
+    ports:
+      - 51820:51820/udp
+    volumes:
+      - wireguard:/config
+    labels:
+      io.balena.features.kernel-modules: "1"
