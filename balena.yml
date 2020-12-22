@@ -8,9 +8,8 @@ assets:
   - url: "https://raw.githubusercontent.com/klutchell/balena-pihole/main/logo.png"
     name: "logo"
 data:
-  description: "raspberrypi3 balenaCloud stack with Pi-hole, PADD, & dnscrypt-proxy"
+  description: "Pi-hole is a Linux network-level advertisement and Internet tracker blocking application!"
   applicationEnvironmentVariables:
-    - TZ: 'America/Toronto'
     - DNSMASQ_LISTENING: 'eth0'
     - INTERFACE: 'eth0'
     - WEBPASSWORD: 'mysecretpassword'
