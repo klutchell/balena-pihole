@@ -22,10 +22,12 @@ COPY init/ /etc/cont-init.d/
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# hadolint ignore=DL3008
 RUN apt-get update && \
 	apt-get install --no-install-recommends -y console-setup dbus && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# hadolint ignore=SC2016
 RUN sed '/$AUTHORIZED_HOSTNAMES = array(/ a "balena-devices.com",' -i /var/www/html/admin/scripts/pi-hole/php/auth.php
 
 # https://serverfault.com/a/817791
