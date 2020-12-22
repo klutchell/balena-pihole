@@ -36,12 +36,19 @@ Device Variables apply to all services within the application, and can be applie
 
 ## Usage
 
-Check out our blog post:
+### Pi-hole
+
+Check out our blog post on how to deploy network-wide ad-blocking with Pi-hole:
 
 <https://www.balena.io/blog/deploy-network-wide-ad-blocking-with-pi-hole-and-a-raspberry-pi/>
 
-Connect to the Pi-hole admin interface at `http://device-ip/admin` or enable the Public Device URL
-in the dashboard and append `/admin` to device URL.
+Connect to the Pi-hole admin interface at `http://device-ip/admin` or enable the Public Device URL in the dashboard and append `/admin` to device URL.
+
+### PADD
+
+Here's a guide to add a display to your Pi-hole for monitoring and stats:
+
+<https://www.balena.io/blog/add-a-display-to-your-pi-hole-for-monitoring-and-stats/>
 
 ## Help
 
