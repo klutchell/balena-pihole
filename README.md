@@ -5,7 +5,7 @@ If you're looking for a way to quickly and easily get up and running with a [Pi-
 This project is a [balenaCloud](https://www.balena.io/cloud) stack with the following services:
 
 * [Pi-hole](https://pi-hole.net/)
-* [PADD](https://github.com/jpmck/PADD)
+* [PADD](https://github.com/pi-hole/PADD)
 * [Unbound](https://unbound.net)
 
 balenaCloud is a free service to remotely manage and update your Raspberry Pi through an online dashboard interface, as well as providing remote access to the Pi-hole web interface without any additional configuation.
@@ -42,7 +42,8 @@ Check out our blog post on how to deploy network-wide ad-blocking with Pi-hole:
 
 <https://www.balena.io/blog/deploy-network-wide-ad-blocking-with-pi-hole-and-a-raspberry-pi/>
 
-Connect to the Pi-hole admin interface at `http://device-ip/admin` or enable the Public Device URL in the dashboard and append `/admin` to device URL.
+Connect to the Pi-hole admin interface at `http://device-ip/admin` or enable
+the Public Device URL in the dashboard and append `/admin` to device URL.
 
 ### PADD
 
@@ -52,7 +53,8 @@ Here's a guide to add a display to your Pi-hole for monitoring and stats:
 
 ## Help
 
-If you're having trouble getting the project running, submit an issue or post on the forums at <https://forums.balena.io>.
+If you're having trouble getting the project running,
+submit an issue or post on the forums at <https://forums.balena.io>.
 
 ## Contributing
 

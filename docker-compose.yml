@@ -1,4 +1,4 @@
-version: '2.1'
+version: "2.1"
 
 volumes:
   pihole_config:
@@ -22,7 +22,7 @@ services:
       DNS2: 127.0.0.1#5053
     network_mode: host
     labels:
-      io.balena.features.dbus: '1'
+      io.balena.features.dbus: "1"
 
   # https://hub.docker.com/r/klutchell/unbound-dnscrypt
   unbound:
