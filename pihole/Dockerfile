@@ -11,7 +11,7 @@ WORKDIR /usr/src/build
 
 RUN cmake .. && make
 
-FROM pihole/pihole:v5.2.1
+FROM pihole/pihole:v5.2.2
 
 WORKDIR /usr/src
 
