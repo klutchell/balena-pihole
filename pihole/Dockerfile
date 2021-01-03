@@ -36,7 +36,7 @@ RUN sed '/$AUTHORIZED_HOSTNAMES = array(/ a "balena-devices.com",' -i /var/www/h
 RUN echo "bind-interfaces" >> /etc/dnsmasq.conf
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN curl -fsSL https://github.com/pi-hole/PADD/archive/v3.5.tar.gz | tar xz --strip-components 1 \
+RUN curl -fsSL https://github.com/pi-hole/PADD/archive/v3.5.1.tar.gz | tar xz --strip-components 1 \
 	&& chmod +x padd.sh
 
 ENV FONTFACE Terminus
