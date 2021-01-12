@@ -18,8 +18,8 @@ services:
     environment:
       DNSMASQ_LISTENING: eth0
       INTERFACE: eth0
-      DNS1: 127.0.0.1#5053
-      DNS2: 127.0.0.1#5053
+      DNS1: 127.0.0.1#5335
+      DNS2: 127.0.0.1#5335
     network_mode: host
     labels:
       io.balena.features.dbus: "1"
@@ -27,5 +27,7 @@ services:
   # https://hub.docker.com/r/klutchell/unbound-dnscrypt
   unbound:
     build: ./unbound
+    privileged: true
     ports:
-      - "5053:5053/udp"
+      - "5335:5335/tcp"
+      - "5335:5335/udp"

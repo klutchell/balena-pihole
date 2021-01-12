@@ -1,12 +1,12 @@
-# balena-pihole <img src="https://raw.githubusercontent.com/klutchell/balena-pihole/main/logo.png" alt="Pi-hole" height="24"/>
+# balena-pihole
 
 If you're looking for a way to quickly and easily get up and running with a [Pi-hole](https://pi-hole.net/) device for your home network, this is the project for you.
 
 This project is a [balenaCloud](https://www.balena.io/cloud) stack with the following services:
 
-* [Pi-hole](https://pi-hole.net/)
-* [PADD](https://github.com/pi-hole/PADD)
-* [Unbound](https://unbound.net)
+- [Pi-hole](https://pi-hole.net/)
+- [PADD](https://github.com/pi-hole/PADD)
+- [Unbound](https://unbound.net)
 
 balenaCloud is a free service to remotely manage and update your Raspberry Pi through an online dashboard interface, as well as providing remote access to the Pi-hole web interface without any additional configuation.
 
@@ -30,8 +30,8 @@ Device Variables apply to all services within the application, and can be applie
 |`DNSMASQ_LISTENING`|`eth0`|We set this to `eth0` to indicate we want DNSMASQ to listen on the ethernet interface of the Raspberry Pi. If you're connecting to your network with WiFi replace this with `wlan0`|
 |`INTERFACE`|`eth0`|As above.|
 |`WEBPASSWORD`|`mysecretpassword`|_(optional)_ password for accessing the web-based interface of Pi-hole - you won’t be able to access the admin panel without defining a password here.
-|`DNS1`|`127.0.0.1#5053`|_(optional)_ Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the [Unbound](https://unbound.net) project here but you can specify your own.|
-|`DNS2`|`127.0.0.1#5053`|_(optional)_ Secondary DNS server - see above.|
+|`DNS1`|`127.0.0.1#5335`|_(optional)_ Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the [Unbound](https://unbound.net) project here but you can specify your own.|
+|`DNS2`|`127.0.0.1#5335`|_(optional)_ Secondary DNS server - see above.|
 |`ServerIP`|`x.x.x.x`|_(recommended)_ Set to your server's LAN IP, used by web block modes and lighttpd bind address.|
 
 ## Usage
@@ -50,6 +50,12 @@ the Public Device URL in the dashboard and append `/admin` to device URL.
 Here's a guide to add a display to your Pi-hole for monitoring and stats:
 
 <https://www.balena.io/blog/add-a-display-to-your-pi-hole-for-monitoring-and-stats/>
+
+### Unbound
+
+The included config should work for Unbound and was taken mostly from this guide:
+
+<https://docs.pi-hole.net/guides/unbound/>
 
 ## Help
 
