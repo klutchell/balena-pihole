@@ -24,15 +24,15 @@ Alternatively, deployment can be carried out by manually creating a [balenaCloud
 
 Device Variables apply to all services within the application, and can be applied fleet-wide to apply to multiple devices. If you used the one-click-deploy method, the default environment variables will already be added for you to customize as needed.
 
-|Name|Example|Purpose|
-|---|---|---|
-|`TZ`|`America/Toronto`|To inform services of the timezone in your location, in order to set times and dates within the applications correctly. Find a [list of all timezone values here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).|
-|`DNSMASQ_LISTENING`|`eth0`|We set this to `eth0` to indicate we want DNSMASQ to listen on the ethernet interface of the Raspberry Pi. If you're connecting to your network with WiFi replace this with `wlan0`|
-|`INTERFACE`|`eth0`|As above.|
-|`WEBPASSWORD`|`mysecretpassword`|_(optional)_ password for accessing the web-based interface of Pi-hole - you won’t be able to access the admin panel without defining a password here.
-|`DNS1`|`127.0.0.1#5053`|_(optional)_ Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the [Unbound](https://unbound.net) project here but you can specify your own.|
-|`DNS2`|`127.0.0.1#5053`|_(optional)_ Secondary DNS server - see above.|
-|`ServerIP`|`x.x.x.x`|_(recommended)_ Set to your server's LAN IP, used by web block modes and lighttpd bind address.|
+| Name                | Example            | Purpose                                                                                                                                                                                                                          |
+| ------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TZ`                | `America/Toronto`  | To inform services of the timezone in your location, in order to set times and dates within the applications correctly. Find a [list of all timezone values here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). |
+| `DNSMASQ_LISTENING` | `eth0`             | We set this to `eth0` to indicate we want DNSMASQ to listen on the ethernet interface of the Raspberry Pi. If you're connecting to your network with WiFi replace this with `wlan0`                                              |
+| `INTERFACE`         | `eth0`             | As above.                                                                                                                                                                                                                        |
+| `WEBPASSWORD`       | `mysecretpassword` | _(optional)_ password for accessing the web-based interface of Pi-hole - you won’t be able to access the admin panel without defining a password here.                                                                           |
+| `DNS1`              | `127.0.0.1#5053`   | _(optional)_ Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the [Unbound](https://unbound.net) project here but you can specify your own.                                                           |
+| `DNS2`              | `127.0.0.1#5053`   | _(optional)_ Secondary DNS server - see above.                                                                                                                                                                                   |
+| `ServerIP`          | `x.x.x.x`          | _(recommended)_ Set to your server's LAN IP, used by web block modes and lighttpd bind address.                                                                                                                                  |
 
 ## Usage
 
@@ -47,9 +47,22 @@ the Public Device URL in the dashboard and append `/admin` to device URL.
 
 ### PADD
 
-Here's a guide to add a display to your Pi-hole for monitoring and stats:
+Check out this blog post to add a display to your Pi-hole for monitoring and stats:
 
 <https://www.balena.io/blog/add-a-display-to-your-pi-hole-for-monitoring-and-stats/>
+
+All of the below values should be set in the device configuration within balenaCloud.
+
+|Name|Value|Purpose|
+|---|---|---|
+|RESIN_HOST_CONFIG_gpu_mem|`64`|Note: this is one of the default options so you can edit the existing value. Allocates the specified amount of RAM (in MB) to the GPU. The minimum you'll be able to get away with will vary depending on the resolution you're running at.|
+|RESIN_HOST_CONFIG_dtoverlay|`pitft35-resistive,rotate=270,speed=25000000,fps=20`|To load the driver for the display and set the rotation correctly (this may change depeding on your display).|
+|RESIN_HOST_CONFIG_hdmi_cvt|`480 320 60 1 0 0 0`|CVT means custom video timings, so we're using this to set a custom resolution for the display.|
+|RESIN_HOST_CONFIG_hdmi_force_hotplug|`1`|Setting this means the Pi will operate as if a monitor was connected via HDMI - we then copy the HDMI output to the PiTFT.|
+|RESIN_HOST_CONFIG_hdmi_group|`2`|This is essentially specifying that we are working with a monitor rather than a TV.|
+|RESIN_HOST_CONFIG_hdmi_mode|`87`|Mode 87 is an unspecified mode allowing us to specify a custom one (with CVT above).|
+
+After you've set these configuration variables and rebooted the device, the software should detect the display and automatically enable the PADD output.
 
 ### Unbound
 

@@ -2,5 +2,13 @@
 # shellcheck shell=bash
 
 s6-echo "Starting PADD"
-sleep 30
-/usr/src/padd.sh 2> /dev/null > /dev/tty1
+
+# fix for PADD fonts
+sed -i "s/^FONTFACE.*/FONTFACE=\"${FONTFACE}\"/" /etc/default/console-setup
+sed -i "s/^FONTSIZE.*/FONTSIZE=\"${FONTSIZE}\"/" /etc/default/console-setup
+dpkg-reconfigure console-setup 2> /dev/null > /dev/tty1
+
+# wait for pihole api to become available
+sleep 20
+
+/usr/src/app/padd.sh 2> /dev/null > /dev/tty1

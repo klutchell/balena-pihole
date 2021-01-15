@@ -1,30 +1,14 @@
-FROM balenalib/raspberrypi3-debian:jessie-build AS build
-
-WORKDIR /usr/src
-
-RUN install_packages cmake libraspberrypi-dev
-
-RUN curl -sSL https://raw.githubusercontent.com/tasanakorn/rpi-fbcp/master/CMakeLists.txt -O
-RUN curl -sSL https://raw.githubusercontent.com/tasanakorn/rpi-fbcp/master/main.c -O
-
-WORKDIR /usr/src/build
-
-RUN cmake .. && make
-
 FROM pihole/pihole:v5.5.1
 
-WORKDIR /usr/src
+WORKDIR /usr/src/app
 
-COPY --from=build /opt/vc/lib/* /opt/vc/lib/
-COPY --from=build /usr/src/build/fbcp /usr/src/
 COPY services/ /etc/services.d/
-COPY init/ /etc/cont-init.d/
 
 ENV DEBIAN_FRONTEND noninteractive
 
 # hadolint ignore=DL3008
 RUN apt-get update && \
-	apt-get install --no-install-recommends -y console-setup dbus && \
+	apt-get install --no-install-recommends -y console-setup kmod && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # hadolint ignore=SC2016
