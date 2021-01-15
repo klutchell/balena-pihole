@@ -56,22 +56,41 @@ the Public Device URL in the dashboard and append `/admin` to device URL.
 
 ### PADD
 
-Check out this blog post to add a display to your Pi-hole for monitoring and stats:
+Note that balena-pihole uses the [fbcp block](https://github.com/balenablocks/fbcp).
 
-<https://www.balena.io/blog/add-a-display-to-your-pi-hole-for-monitoring-and-stats/>
+The PiTFT LCD screens [from Adafruit (and others)](https://www.adafruit.com/?q=pitft) are supported.
 
-All of the below values should be set in the device configuration within balenaCloud.
+In order to use these displays you're required to add additional configuration by setting
+the `FBCP_DISPLAY` variable within the dashboard. This variable should be set to one of the values below:
 
-|Name|Value|Purpose|
-|---|---|---|
-|RESIN_HOST_CONFIG_gpu_mem|`64`|Note: this is one of the default options so you can edit the existing value. Allocates the specified amount of RAM (in MB) to the GPU. The minimum you'll be able to get away with will vary depending on the resolution you're running at.|
-|RESIN_HOST_CONFIG_dtoverlay|`pitft35-resistive,rotate=270,speed=25000000,fps=20`|To load the driver for the display and set the rotation correctly (this may change depeding on your display).|
-|RESIN_HOST_CONFIG_hdmi_cvt|`480 320 60 1 0 0 0`|CVT means custom video timings, so we're using this to set a custom resolution for the display.|
-|RESIN_HOST_CONFIG_hdmi_force_hotplug|`1`|Setting this means the Pi will operate as if a monitor was connected via HDMI - we then copy the HDMI output to the PiTFT.|
-|RESIN_HOST_CONFIG_hdmi_group|`2`|This is essentially specifying that we are working with a monitor rather than a TV.|
-|RESIN_HOST_CONFIG_hdmi_mode|`87`|Mode 87 is an unspecified mode allowing us to specify a custom one (with CVT above).|
+- `adafruit-hx8357d-pitft`
+- `adafruit-ili9341-pitft`
+- `freeplaytech-waveshare32b`
+- `waveshare35b-ili9486`
+- `tontec-mz61581`
+- `waveshare-st7789vw-hat`
+- `waveshare-st7735s-hat`
+- `kedei-v63-mpi3501`
 
-After you've set these configuration variables and rebooted the device, the software should detect the display and automatically enable the PADD output.
+If your display is not listed above, please check if the [fbcp-ili9341](https://github.com/juj/fbcp-ili9341)
+driver that `fbcp` block uses supports it.
+PRs are welcomed to add support for further displays in the [fbcp block](https://github.com/balenablocks/fbcp).
+
+If you had previously enabled your screen via `BALENA_HOST_CONFIG_dtoverlay`
+in your device config you will need to remove/disable that setting.
+
+#### Configuring HDMI and TFT display sizes
+
+The following [Device Configuration](https://www.balena.io/docs/learn/manage/configuration/#configuration-variables)
+variables might be required for proper scaling and resolutions:
+
+| Name                                  | Value              |
+| ------------------------------------- | ------------------ |
+| BALENA_HOST_CONFIG_hdmi_cvt           | 480 320 60 1 0 0 0 |
+| BALENA_HOST_CONFIG_hdmi_force_hotplug | 1                  |
+| BALENA_HOST_CONFIG_hdmi_group         | 2                  |
+| BALENA_HOST_CONFIG_hdmi_mode          | 87                 |
+| BALENA_HOST_CONFIG_rotate_screen      | 1                  |
 
 ### Unbound
 

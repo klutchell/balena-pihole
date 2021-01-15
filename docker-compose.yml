@@ -32,9 +32,16 @@ services:
       - "5053:5053/tcp"
       - "5053:5053/udp"
 
+  # https://github.com/balenablocks/fbcp
   fbcp:
-    build: fbcp
+    image: balenablocks/fbcp
     privileged: true
+
+  # workaround for plymouth blocking fbcp
+  # https://github.com/klutchell/balena-pihole/issues/25
+  # https://github.com/balena-os/meta-balena/issues/1772
+  dbus:
+    build: dbus
     restart: on-failure
     labels:
         io.balena.features.dbus: "1"
