@@ -13,8 +13,8 @@ data:
     - DNSMASQ_LISTENING: 'eth0'
     - INTERFACE: 'eth0'
     - WEBPASSWORD: 'mysecretpassword'
-    - DNS1: '127.0.0.1#5335'
-    - DNS2: '127.0.0.1#5335'
+    - DNS1: '127.0.0.1#5053'
+    - DNS2: '127.0.0.1#5053'
   defaultDeviceType: "raspberrypi3"
   supportedDeviceTypes:
     - "raspberry-pi2"

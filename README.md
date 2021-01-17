@@ -30,8 +30,8 @@ Device Variables apply to all services within the application, and can be applie
 |`DNSMASQ_LISTENING`|`eth0`|We set this to `eth0` to indicate we want DNSMASQ to listen on the ethernet interface of the Raspberry Pi. If you're connecting to your network with WiFi replace this with `wlan0`|
 |`INTERFACE`|`eth0`|As above.|
 |`WEBPASSWORD`|`mysecretpassword`|_(optional)_ password for accessing the web-based interface of Pi-hole - you won’t be able to access the admin panel without defining a password here.
-|`DNS1`|`127.0.0.1#5335`|_(optional)_ Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the [Unbound](https://unbound.net) project here but you can specify your own.|
-|`DNS2`|`127.0.0.1#5335`|_(optional)_ Secondary DNS server - see above.|
+|`DNS1`|`127.0.0.1#5053`|_(optional)_ Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the [Unbound](https://unbound.net) project here but you can specify your own.|
+|`DNS2`|`127.0.0.1#5053`|_(optional)_ Secondary DNS server - see above.|
 |`ServerIP`|`x.x.x.x`|_(recommended)_ Set to your server's LAN IP, used by web block modes and lighttpd bind address.|
 
 ## Usage

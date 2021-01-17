@@ -18,8 +18,8 @@ services:
     environment:
       DNSMASQ_LISTENING: eth0
       INTERFACE: eth0
-      DNS1: 127.0.0.1#5335
-      DNS2: 127.0.0.1#5335
+      DNS1: 127.0.0.1#5053
+      DNS2: 127.0.0.1#5053
     network_mode: host
     labels:
       io.balena.features.dbus: "1"
@@ -29,5 +29,5 @@ services:
     build: ./unbound
     privileged: true
     ports:
-      - "5335:5335/tcp"
-      - "5335:5335/udp"
+      - "5053:5053/tcp"
+      - "5053:5053/udp"
