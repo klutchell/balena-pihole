@@ -1,4 +1,4 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:jessie-build AS build
+FROM balenalib/raspberrypi3-debian:jessie-build AS build
 
 WORKDIR /usr/src
 
@@ -11,7 +11,7 @@ WORKDIR /usr/src/build
 
 RUN cmake .. && make
 
-FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:jessie-run
+FROM balenalib/raspberrypi3-debian:jessie-run
 
 WORKDIR /usr/src/app
 

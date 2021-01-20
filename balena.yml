@@ -17,7 +17,6 @@ data:
     - DNS2: '127.0.0.1#5053'
   defaultDeviceType: "raspberrypi3"
   supportedDeviceTypes:
-    - "raspberry-pi2"
     - "raspberrypi3"
     - "raspberrypi3-64"
     - "raspberrypi4-64"

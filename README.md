@@ -10,6 +10,15 @@ This project is a [balenaCloud](https://www.balena.io/cloud) stack with the foll
 
 balenaCloud is a free service to remotely manage and update your Raspberry Pi through an online dashboard interface, as well as providing remote access to the Pi-hole web interface without any additional configuation.
 
+## Hardware required
+
+- Raspberry Pi 3B/3B+ (Note: this project will not work with the Pi Zero or older devices with < 1GB RAM)
+- 16GB Micro-SD Card (we recommend Sandisk Extreme Pro SD cards)
+- Display (any Raspberry Pi display will work for this project)
+- Micro-USB cable
+- Power supply
+- Case (optional)
+
 ## Getting Started
 
 You can one-click-deploy this project to balena using the button below:
