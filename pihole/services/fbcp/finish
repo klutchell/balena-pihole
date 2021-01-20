@@ -1,5 +1,0 @@
-#!/usr/bin/with-contenv bash
-# shellcheck shell=bash
-
-s6-echo "Stopping fbcp"
-killall -9 fbcp
