@@ -23,7 +23,6 @@ services:
     network_mode: host
     depends_on:
       - unbound
-      - fbcp
 
   # https://github.com/klutchell/unbound-dnscrypt
   unbound:
