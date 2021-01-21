@@ -20,6 +20,7 @@ data:
     - FBCP_DISPLAY: ""
   defaultDeviceType: "raspberrypi3"
   supportedDeviceTypes:
+    - "raspberrypi2"
     - "raspberrypi3"
     - "raspberrypi3-64"
     - "raspberrypi4-64"
