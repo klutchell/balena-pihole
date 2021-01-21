@@ -79,6 +79,9 @@ PRs are welcomed to add support for further displays in the [fbcp block](https:/
 If you had previously enabled your screen via `BALENA_HOST_CONFIG_dtoverlay`
 in your device config you will need to remove/disable that setting.
 
+If your screen doesn't work with any of the new `FBCP_DISPLAY` display options, the old
+display block using DT overlays is still available in the `fpi-fbcp` branch!
+
 #### Configuring HDMI and TFT display sizes
 
 The following [Device Configuration](https://www.balena.io/docs/learn/manage/configuration/#configuration-variables)
