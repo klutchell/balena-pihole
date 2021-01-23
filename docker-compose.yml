@@ -36,12 +36,6 @@ services:
   fbcp:
     image: balenablocks/fbcp
     privileged: true
-
-  # workaround for plymouth blocking fbcp
-  # https://github.com/klutchell/balena-pihole/issues/25
-  # https://github.com/balena-os/meta-balena/issues/1772
-  dbus:
-    build: dbus
-    restart: on-failure
-    labels:
-        io.balena.features.dbus: "1"
+    # restart: on-failure
+    # labels:
+    #     io.balena.features.dbus: "1"
