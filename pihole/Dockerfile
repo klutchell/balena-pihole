@@ -1,4 +1,4 @@
-FROM pihole/pihole:v5.5.1
+FROM pihole/pihole:v5.6
 
 WORKDIR /usr/src/app
 
