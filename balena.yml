@@ -1,14 +1,16 @@
-version: "2"
-slug: "balena-pihole"
 name: "Pi-hole"
 type: "sw.application"
+description: "Pi-hole is a Linux network-level advertisement and Internet tracker blocking application!"
 assets:
-  - url: "https://github.com/klutchell/balena-pihole"
-    name: "repository"
-  - url: "https://raw.githubusercontent.com/klutchell/balena-pihole/main/logo.png"
-    name: "logo"
+  repository:
+    type: "blob.asset"
+    data:
+      url: "https://github.com/klutchell/balena-pihole"
+  logo:
+    type: "blob.asset"
+    data:
+      url: "https://raw.githubusercontent.com/klutchell/balena-pihole/main/logo.png"
 data:
-  description: "Pi-hole is a Linux network-level advertisement and Internet tracker blocking application!"
   applicationConfigVariables:
     - BALENA_HOST_CONFIG_gpu_mem: 64
   applicationEnvironmentVariables:
