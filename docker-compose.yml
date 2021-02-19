@@ -27,8 +27,5 @@ services:
 
   # https://github.com/balenablocks/fbcp
   fbcp:
-    image: balenablocks/fbcp
+    image: balenablocks/fbcp:1.0.0
     privileged: true
-    # restart: on-failure
-    # labels:
-    #     io.balena.features.dbus: "1"

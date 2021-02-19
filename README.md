@@ -69,16 +69,7 @@ the `FBCP_DISPLAY` variable within the dashboard. This variable should be set to
 - `waveshare-st7789vw-hat`
 - `waveshare-st7735s-hat`
 - `kedei-v63-mpi3501`
-
-If your display is not listed above, please check if the [fbcp-ili9341](https://github.com/juj/fbcp-ili9341)
-driver that `fbcp` block uses supports it.
-PRs are welcomed to add support for further displays in the [fbcp block](https://github.com/balenablocks/fbcp).
-
-If you had previously enabled your screen via `BALENA_HOST_CONFIG_dtoverlay`
-in your device config you will need to remove/disable that setting.
-
-If your screen doesn't work with any of the new `FBCP_DISPLAY` display options, the old
-display block using DT overlays is still available in the `fpi-fbcp` branch!
+- `dtoverlay` (requires `BALENA_HOST_CONFIG_dtoverlay` to be set)
 
 #### Configuring HDMI and TFT display sizes
 
