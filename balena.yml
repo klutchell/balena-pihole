@@ -17,8 +17,7 @@ data:
     - DNSMASQ_LISTENING: 'eth0'
     - INTERFACE: 'eth0'
     - WEBPASSWORD: 'mysecretpassword'
-    - DNS1: '127.0.0.1#5053'
-    - DNS2: '127.0.0.1#5053'
+    - PIHOLE_DNS_: '127.0.0.1#5053'
     - FBCP_DISPLAY: ""
   defaultDeviceType: "raspberrypi3"
   supportedDeviceTypes:
