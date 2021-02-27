@@ -2,6 +2,7 @@ FROM pihole/pihole:v5.7
 
 WORKDIR /usr/src/app
 
+COPY cont-init.d/ /etc/cont-init.d/
 COPY services/ /etc/services.d/
 
 ENV DEBIAN_FRONTEND noninteractive
