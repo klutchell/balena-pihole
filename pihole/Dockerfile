@@ -2,6 +2,7 @@ FROM pihole/pihole:v5.7
 
 WORKDIR /usr/src/app
 
+COPY cont-init.d/ /etc/cont-init.d/
 COPY services/ /etc/services.d/
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -23,5 +24,8 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl -fsSL https://github.com/pi-hole/PADD/archive/v3.5.1.tar.gz | tar xz --strip-components 1 \
 	&& chmod +x padd.sh
 
+ENV INTERFACE eth0
+ENV DNSMASQ_LISTENING single
+ENV PIHOLE_DNS_ 127.0.0.1#5053;127.0.0.1#5053
 ENV FONTFACE Terminus
 ENV FONTSIZE 8x14

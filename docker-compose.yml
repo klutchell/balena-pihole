@@ -15,13 +15,7 @@ services:
     dns:
       - "127.0.0.1"
       - "1.1.1.1"
-    environment:
-      DNSMASQ_LISTENING: eth0
-      INTERFACE: eth0
-      PIHOLE_DNS_: 127.0.0.1#5053
     network_mode: host
-    depends_on:
-      - unbound
 
   # https://github.com/klutchell/unbound-dnscrypt
   unbound:
