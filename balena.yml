@@ -14,10 +14,9 @@ data:
   applicationConfigVariables:
     - BALENA_HOST_CONFIG_gpu_mem: 64
   applicationEnvironmentVariables:
-    - DNSMASQ_LISTENING: 'eth0'
     - INTERFACE: 'eth0'
     - WEBPASSWORD: 'mysecretpassword'
-    - PIHOLE_DNS_: '127.0.0.1#5053'
+    - PIHOLE_DNS_: '127.0.0.1#5053;127.0.0.1#5053'
     - FBCP_DISPLAY: ""
   defaultDeviceType: "raspberrypi3"
   supportedDeviceTypes:
