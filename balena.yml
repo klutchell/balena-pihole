@@ -16,7 +16,7 @@ data:
   applicationEnvironmentVariables:
     - INTERFACE: 'eth0'
     - WEBPASSWORD: 'mysecretpassword'
-    - PIHOLE_DNS_: '127.0.0.1#5053;127.0.0.1#5053'
+    - PIHOLE_DNS_: '1.1.1.1;1.0.0.1'
     - FBCP_DISPLAY: ""
   defaultDeviceType: "raspberrypi3"
   supportedDeviceTypes:
