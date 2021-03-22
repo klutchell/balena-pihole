@@ -84,20 +84,29 @@ variables might be required for proper scaling and resolutions:
 | BALENA_HOST_CONFIG_hdmi_mode          | 87                 |
 | BALENA_HOST_CONFIG_rotate_screen      | 1                  |
 
+### D-Bus
+
+The D-Bus service is a workaround to prevent display buffer conflicts when running development images.
+
+It is expected behavior for this container to run once on app updates and then exit.
+
+It will remain in `Exited` status during normal operation. 
+
 ### Unbound
 
-This project includes an Unbound service providing recursive DNS, but it is not enabled by default.
+This project includes an Unbound service providing recursive DNS, but it is not used by default.
+
 Read more about the reasons for using a recursive DNS with Pi-hole here:
 
 https://docs.pi-hole.net/guides/unbound/
 
-Set the following environment variable in your balenaCloud Dashboard to tell Pi-hole to forward
-DNS requests that aren’t blocked to the local Unbound DNS resolver service.
+Set the following environment variable in your balenaCloud Dashboard to tell Pi-hole to forward DNS requests that aren’t blocked to the local Unbound DNS resolver service.
 
 - `PIHOLE_DNS_`: `127.0.0.1#5053;127.0.0.1#5053`
 
-Advanced users can change the Unbound configuration by editing [unbound.conf](./unbound/unbound.conf)
-or [a-records.conf](./unbound/a-records.conf) before pushing the app to balenaCloud.
+**Note:** For security and footprint reasons, the Unbound container does not allow shell or terminal access via ssh or the balenaCloud console.
+
+Advanced users can change the Unbound configuration by editing [`unbound.conf`](./unbound/unbound.conf) or [`a-records.conf`](./unbound/a-records.conf) before pushing the app to balenaCloud. 
 
 ## Help
 
