@@ -24,6 +24,8 @@ services:
     ports:
       - "5053:5053/tcp"
       - "5053:5053/udp"
+    networks:
+      - my_ipv6_bridge
 
   # https://github.com/balenablocks/fbcp
   fbcp:
@@ -38,3 +40,15 @@ services:
     restart: on-failure
     labels:
         io.balena.features.dbus: "1"
+
+networks:
+  my_ipv6_bridge:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "true"
+    enable_ipv6: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 2001:3984:3989::/64
+          gateway: 2001:3984:3989::1
