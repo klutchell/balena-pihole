@@ -1,6 +1,17 @@
 name: "Pi-hole"
 type: "sw.application"
 description: "Pi-hole is a Linux network-level advertisement and Internet tracker blocking application!"
+fleetcta: Block dem ads
+post-provisioning: >-
+  ## Usage instructions
+  
+  Once your device joins the fleet you'll need to allow some time for it to download the application.
+
+  On your router or DHCP server assign a static IP to your Pi-Hole device, and set your clients DNS to the same IP address.
+  
+  If your DNS is configured correctly you will be able to access the Pi-Hole dashboard at http://pi.hole/admin/. The default password is `balena`.
+  
+  Documentation for Pi-Hole can be found at https://docs.pi-hole.net/
 assets:
   repository:
     type: "blob.asset"
@@ -15,7 +26,7 @@ data:
     - BALENA_HOST_CONFIG_gpu_mem: 64
   applicationEnvironmentVariables:
     - INTERFACE: 'eth0'
-    - WEBPASSWORD: 'mysecretpassword'
+    - WEBPASSWORD: 'balena'
     - PIHOLE_DNS_: '1.1.1.1;1.0.0.1'
     - FBCP_DISPLAY: ""
   defaultDeviceType: "raspberrypi3"
