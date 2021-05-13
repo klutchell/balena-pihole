@@ -49,8 +49,13 @@ Check out our blog post on how to deploy network-wide ad-blocking with Pi-hole:
 
 <https://www.balena.io/blog/deploy-network-wide-ad-blocking-with-pi-hole-and-a-raspberry-pi/>
 
-Connect to the Pi-hole admin interface at `http://device-ip/admin` or enable
-the Public Device URL in the dashboard and append `/admin` to device URL.
+Once your device joins the fleet you'll need to allow some time for it to download the application.
+
+On your router or DHCP server assign a static IP to your Pi-Hole device, and set your clients DNS to the same IP address.
+
+If your DNS is configured correctly you will be able to access the Pi-Hole dashboard at http://pi.hole/admin/. The default password is `balena`.
+
+Documentation for Pi-Hole can be found at https://docs.pi-hole.net/
 
 ### PADD
 
