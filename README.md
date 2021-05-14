@@ -51,11 +51,11 @@ Check out our blog post on how to deploy network-wide ad-blocking with Pi-hole:
 
 Once your device joins the fleet you'll need to allow some time for it to download the application.
 
-On your router or DHCP server assign a static IP to your Pi-Hole device, and set your clients DNS to the same IP address.
+On your router or DHCP server assign a static IP to your Pi-hole device, and set your clients DNS to the same IP address.
 
-If your DNS is configured correctly you will be able to access the Pi-Hole dashboard at http://pi.hole/admin/. The default password is `balena`.
+If your DNS is configured correctly you will be able to access the Pi-hole dashboard at http://pi.hole/admin/. The default password is `balena`.
 
-Documentation for Pi-Hole can be found at https://docs.pi-hole.net/
+Documentation for Pi-hole can be found at https://docs.pi-hole.net/
 
 ### PADD
 
