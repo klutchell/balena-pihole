@@ -33,13 +33,14 @@ Alternatively, deployment can be carried out by manually creating a [balenaCloud
 
 Device Variables apply to all services within the application, and can be applied fleet-wide to apply to multiple devices. If you used the one-click-deploy method, the default environment variables will already be added for you to customize as needed.
 
-| Name          | Example            | Purpose                                                                                                                                                                                                                       |
-| ------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `TZ`          | `America/Toronto`  | Inform services of the timezone in your location, in order to set times and dates within the applications correctly. Find a [list of all timezone values here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). |
-| `INTERFACE`   | `eth0`             | Provide the name of your device's primary network interface, usually `eth0` for wired or `wlan0` for wireless. This is required to avoid conflicts with balena DNS on internal interfaces.                                    |
-| `WEBPASSWORD` | `mysecretpassword` | Password for accessing the web-based interface of Pi-hole - you won’t be able to access the admin panel without defining a password here.                                                                                     |
-| `PIHOLE_DNS_` | `1.1.1.1;1.0.0.1`  | Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using Cloudflare by default but you can specify your own using IPs delimited by semi-colons.                                                            |
-| `ServerIP`    | `x.x.x.x`          | Set to your device's primary network IPv4 address, used by web block modes and lighttpd bind.                                                                                                                                 |
+| Name              | Example            | Purpose                                                                                                                                                                                                                       |
+| ----------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TZ`              | `America/Toronto`  | Inform services of the timezone in your location, in order to set times and dates within the applications correctly. Find a [list of all timezone values here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). |
+| `INTERFACE`       | `eth0`             | Provide the name of your device's primary network interface, usually `eth0` for wired or `wlan0` for wireless. This is required to avoid conflicts with balena DNS on internal interfaces.                                    |
+| `WEBPASSWORD`     | `mysecretpassword` | Password for accessing the web-based interface of Pi-hole - you won’t be able to access the admin panel without defining a password here.                                                                                     |
+| `PIHOLE_DNS_`     | `1.1.1.1;1.0.0.1`  | Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using Cloudflare by default but you can specify your own using IPs delimited by semi-colons.                                                            |
+| `ServerIP`        | `x.x.x.x`          | Set to your device's primary network IPv4 address, used by web block modes and lighttpd bind.                                                                                                                                 |
+| `BALENA_HOSTNAME` | `pihole`           | Set a custom hostname on application start so it can be reached via MDNS like `pihole.local`.                                                                                                                                 |
 
 ## Usage
 
@@ -95,7 +96,7 @@ The D-Bus service is a workaround to prevent display buffer conflicts when runni
 
 It is expected behavior for this container to run once on app updates and then exit.
 
-It will remain in `Exited` status during normal operation. 
+It will remain in `Exited` status during normal operation.
 
 ### Unbound
 
@@ -111,7 +112,7 @@ Set the following environment variable in your balenaCloud Dashboard to tell Pi-
 
 **Note:** For security and footprint reasons, the Unbound container does not allow shell or terminal access via ssh or the balenaCloud console.
 
-Advanced users can change the Unbound configuration by editing [`unbound.conf`](./unbound/unbound.conf) or [`a-records.conf`](./unbound/a-records.conf) before pushing the app to balenaCloud. 
+Advanced users can change the Unbound configuration by editing [`unbound.conf`](./unbound/unbound.conf) or [`a-records.conf`](./unbound/a-records.conf) before pushing the app to balenaCloud.
 
 ## Help
 
