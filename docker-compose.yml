@@ -16,6 +16,8 @@ services:
       - "127.0.0.1"
       - "1.1.1.1"
     network_mode: host
+    labels:
+      io.balena.features.supervisor-api: 1
 
   # https://github.com/klutchell/unbound-dnscrypt
   unbound:
