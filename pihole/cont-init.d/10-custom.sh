@@ -2,10 +2,10 @@
 set -e
 
 # set a hostname for mDNS (default to pihole.local)
-if [ -n "${BALENA_HOSTNAME}" ]
+if [ -n "${DEVICE_HOSTNAME}" ]
 then
    curl -X PATCH --header "Content-Type:application/json" \
-      --data "{\"network\": {\"hostname\": \"${BALENA_HOSTNAME}\"}}" \
+      --data "{\"network\": {\"hostname\": \"${DEVICE_HOSTNAME}\"}}" \
       "${BALENA_SUPERVISOR_ADDRESS}/v1/device/host-config?apikey=${BALENA_SUPERVISOR_API_KEY}" || true
 fi
 
