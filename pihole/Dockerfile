@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # hadolint ignore=DL3008
 RUN apt-get update && \
-	apt-get install --no-install-recommends -y console-setup kmod && \
+	apt-get install --no-install-recommends -y console-setup kmod dbus && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # hadolint ignore=SC2016
@@ -31,3 +31,5 @@ ENV FONTFACE Terminus
 ENV FONTSIZE 8x14
 ENV WEBPASSWORD balena
 ENV SET_HOSTNAME pihole
+
+ENV DBUS_SYSTEM_BUS_ADDRESS 'unix:path=/host/run/dbus/system_bus_socket'

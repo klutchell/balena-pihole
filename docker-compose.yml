@@ -18,6 +18,7 @@ services:
     network_mode: host
     labels:
       io.balena.features.supervisor-api: 1
+      io.balena.features.dbus: "1"
 
   # https://github.com/klutchell/unbound-dnscrypt
   unbound:
@@ -31,12 +32,3 @@ services:
   fbcp:
     image: balenablocks/fbcp:1.0.0
     privileged: true
-
-  # prevent plymouth from blocking fbcp
-  # https://github.com/klutchell/balena-pihole/issues/25
-  # https://github.com/balena-os/meta-balena/issues/1772
-  dbus:
-    build: dbus
-    restart: on-failure
-    labels:
-        io.balena.features.dbus: "1"
