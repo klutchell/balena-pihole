@@ -1,5 +1,6 @@
 name: "Pi-hole"
 type: "sw.application"
+version: 1.0.0
 description: "Pi-hole is a Linux network-level advertisement and Internet tracker blocking application!"
 fleetcta: Block dem ads
 post-provisioning: >-
