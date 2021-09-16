@@ -40,7 +40,7 @@ Device Variables apply to all services within the application, and can be applie
 | `WEBPASSWORD`  | `mysecretpassword` | Password for accessing the web-based interface of Pi-hole - you won’t be able to access the admin panel without defining a password here.                                                                                     |
 | `PIHOLE_DNS_`  | `1.1.1.1;1.0.0.1`  | Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using Cloudflare by default but you can specify your own using IPs delimited by semi-colons.                                                            |
 | `ServerIP`     | `x.x.x.x`          | Set to your device's primary network IPv4 address, used by web block modes and lighttpd bind.                                                                                                                                 |
-| `SET_HOSTNAME` | `pihole`           | Set a custom hostname on application start so it can be reached via MDNS like `pihole.local`.                                                                                                                                 |
+| `SET_HOSTNAME` | `pihole`           | Set a custom hostname on application start.                                                                                                                                                                                   |
 
 ## Usage
 

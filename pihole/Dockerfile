@@ -30,6 +30,5 @@ ENV PIHOLE_DNS_ 1.1.1.1;1.0.0.1
 ENV FONTFACE Terminus
 ENV FONTSIZE 8x14
 ENV WEBPASSWORD balena
-ENV SET_HOSTNAME pihole
 
 ENV DBUS_SYSTEM_BUS_ADDRESS 'unix:path=/host/run/dbus/system_bus_socket'
