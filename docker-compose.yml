@@ -17,7 +17,6 @@ services:
       - "1.1.1.1"
     network_mode: host
     labels:
-      io.balena.features.supervisor-api: 1
       io.balena.features.dbus: "1"
 
   # https://github.com/klutchell/unbound-dnscrypt
@@ -32,3 +31,12 @@ services:
   fbcp:
     image: balenablocks/fbcp:1.0.0
     privileged: true
+
+  # https://github.com/balenablocks/hostname
+  hostname:
+    image: balenablocks/hostname:latest
+    restart: no
+    labels:
+      io.balena.features.supervisor-api: 1
+    environment:
+      SET_HOSTNAME: pihole
