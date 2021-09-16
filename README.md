@@ -102,7 +102,7 @@ Set the following environment variable in your balenaCloud Dashboard to tell Pi-
 
 - `PIHOLE_DNS_`: `127.0.0.1#5053;127.0.0.1#5053`
 
-**Note:** For security and footprint reasons, the Unbound container does not allow shell or terminal access via ssh or the balenaCloud console.
+**Note:** For security and footprint reasons, the Unbound container does not allow shell or terminal access via SSH or the balenaCloud console.
 
 Advanced users can change the Unbound configuration by editing [`unbound.conf`](./unbound/unbound.conf) or [`a-records.conf`](./unbound/a-records.conf) before pushing the app to balenaCloud.
 
