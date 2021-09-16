@@ -16,6 +16,8 @@ services:
     dns:
       - "127.0.0.1"
       - "1.1.1.1"
+    labels:
+      io.pihole: "1"
 
   # https://github.com/pi-hole/PADD
   padd:
@@ -24,6 +26,10 @@ services:
     network_mode: host
     labels:
       io.balena.features.dbus: "1"
+      io.balena.features.balena-socket: "1"
+      io.balena.features.procfs: "1"
+    depends_on:
+      - pihole
 
   # https://github.com/klutchell/unbound-dnscrypt
   unbound:
