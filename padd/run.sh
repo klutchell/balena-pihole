@@ -1,12 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -e
 
+# quit the plymouth (balena logo) service so that we can see the TTY
 echo "Stopping plymouth service..."
-
-# prevent plymouth from blocking fbcp
-# https://github.com/klutchell/balena-pihole/issues/25
-# https://github.com/balena-os/meta-balena/issues/1772
 dbus-send \
     --system \
     --dest=org.freedesktop.systemd1 \
@@ -15,22 +12,22 @@ dbus-send \
     /org/freedesktop/systemd1 org.freedesktop.systemd1.Manager.StartUnit \
     string:"plymouth-quit.service" string:"replace"
 
-echo "Configuring console..."
+# prevent dmesg from printing to console
+dmesg -n 1
 
-# fix for PADD fonts
-sed -i "s/^FONTFACE.*/FONTFACE=\"${FONTFACE}\"/" /etc/default/console-setup
-sed -i "s/^FONTSIZE.*/FONTSIZE=\"${FONTSIZE}\"/" /etc/default/console-setup
-dpkg-reconfigure console-setup 2> /dev/null > /dev/tty1
+# set preferred console font
+echo "Setting preferred console font ${TERMINUS_FONT}..."
+setfont -C /dev/tty1 "/usr/share/consolefonts/${TERMINUS_FONT}.psf.gz"
 
-# wait for tcp://127.0.0.1:$FTLPORT to become available
+# wait for FTLPORT to become available
 while ! nc -z 127.0.0.1 "${FTLPORT}"
 do
     echo "Waiting for FTL on port ${FTLPORT}..."
     sleep 5
 done
 
-echo "Starting PADD..."
-
 # this is where PADD expects to find the ftlport
 echo "${FTLPORT}" > /run/pihole-FTL.port
-/usr/src/app/padd.sh 2> /dev/null > /dev/tty1
+
+echo "Starting PADD..."
+/usr/src/app/padd.sh 2>/dev/null >/dev/tty1
