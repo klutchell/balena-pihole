@@ -12,6 +12,20 @@ dbus-send \
     /org/freedesktop/systemd1 org.freedesktop.systemd1.Manager.StartUnit \
     string:"plymouth-quit.service" string:"replace"
 
+FONTSIZE="$(echo "${FONTSIZE:-}" | awk -Fx '{print $NF}')"
+
+# use FONTSIZE if CONSOLE_FONT is unset
+if [ -z "${CONSOLE_FONT:-}" ] && [ -n "${FONTSIZE}" ] && [ "${FONTSIZE}" -eq "${FONTSIZE}" ] 2>/dev/null
+then
+    CONSOLE_FONT="ter-1$(echo "${FONTSIZE}" | awk -Fx '{print $NF}')n"
+fi
+
+# set a default CONSOLE_FONT
+if [ -z "${CONSOLE_FONT:-}" ]
+then
+    CONSOLE_FONT="ter-116n"
+fi
+
 # set preferred console font
 echo "Setting console font to ${CONSOLE_FONT}..."
 setfont -C /dev/tty1 "/usr/share/consolefonts/${CONSOLE_FONT}.psf.gz"

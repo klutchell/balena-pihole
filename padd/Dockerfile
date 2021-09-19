@@ -31,7 +31,6 @@ RUN curl -fsSL https://github.com/pi-hole/PADD/archive/v${PADD_VERSION}.tar.gz -
 	chmod +x padd.sh
 
 ENV FTLPORT 4711
-ENV CONSOLE_FONT "ter-116n"
 ENV DBUS_SYSTEM_BUS_ADDRESS 'unix:path=/host/run/dbus/system_bus_socket'
 
 COPY pihole.sh /usr/local/bin/pihole
