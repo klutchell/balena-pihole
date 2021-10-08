@@ -13,54 +13,67 @@ on:
 env:
   BALENARC_BALENA_URL: balena-cloud.com
   BALENARC_PROXY_URL: balena-devices.com
-  BALENA_CLI_VERSION: 12.48.7
+  BALENA_CLI_VERSION: 12.50.2
 
 jobs:
   build:
+    if: github.actor == github.repository_owner
     runs-on: ubuntu-20.04
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - uses: actions/setup-node@v2
-      with:
-        node-version: 12
+      - uses: docker/setup-qemu-action@v1
 
-    - id: npm_install
-      run: npm install balena-cli@${{ env.BALENA_CLI_VERSION }} --production --global
+      - uses: docker/setup-buildx-action@v1
+        with:
+          install: true
 
-    - id: balena_login
-      run: balena login --token "${{ secrets.BALENA_API_KEY }}"
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
 
-    - id: is_pr
-      if: github.event_name == 'pull_request'
-      run: echo "::set-output name=draft::--draft"
+      - id: npm_install
+        run: npm install balena-cli@${{ env.BALENA_CLI_VERSION }} --production --global
 
-    - id: balena_push
-      shell: bash
-      run: |
-        balena push ${{ secrets.BALENA_FLEET_SLUG }} \
-          --release-tag GITHUB_WORKFLOW "${GITHUB_WORKFLOW}" \
-          --release-tag GITHUB_RUN_ID "${GITHUB_RUN_ID}" \
-          --release-tag GITHUB_RUN_NUMBER "${GITHUB_RUN_NUMBER}" \
-          --release-tag GITHUB_ACTOR "${GITHUB_ACTOR}" \
-          --release-tag GITHUB_SHA "${GITHUB_SHA}" \
-          --release-tag GITHUB_REF "${GITHUB_REF}" \
-          ${{ steps.is_pr.outputs.draft }} | tee build.log
-        sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" -i build.log
-        grep -q 'Release successfully created!' build.log
-        echo "::set-output name=release_id::$(sed -rn 's/.*Release: ([[:alnum:]]+) \(id: ([0-9]+)\)/\2/p' build.log)"
+      - id: balena_login
+        run: balena login --token "${{ secrets.BALENA_API_KEY }}"
+      
+      - id: is_pr
+        if: github.event_name == 'pull_request'
+        run: echo "::set-output name=draft::--draft"
 
-    - id: release_api
-      if: ${{ steps.balena_push.outputs.release_id }} != ""
-      shell: bash
-      run: |
-        echo "::set-output name=release_version::$(curl -fsSL -X GET \
-          "https://api.${{ env.BALENARC_BALENA_URL }}/v6/release(${{ steps.balena_push.outputs.release_id }})?\$select=version" \
-          -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.BALENA_API_KEY }}" | jq -r '.d[].version.raw')"
+      - id: balena_deploy
+        shell: bash
+        run: |
+          balena deploy ${{ secrets.BALENA_FLEET_SLUG }} --build \
+            --release-tag GITHUB_WORKFLOW "${GITHUB_WORKFLOW}" \
+            --release-tag GITHUB_RUN_ID "${GITHUB_RUN_ID}" \
+            --release-tag GITHUB_RUN_NUMBER "${GITHUB_RUN_NUMBER}" \
+            --release-tag GITHUB_ACTOR "${GITHUB_ACTOR}" \
+            --release-tag GITHUB_SHA "${GITHUB_SHA}" \
+            --release-tag GITHUB_REF "${GITHUB_REF}" \
+            ${{ steps.is_pr.outputs.draft }} | tee deploy.log
+          sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" -i deploy.log
+          grep -q 'Deploy succeeded!' deploy.log
+          commit_hash="$(sed -rn 's/.*Release: ([[:alnum:]]+)/\1/p' deploy.log)"
+          echo "::set-output name=commit_hash::$commit_hash"
 
-    - uses: tvdias/github-tagger@v0.0.2
-      if: ${{ steps.release_api.outputs.release_version }} != ""
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
-        tag: "v${{ steps.release_api.outputs.release_version }}"
+      - id: balena_api
+        shell: bash
+        run: |
+          fleet_id="$(curl -fsSL -X GET \
+            "https://api.${{ env.BALENARC_BALENA_URL }}/v6/application?\$filter=slug%20eq%20'${{ secrets.BALENA_FLEET_SLUG }}'&\$select=id" \
+            -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.BALENA_API_KEY }}" | jq -r '.d[].id')"
+          raw_version="$(curl -fsSL -X GET \
+            "https://api.${{ env.BALENARC_BALENA_URL }}/v6/release?\$filter=belongs_to__application%20eq%20${fleet_id}%20and%20commit%20eq%20'${{ steps.balena_deploy.outputs.commit_hash }}'&\$select=version" \
+            -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.BALENA_API_KEY }}" | jq -r '.d[].version.raw')"
+          echo "::set-output name=raw_version::$raw_version"
+
+      # requires with 'repo' access.
+      # using GITHUB_TOKEN will NOT trigger other workflows
+      - uses: tvdias/github-tagger@v0.0.2
+        continue-on-error: true
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          tag: "v${{ steps.balena_api.outputs.raw_version }}"
