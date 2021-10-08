@@ -7,7 +7,7 @@ volumes:
 services:
   # https://hub.docker.com/r/pihole/pihole
   pihole:
-    build: ./pihole
+    build: pihole
     privileged: true
     volumes:
       - "pihole_config:/etc/pihole"
@@ -21,7 +21,7 @@ services:
 
   # https://github.com/klutchell/unbound-dnscrypt
   unbound:
-    build: ./unbound
+    build: unbound
     privileged: true
     ports:
       - "5053:5053/tcp"
