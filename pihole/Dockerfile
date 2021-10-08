@@ -21,8 +21,15 @@ RUN sed '/$AUTHORIZED_HOSTNAMES = array(/ a "balena-devices.com",' -i /var/www/h
 RUN echo "bind-interfaces" >> /etc/dnsmasq.conf
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN curl -fsSL https://github.com/pi-hole/PADD/archive/v3.6.2.tar.gz | tar xz --strip-components 1 \
-	&& chmod +x padd.sh
+
+ARG PADD_VERSION=3.6.2
+ARG PADD_SHA256=7e1fcfefc5c24bd032b31ed79afceda21019faeb88535cdf15ba558b90141c01
+
+RUN curl -fsSL https://github.com/pi-hole/PADD/archive/v${PADD_VERSION}.tar.gz -o padd.tar.gz && \
+	echo "${PADD_SHA256}  padd.tar.gz" | sha256sum -c - && \
+	tar xzf padd.tar.gz --strip 1 && \
+	rm padd.tar.gz && \
+	chmod +x padd.sh
 
 ENV INTERFACE eth0
 ENV DNSMASQ_LISTENING single

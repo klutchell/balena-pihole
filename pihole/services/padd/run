@@ -1,10 +1,8 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 
-s6-echo "Stopping plymouth service"
-# prevent plymouth from blocking fbcp
-# https://github.com/klutchell/balena-pihole/issues/25
-# https://github.com/balena-os/meta-balena/issues/1772
+# quit the plymouth (balena logo) service so that we can see the TTY
+s6-echo "Stopping plymouth service..."
 dbus-send \
     --system \
     --dest=org.freedesktop.systemd1 \
@@ -13,14 +11,17 @@ dbus-send \
     /org/freedesktop/systemd1 org.freedesktop.systemd1.Manager.StartUnit \
     string:"plymouth-quit.service" string:"replace"
 
-s6-echo "Starting PADD"
-
-# fix for PADD fonts
+s6-echo "Setting console font to ${FONTFACE} ${FONTSIZE}..."
 sed -i "s/^FONTFACE.*/FONTFACE=\"${FONTFACE}\"/" /etc/default/console-setup
 sed -i "s/^FONTSIZE.*/FONTSIZE=\"${FONTSIZE}\"/" /etc/default/console-setup
 dpkg-reconfigure console-setup 2> /dev/null > /dev/tty1
 
-# wait for pihole api to become available
-sleep 20
+# wait for FTL port to become available
+while ! nc -z 127.0.0.1 "$(</run/pihole-FTL.port)"
+do
+    s6-echo "Waiting for FTL on port $(</run/pihole-FTL.port)..."
+    sleep 5
+done
 
+s6-echo "Starting PADD..."
 /usr/src/app/padd.sh 2> /dev/null > /dev/tty1
