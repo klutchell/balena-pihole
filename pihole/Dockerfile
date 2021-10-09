@@ -1,3 +1,4 @@
+# https://hub.docker.com/r/pihole/pihole/tags
 FROM pihole/pihole:2021.10.1
 
 WORKDIR /usr/src/app
@@ -11,11 +12,6 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
 	apt-get install --no-install-recommends -y console-setup kmod dbus && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# https://serverfault.com/a/817791
-# force dnsmasq to bind only the interfaces it is listening on
-# otherwise dnsmasq will fail to start since balena is using 53 on some interfaces
-RUN echo "bind-interfaces" >> /etc/dnsmasq.conf
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
