@@ -1,4 +1,4 @@
-FROM pihole/pihole:2021.10
+FROM pihole/pihole:2021.10.1
 
 WORKDIR /usr/src/app
 
