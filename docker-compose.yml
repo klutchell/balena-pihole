@@ -15,9 +15,12 @@ services:
     dns:
       - "127.0.0.1"
       - "1.1.1.1"
-    network_mode: host
+    ports:
+      - "80:80/tcp"
     labels:
       io.balena.features.dbus: "1"
+    environment:
+      DBUS_SYSTEM_BUS_ADDRESS: "unix:path=/host/run/dbus/system_bus_socket"
 
   # https://github.com/klutchell/unbound-dnscrypt
   unbound:
@@ -40,3 +43,13 @@ services:
       io.balena.features.supervisor-api: 1
     environment:
       SET_HOSTNAME: pihole
+
+  dnat:
+    build: dnat
+    depends_on:
+      - pihole
+    labels:
+      io.balena.features.balena-socket: 1
+    environment:
+      FORWARD_SERVICE: pihole
+      FORWARD_PORT: 53
