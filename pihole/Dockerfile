@@ -24,12 +24,8 @@ RUN curl -fsSL https://github.com/pi-hole/PADD/archive/v${PADD_VERSION}.tar.gz -
 	rm padd.tar.gz && \
 	chmod +x padd.sh
 
-ENV INTERFACE eth0
-ENV DNSMASQ_LISTENING single
 ENV PIHOLE_DNS_ 1.1.1.1;1.0.0.1
 ENV FONTFACE Terminus
 ENV FONTSIZE 8x14
 ENV WEBPASSWORD balena
 ENV VIRTUAL_HOST balena-devices.com
-
-ENV DBUS_SYSTEM_BUS_ADDRESS 'unix:path=/host/run/dbus/system_bus_socket'
