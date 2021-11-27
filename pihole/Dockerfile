@@ -1,5 +1,5 @@
 # https://hub.docker.com/r/pihole/pihole/tags
-FROM pihole/pihole:2021.10.1
+FROM pihole/pihole:2021.11
 
 WORKDIR /usr/src/app
 
