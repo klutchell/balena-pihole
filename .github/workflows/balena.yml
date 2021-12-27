@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: balena-io/balena-ci@v0.4.5
+      - uses: balena-io/balena-ci@v0.5.1
         with:
           balena_token: ${{ secrets.BALENA_API_KEY }}
           fleet: ${{ secrets.BALENA_FLEET_SLUG }}
