@@ -7,18 +7,21 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     if: github.actor == github.repository_owner
     runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: true
+      matrix:
+        fleet: [gh_klutchell/pi-hole]
 
     steps:
       - uses: actions/checkout@v2
-
-      - uses: balena-io/balena-ci@v0.4.5
+      - uses: balena-io/deploy-to-balena-action@v0.5.1
         with:
           balena_token: ${{ secrets.BALENA_API_KEY }}
-          fleet: ${{ secrets.BALENA_FLEET_SLUG }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          versionbot: false
           environment: balena-cloud.com
-          create_ref: true
+          fleet: ${{ matrix.fleet }}
+          versionbot: false
+          create_tag: true
