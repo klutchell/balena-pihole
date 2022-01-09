@@ -15,8 +15,9 @@ RUN apt-get update && \
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-ARG PADD_VERSION=3.6.2
-ARG PADD_SHA256=7e1fcfefc5c24bd032b31ed79afceda21019faeb88535cdf15ba558b90141c01
+# https://github.com/pi-hole/PADD/releases
+ARG PADD_VERSION=3.6.3
+ARG PADD_SHA256=00894999c83608731aad9a337858ec010a0f5acd47840fb656c3b45867372419
 
 RUN curl -fsSL https://github.com/pi-hole/PADD/archive/v${PADD_VERSION}.tar.gz -o padd.tar.gz && \
 	echo "${PADD_SHA256}  padd.tar.gz" | sha256sum -c - && \
