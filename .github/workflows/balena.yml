@@ -8,7 +8,6 @@ on:
 
 jobs:
   deploy:
-    if: github.actor == github.repository_owner
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: true
