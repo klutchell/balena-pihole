@@ -1,5 +1,10 @@
 {
   "extends": [
     "config:base"
-  ]
+  ],
+  "postUpgradeTasks": {
+    "commands": ["./postUpgrade.sh {{{depName}}} {{{newVersion}}}"],
+    "fileFilters": ["balena.yml"],
+    "executionMode": "update"
+  }
 }
