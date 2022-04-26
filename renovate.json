@@ -2,29 +2,37 @@
   "extends": [
     "config:base"
   ],
+  "allowPostUpgradeCommandTemplating": true,
   "allowedPostUpgradeCommands": [
-    "^./postUpgrade.sh {{{depName}}} {{{newVersion}}}"
+    "^./postUpgrade.sh {{{newVersion}}}"
   ],
-  "postUpgradeTasks": {
-    "commands": [
-      "./postUpgrade.sh {{{depName}}} {{{newVersion}}}"
-    ],
-    "fileFilters": [
-      "balena.yml"
-    ],
-    "executionMode": "update"
-  },
   "platform": "github",
   "onboarding": false,
   "packageRules": [
     {
-      "automerge": false,
+      "matchPackageNames": [
+        "pihole/pihole"
+      ],
       "matchBaseBranches": [
         "main"
-      ]
+      ],
+      "postUpgradeTasks": {
+        "commands": [
+          "./postUpgrade.sh {{{newVersion}}}"
+        ],
+        "fileFilters": [
+          "balena.yml"
+        ],
+        "executionMode": "update"
+      }
     }
   ],
   "repositories": [
     "klutchell/balena-pihole"
+  ],
+  "rebaseWhen": "auto",
+  "automerge": false,
+  "labels": [
+    "renovate"
   ]
 }
