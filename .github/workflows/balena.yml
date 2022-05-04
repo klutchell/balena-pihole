@@ -16,11 +16,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: balena-io/deploy-to-balena-action@v0.10.7
+      - uses: docker://ghcr.io/balena-io/deploy-to-balena-action:v0.10.7
         with:
           balena_token: ${{ secrets.BALENA_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           environment: balena-cloud.com
           fleet: ${{ matrix.fleet }}
-          versionbot: false
           create_tag: true
