@@ -89,6 +89,20 @@ variables might be required for proper scaling and resolutions:
 | BALENA_HOST_CONFIG_hdmi_mode          | 87                 |
 | BALENA_HOST_CONFIG_rotate_screen      | 1                  |
 
+#### FONTFACE and FONTSIZE
+
+Use the environment variables `FONTFACE` and `FONTSIZE` to control the PADD text size on your display.
+
+Valid font faces are:
+
+- VGA (sizes 8x8, 8x14, 8x16, 16x28 and 16x32)
+- Terminus (sizes 6x12, 8x14, 8x16, 10x20, 12x24, 14x28 and 16x32)
+- TerminusBold (sizes 8x14, 8x16, 10x20, 12x24, 14x28 and 16x32)
+- TerminusBoldVGA (sizes 8x14 and 8x16)
+- Fixed (sizes 8x13, 8x14, 8x15, 8x16 and 8x18)
+
+From: <https://manpages.debian.org/bullseye/console-setup/console-setup.5.en.html>
+
 ### Unbound
 
 This project includes an Unbound service providing recursive DNS, but it is not used by default.
