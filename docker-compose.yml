@@ -8,6 +8,7 @@ services:
   pihole:
     build: pihole
     cap_add:
+      - SYS_TTY_CONFIG
       - NET_ADMIN
     volumes:
       - "pihole_config:/etc/pihole"
