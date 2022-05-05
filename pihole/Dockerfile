@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # hadolint ignore=DL3008
 RUN apt-get update && \
-	apt-get install --no-install-recommends -y console-setup kmod dbus netcat && \
+	apt-get install --no-install-recommends -y console-setup dbus netcat && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
