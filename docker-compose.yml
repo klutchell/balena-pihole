@@ -20,6 +20,7 @@ services:
     labels:
       io.balena.features.dbus: "1"
     devices:
+      - /dev/tty0
       - /dev/tty1
 
   unbound:
