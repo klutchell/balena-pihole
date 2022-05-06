@@ -8,6 +8,7 @@ services:
   pihole:
     build: pihole
     cap_add:
+      - SYS_TTY_CONFIG
       - NET_ADMIN
     volumes:
       - "pihole_config:/etc/pihole"
@@ -19,6 +20,7 @@ services:
     labels:
       io.balena.features.dbus: "1"
     devices:
+      - /dev/tty0
       - /dev/tty1
 
   unbound:
