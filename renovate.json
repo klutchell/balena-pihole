@@ -1,9 +1,5 @@
 {
   "extends": ["config:base"],
-  "allowPostUpgradeCommandTemplating": true,
-  "allowedPostUpgradeCommands": ["^sed"],
-  "platform": "github",
-  "onboarding": false,
   "packageRules": [
     {
       "matchPackageNames": ["pihole/pihole"],
@@ -16,9 +12,5 @@
         "executionMode": "update"
       }
     }
-  ],
-  "repositories": ["klutchell/balena-pihole"],
-  "rebaseWhen": "auto",
-  "automerge": false,
-  "labels": ["renovate"]
+  ]
 }
