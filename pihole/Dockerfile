@@ -6,6 +6,9 @@ WORKDIR /usr/src/app
 COPY cont-init.d/ /etc/cont-init.d/
 COPY services/ /etc/services.d/
 
+RUN chmod +x /etc/cont-init.d/10-custom.sh && \
+	chmod +x /etc/services.d/padd/*
+
 ENV DEBIAN_FRONTEND noninteractive
 
 # hadolint ignore=DL3008
