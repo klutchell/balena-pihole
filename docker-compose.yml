@@ -22,6 +22,8 @@ services:
     devices:
       - /dev/tty0
       - /dev/tty1
+    tmpfs:
+      - /var/log/pihole
 
   unbound:
     build: unbound
