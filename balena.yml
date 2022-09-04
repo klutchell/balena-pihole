@@ -1,6 +1,6 @@
 name: "Pi-hole"
 type: "sw.application"
-version: 2022.8.2
+version: 2022.9.1
 description: "Pi-hole is a Linux network-level advertisement and Internet tracker blocking application!"
 post-provisioning: >-
   ## Usage instructions
