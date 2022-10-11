@@ -16,12 +16,5 @@ sed -i "s/^FONTFACE.*/FONTFACE=\"${FONTFACE}\"/" /etc/default/console-setup
 sed -i "s/^FONTSIZE.*/FONTSIZE=\"${FONTSIZE}\"/" /etc/default/console-setup
 dpkg-reconfigure console-setup 2> /dev/null > /dev/tty1
 
-# wait for FTL port to become available
-while ! nc -z 127.0.0.1 "$(</run/pihole-FTL.port)"
-do
-    s6-echo "Waiting for FTL on port $(</run/pihole-FTL.port)..."
-    sleep 5
-done
-
 s6-echo "Starting PADD..."
 /usr/src/app/padd.sh 2> /dev/null > /dev/tty1
