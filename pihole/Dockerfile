@@ -19,7 +19,7 @@ RUN apt-get update && \
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # https://github.com/pi-hole/PADD/releases
-ARG PADD_VERSION=v3.8.0
+ARG PADD_VERSION=v3.8.1
 
 RUN curl -fsSL https://github.com/pi-hole/PADD/archive/${PADD_VERSION}.tar.gz -o padd.tar.gz && \
 	tar xzf padd.tar.gz --strip 1 && \
