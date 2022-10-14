@@ -20,10 +20,8 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # https://github.com/pi-hole/PADD/releases
 ARG PADD_VERSION=3.8.0
-ARG PADD_SHA256=acdf0d1c77b844a31d86faa811b11d03b463007d4503d9fbf9deee3d50287b07
 
 RUN curl -fsSL https://github.com/pi-hole/PADD/archive/v${PADD_VERSION}.tar.gz -o padd.tar.gz && \
-	echo "${PADD_SHA256}  padd.tar.gz" | sha256sum -c - && \
 	tar xzf padd.tar.gz --strip 1 && \
 	rm padd.tar.gz && \
 	chmod +x padd.sh
