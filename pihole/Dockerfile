@@ -3,12 +3,6 @@ FROM pihole/pihole:2022.11.2
 
 WORKDIR /usr/src/app
 
-COPY cont-init.d/ /etc/cont-init.d/
-COPY services/ /etc/services.d/
-
-RUN chmod +x /etc/cont-init.d/10-custom.sh && \
-	chmod +x /etc/services.d/padd/*
-
 ENV DEBIAN_FRONTEND noninteractive
 
 # hadolint ignore=DL3008
@@ -25,6 +19,12 @@ RUN curl -fsSL https://github.com/pi-hole/PADD/archive/${PADD_VERSION}.tar.gz -o
 	tar xzf padd.tar.gz --strip 1 && \
 	rm padd.tar.gz && \
 	chmod +x padd.sh
+
+COPY cont-init.d/ /etc/cont-init.d/
+COPY services/ /etc/services.d/
+
+RUN chmod +x /etc/cont-init.d/10-custom.sh && \
+	chmod +x /etc/services.d/padd/*
 
 ENV INTERFACE eth0
 ENV DNSMASQ_LISTENING single
