@@ -18,12 +18,11 @@ dpkg-reconfigure console-setup 2> /dev/null > /dev/tty1
 
 # see https://github.com/klutchell/balena-pihole/issues/187
 s6-echo "Detecting screen size..."
-stty size -F /dev/tty1
 console_height="$(stty size -F /dev/tty1 | awk '{print $1}')"
 console_width="$(stty size -F /dev/tty1 | awk '{print $2}')"
 
-sed "s|console_height=.*|console_height=$console_height|" -i /usr/src/app/padd.sh
-sed "s|console_width=.*|console_width=$console_width|" -i /usr/src/app/padd.sh
+sed "s|console_height=.*|console_height=$console_height|" -i /usr/local/bin/padd
+sed "s|console_width=.*|console_width=$console_width|" -i /usr/local/bin/padd
 
 s6-echo "Starting PADD..."
-/usr/src/app/padd.sh 2> /dev/null > /dev/tty1
+/usr/local/bin/padd 2> /dev/null > /dev/tty1
