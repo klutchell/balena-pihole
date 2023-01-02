@@ -14,13 +14,5 @@
         "executionMode": "update"
       }
     }
-  ],
-  "regexManagers": [
-    {
-      "fileMatch": ["(^|/)Dockerfile$"],
-      "matchStrings": ["ARG PADD_VERSION=(?<currentValue>.*?)\\n"],
-      "depNameTemplate": "pi-hole/PADD",
-      "datasourceTemplate": "github-tags"
-    }
   ]
 }

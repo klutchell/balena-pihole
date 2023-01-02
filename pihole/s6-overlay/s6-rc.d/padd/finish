@@ -2,4 +2,4 @@
 # shellcheck shell=bash
 
 s6-echo "Stopping PADD"
-killall -9 padd.sh
+killall -9 padd

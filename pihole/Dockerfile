@@ -1,7 +1,10 @@
 # https://hub.docker.com/r/pihole/pihole/tags
-FROM pihole/pihole:2022.11.2
+FROM pihole/pihole:2022.12.1
 
-WORKDIR /usr/src/app
+# https://serverfault.com/a/817791
+# force dnsmasq to bind only the interfaces it is listening on
+# otherwise dnsmasq will fail to start since balena is using 53 on some interfaces
+RUN echo "bind-interfaces" > /etc/dnsmasq.d/balena.conf
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -10,21 +13,10 @@ RUN apt-get update && \
 	apt-get install --no-install-recommends -y console-setup dbus netcat && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
-# https://github.com/pi-hole/PADD/releases
-ARG PADD_VERSION=v3.9.0
-
-RUN curl -fsSL https://github.com/pi-hole/PADD/archive/${PADD_VERSION}.tar.gz -o padd.tar.gz && \
-	tar xzf padd.tar.gz --strip 1 && \
-	rm padd.tar.gz && \
-	chmod +x padd.sh
-
 COPY cont-init.d/ /etc/cont-init.d/
-COPY services/ /etc/services.d/
+COPY s6-overlay/ /etc/s6-overlay/
 
-RUN chmod +x /etc/cont-init.d/10-custom.sh && \
-	chmod +x /etc/services.d/padd/*
+RUN chmod +x /etc/cont-init.d/10-custom.sh
 
 ENV INTERFACE eth0
 ENV DNSMASQ_LISTENING single
