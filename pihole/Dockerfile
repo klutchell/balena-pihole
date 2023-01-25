@@ -1,5 +1,5 @@
 # https://hub.docker.com/r/pihole/pihole/tags
-FROM pihole/pihole:2023.01
+FROM pihole/pihole:2023.01.10
 
 # https://serverfault.com/a/817791
 # force dnsmasq to bind only the interfaces it is listening on
