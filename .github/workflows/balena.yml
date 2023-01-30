@@ -8,11 +8,11 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: true
       matrix:
-        fleet: [gh_klutchell/pi-hole]
+        fleet: [gh_klutchell/pi-hole, klutchell_apps/pi-hole]
 
     steps:
       - uses: actions/checkout@v3
