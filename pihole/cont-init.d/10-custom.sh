@@ -3,6 +3,18 @@
 
 set -e
 
+# avoid port conflicts with resin-dns
+# https://docs.pi-hole.net/ftldns/interfaces/
+# these steps must be at runtime because /etc/dnsmasq.d is a user volume
+echo "bind-interfaces" > /etc/dnsmasq.d/90-resin-dns.conf
+echo "except-interface=resin-dns" >> /etc/dnsmasq.d/90-resin-dns.conf
+
+if [ -f /etc/dnsmasq.d/balena.conf ]
+then
+   # remove the old config file
+   rm /etc/dnsmasq.d/balena.conf
+fi
+
 pihole -a -p "${WEBPASSWORD}" || true
 
 # check if we are using unbound as upstream DNS
@@ -14,9 +26,3 @@ then
    echo "Reducing DNS packet size for nameserver ${PIHOLE_DNS_%;*} to ${pkt_size}..."
    echo "edns-packet-max=${pkt_size}" > /etc/dnsmasq.d/99-edns.conf
 fi
-
-while [ -z "$(ip -o -4 addr show dev "${INTERFACE}")" ]
-do
-   echo "Waiting for IPv4 address on ${INTERFACE}..."
-   sleep 5
-done
