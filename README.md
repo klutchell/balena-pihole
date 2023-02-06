@@ -53,7 +53,7 @@ Once your device joins the fleet you'll need to allow some time for it to downlo
 
 When it's done you should be able to access the access the app at <http://pihole.local> with a default password of `balena`.
 
-On your router or DHCP server assign a static IP to your Pi-hole device, and set your clients DNS to the same IP address.
+On your router or DHCP server assign a static IP reservation (if possible) to your Pi-hole device, and set your clients DNS to the same IP address.
 
 Documentation for Pi-hole can be found at <https://docs.pi-hole.net/>
 
