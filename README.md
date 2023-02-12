@@ -36,10 +36,11 @@ Device Variables apply to all services within the application, and can be applie
 | Name           | Default           | Purpose                                                                                                                                                            |
 | -------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `TZ`           | `UTC`             | The timezone in your location. Find a [list of all timezone values here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).                            |
-| `INTERFACE`    | `eth0`            | Provide the name of your device's primary network interface, usually `eth0` for wired or `wlan0` for wireless.                                                     |
 | `WEBPASSWORD`  | `balena`          | Password for accessing the web-based interface of Pi-hole - you won’t be able to access the admin panel without defining a password here.                          |
 | `PIHOLE_DNS_`  | `1.1.1.1;1.0.0.1` | Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using Cloudflare by default but you can specify your own using IPs delimited by semi-colons. |
 | `SET_HOSTNAME` | `pihole`          | Set a custom device hostname on application start.                                                                                                                 |
+
+Additional supported environment variables can be found [here](https://github.com/pi-hole/docker-pi-hole#environment-variables).
 
 ## Usage
 

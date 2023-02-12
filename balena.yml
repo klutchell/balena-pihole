@@ -25,7 +25,6 @@ data:
   applicationConfigVariables:
     - BALENA_HOST_CONFIG_gpu_mem: 64
   applicationEnvironmentVariables:
-    - INTERFACE: 'eth0'
     - WEBPASSWORD: 'balena'
     - PIHOLE_DNS_: '1.1.1.1;1.0.0.1'
     - FBCP_DISPLAY: ""
