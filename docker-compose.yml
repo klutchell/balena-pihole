@@ -1,8 +1,9 @@
 version: "2.1"
 
 volumes:
-  pihole_config:
-  dnsmasq_config:
+  pihole_config: {}
+  dnsmasq_config: {}
+  tailscale: {}
 
 services:
   pihole:
@@ -44,3 +45,22 @@ services:
       io.balena.features.supervisor-api: 1
     environment:
       SET_HOSTNAME: pihole
+
+  tailscale:
+    build: tailscale
+    network_mode: host
+    restart: on-failure
+    volumes:
+      - tailscale:/var/lib/tailscale
+    labels:
+      - io.balena.features.kernel-modules=1
+    cap_add:
+      - net_admin
+      - net_raw
+      - sys_module
+    tmpfs:
+      - /tmp
+      - /var/run/
+    environment:
+      TS_EXTRA_ARGS: --accept-dns=false --reset
+      REQUIRE_AUTH_KEY: "true"
