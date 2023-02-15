@@ -6,8 +6,12 @@ set -e
 # avoid port conflicts with resin-dns
 # https://docs.pi-hole.net/ftldns/interfaces/
 # these steps must be at runtime because /etc/dnsmasq.d is a user volume
-echo "bind-interfaces" > /etc/dnsmasq.d/90-resin-dns.conf
-echo "except-interface=resin-dns" >> /etc/dnsmasq.d/90-resin-dns.conf
+{
+   echo "bind-interfaces" ;
+   echo "except-interface=resin-dns" ;
+   echo "except-interface=resin-vpn" ;
+   echo "except-interface=tailscale0" ;
+} > /etc/dnsmasq.d/90-resin-dns.conf
 
 if [ -f /etc/dnsmasq.d/balena.conf ]
 then
