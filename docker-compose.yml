@@ -25,6 +25,13 @@ services:
       - /dev/tty1
     tmpfs:
       - /var/log/pihole
+    environment:
+      DNSMASQ_LISTENING: all
+      PIHOLE_DNS_: 1.1.1.1;1.0.0.1
+      FONTFACE: Terminus
+      FONTSIZE: 8x14
+      WEBPASSWORD: balena
+      VIRTUAL_HOST: balena-devices.com
 
   unbound:
     build: unbound
