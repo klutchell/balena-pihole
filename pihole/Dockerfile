@@ -13,11 +13,4 @@ COPY s6-overlay/ /etc/s6-overlay/
 
 RUN chmod +x /etc/cont-init.d/10-custom.sh
 
-ENV DNSMASQ_LISTENING all
-ENV PIHOLE_DNS_ 1.1.1.1;1.0.0.1
-ENV FONTFACE Terminus
-ENV FONTSIZE 8x14
-ENV WEBPASSWORD balena
-ENV VIRTUAL_HOST balena-devices.com
-
 ENV DBUS_SYSTEM_BUS_ADDRESS 'unix:path=/host/run/dbus/system_bus_socket'
