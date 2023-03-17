@@ -32,6 +32,7 @@ services:
       FONTSIZE: 8x14
       WEBPASSWORD: balena
       VIRTUAL_HOST: balena-devices.com
+      WEB_BIND_ADDR: 0.0.0.0
 
   unbound:
     build: unbound
