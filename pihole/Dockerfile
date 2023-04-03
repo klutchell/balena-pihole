@@ -1,5 +1,5 @@
 # https://hub.docker.com/r/pihole/pihole/tags
-FROM pihole/pihole:2023.02.2
+FROM pihole/pihole:2023.03.1
 
 ENV DEBIAN_FRONTEND noninteractive
 
