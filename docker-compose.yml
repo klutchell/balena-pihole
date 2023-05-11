@@ -40,14 +40,16 @@ services:
       - "5053:5053/tcp"
       - "5053:5053/udp"
 
-  # https://github.com/balenablocks/fbcp
+  # https://github.com/balena-labs-projects/fbcp
+  # https://hub.balena.io/blocks/1792683/fbcp
   fbcp:
-    image: balenablocks/fbcp:1.0.0
+    image: bh.cr/balenalabs/fbcp/1.0.4
     privileged: true
 
   # https://github.com/balenablocks/hostname
+  # https://hub.balena.io/blocks/1918776/hostname-rpi
   hostname:
-    build: hostname
+    image: bh.cr/g_tomas_migone1/hostname-rpi/0.2.1
     restart: no
     labels:
       io.balena.features.supervisor-api: 1
