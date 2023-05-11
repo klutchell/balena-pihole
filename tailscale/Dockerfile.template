@@ -1,3 +1,3 @@
 # https://github.com/klutchell/balena-tailscale/tags
 # hadolint ignore=DL3006
-FROM bh.cr/klutchell_blocks/tailscale-%%BALENA_ARCH%%/1.40.0
+FROM bh.cr/klutchell_blocks/tailscale-%%BALENA_ARCH%%/1.40.1
