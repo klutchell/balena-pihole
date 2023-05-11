@@ -42,7 +42,7 @@ services:
 
   # https://github.com/balenablocks/fbcp
   fbcp:
-    image: balenablocks/fbcp:1.0.0
+    image: balenablocks/fbcp:v1.1.0
     privileged: true
 
   # https://github.com/balenablocks/hostname
