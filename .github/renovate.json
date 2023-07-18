@@ -1,16 +1,26 @@
 {
-  "extends": ["config:base"],
+  "extends": [
+    "config:recommended"
+  ],
   "packageRules": [
     {
-      "matchPackageNames": ["pihole/pihole"],
-      "matchBaseBranches": ["main"],
-      "matchManagers": ["dockerfile"],
+      "matchPackageNames": [
+        "pihole/pihole"
+      ],
+      "matchBaseBranches": [
+        "main"
+      ],
+      "matchManagers": [
+        "dockerfile"
+      ],
       "versioning": "loose",
       "postUpgradeTasks": {
         "commands": [
           "sed \"s|^version: .*$|version: $(npx -q -y -- semver -c -l {{{newVersion}}})|\" -i balena.yml"
         ],
-        "fileFilters": ["balena.yml"],
+        "fileFilters": [
+          "balena.yml"
+        ],
         "executionMode": "update"
       }
     }
