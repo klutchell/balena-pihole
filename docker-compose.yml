@@ -36,6 +36,8 @@ services:
 
   unbound:
     build: unbound
+    cap_add:
+     - NET_ADMIN
     ports:
       - "5053:5053/tcp"
       - "5053:5053/udp"
