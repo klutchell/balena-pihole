@@ -11,6 +11,16 @@ dbus-send \
     /org/freedesktop/systemd1 org.freedesktop.systemd1.Manager.StartUnit \
     string:"plymouth-quit.service" string:"replace"
 
+# quit the getty@tty1 (console) service so that we can see the TTY...
+s6-echo "Stopping getty service..."
+dbus-send \
+    --system \
+    --dest=org.freedesktop.systemd1 \
+    --type=method_call \
+    --print-reply \
+    /org/freedesktop/systemd1 org.freedesktop.systemd1.Manager.StopUnit \
+    string:"getty@tty1.service" string:"replace"
+
 s6-echo "Setting console font to ${FONTFACE} ${FONTSIZE}..."
 sed -i "s/^FONTFACE.*/FONTFACE=\"${FONTFACE}\"/" /etc/default/console-setup
 sed -i "s/^FONTSIZE.*/FONTSIZE=\"${FONTSIZE}\"/" /etc/default/console-setup
