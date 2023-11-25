@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-      - uses: balena-io/deploy-to-balena-action@4495424a8247c08911413a57afbbc62815a39e56 # v1.0.3
+      - uses: balena-io/deploy-to-balena-action@e2e865ed0b38dd19f8e25a967d2be28ef0a5305a # v1.1.9
         with:
           balena_token: ${{ secrets.BALENA_API_KEY }}
           fleet: ${{ matrix.fleet }}
