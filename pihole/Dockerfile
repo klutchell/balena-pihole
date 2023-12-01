@@ -1,16 +1,15 @@
 # https://hub.docker.com/r/pihole/pihole/tags
-FROM pihole/pihole:2023.11.0@sha256:24b1ef8f66d810faffefdb9b66850bbe2d55013506b892605acef414e210edeb
+FROM pihole/pihole:development-v6
 
-ENV DEBIAN_FRONTEND noninteractive
+# https://wiki.alpinelinux.org/wiki/Fonts
+# hadolint ignore=DL3018
+RUN apk add --no-cache dbus font-terminus kbd
 
-# hadolint ignore=DL3008
-RUN apt-get update && \
-	apt-get install --no-install-recommends -y console-setup dbus netcat && \
-	apt-get clean && rm -rf /var/lib/apt/lists/*
+COPY balena-init.sh /
 
-COPY cont-init.d/ /etc/cont-init.d/
-COPY s6-overlay/ /etc/s6-overlay/
+RUN chmod +x /balena-init.sh
 
-RUN chmod +x /etc/cont-init.d/10-custom.sh
+ENTRYPOINT [ "tini", "--", "/balena-init.sh" ]
 
 ENV DBUS_SYSTEM_BUS_ADDRESS 'unix:path=/host/run/dbus/system_bus_socket'
+ENV CONSOLE_FONT 'ter-u16n'
