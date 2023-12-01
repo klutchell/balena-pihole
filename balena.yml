@@ -1,6 +1,7 @@
 name: "Pi-hole"
 type: "sw.application"
-version: 2024.7.0
+# renovate: datasource=docker depName=pihole/pihole
+version: 2025.2.0
 description: "Pi-hole is a Linux network-level advertisement and Internet tracker blocking application!"
 post-provisioning: >-
   ## Usage instructions
@@ -25,9 +26,8 @@ data:
   applicationConfigVariables:
     - BALENA_HOST_CONFIG_gpu_mem: 64
   applicationEnvironmentVariables:
-    - WEBPASSWORD: 'balena'
-    - PIHOLE_DNS_: '1.1.1.1;1.0.0.1'
-    - FBCP_DISPLAY: ""
+    - FTLCONF_webserver_api_password: 'balena'
+    - FTLCONF_dns_upstreams: '1.1.1.1;1.0.0.1'
   defaultDeviceType: "raspberrypi3"
   supportedDeviceTypes:
     - "raspberry-pi2"

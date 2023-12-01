@@ -1,3 +1,17 @@
 {
-  "extends": ["github>klutchell/renovate-config"]
+  "extends": ["github>klutchell/renovate-config"],
+  "packageRules": [
+    {
+      "matchManagers": ["dockerfile"],
+      "matchPackageNames": ["pihole/pihole"],
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "postUpgradeTasks": {
+        "commands": [
+          "sed \"s|^version: .*$|version: $(npx -q -y -- semver -c -l {{{newVersion}}})|\" -i balena.yml"
+        ],
+        "fileFilters": ["balena.yml"],
+        "executionMode": "update"
+      }
+    }
+  ]
 }
