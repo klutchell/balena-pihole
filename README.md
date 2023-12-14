@@ -124,8 +124,6 @@ Advanced users can change the Unbound configuration by editing [`unbound.conf`](
 
 Included is a Tailscale service in order to [access your Pi-hole from anywhere](https://tailscale.com/kb/1114/pi-hole/).
 
-<https://github.com/klutchell/balena-tailscale>
-
 ## Help
 
 If you're having trouble getting the project running,

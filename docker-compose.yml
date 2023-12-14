@@ -58,21 +58,42 @@ services:
     environment:
       SET_HOSTNAME: pihole
 
+  # https://hub.docker.com/r/tailscale/tailscale
+  # https://github.com/tailscale/tailscale/blob/main/cmd/containerboot/main.go
+  # https://tailscale.com/kb/1282/docker
+  # https://tailscale.com/kb/1278/tailscaled
+  # https://tailscale.com/kb/1241/tailscale-up
+  # https://tailscale.com/kb/1242/tailscale-serve
+  # https://tailscale.com/kb/1311/tailscale-funnel
   tailscale:
-    build: tailscale
+    image: tailscale/tailscale:v1.54.1@sha256:ce594e3d18874960caa3f7d8fd8fc39a89b9c34e3ff05d6fdf3124cc550c8c2c
+    restart: unless-stopped
+    environment:
+      TS_STATE_DIR: /var/lib/tailscale
+      TS_SOCKET: /var/run/tailscale/tailscaled.sock
+      TS_USERSPACE: false
+      TS_AUTH_ONCE: false
+      TS_HOSTNAME: pi-hole
+      TS_EXTRA_ARGS: --accept-dns=false --reset
     network_mode: host
-    restart: on-failure
-    volumes:
-      - tailscale:/var/lib/tailscale
-    labels:
-      - io.balena.features.kernel-modules=1
     cap_add:
-      - net_admin
-      - net_raw
-      - sys_module
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_MODULE
+    labels:
+      io.balena.features.kernel-modules: 1
     tmpfs:
       - /tmp
-      - /var/run/
-    environment:
-      TS_EXTRA_ARGS: --accept-dns=false --reset
-      REQUIRE_AUTH_KEY: "true"
+      - /run
+    volumes:
+      - tailscale:/var/lib/tailscale
+    entrypoint:
+      - /bin/sh
+      - -c
+    command:
+      - |
+        modprobe tun || true
+        modprobe wireguard || true
+        mkdir -p /dev/net
+        [ ! -c /dev/net/tun ] && mknod /dev/net/tun c 10 200
+        /usr/local/bin/containerboot
