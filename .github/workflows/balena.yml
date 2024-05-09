@@ -15,7 +15,7 @@ jobs:
         fleet: [gh_klutchell/pi-hole, klutchell_apps/pi-hole]
 
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4
       - uses: balena-io/deploy-to-balena-action@c523907563b2ef5db81cd9519482805f336a630f # v2.0.60
         with:
           balena_token: ${{ secrets.BALENA_API_KEY }}
