@@ -66,7 +66,7 @@ services:
   # https://tailscale.com/kb/1242/tailscale-serve
   # https://tailscale.com/kb/1311/tailscale-funnel
   tailscale:
-    image: tailscale/tailscale:v1.64.1@sha256:8194f391434abfdaa15afdf6e4adec510b37d9cf741881eab12d183bc161ce3f
+    image: tailscale/tailscale:v1.68.1@sha256:a0d1a9ed2abfacf905c0e3423aea00181064162e548f875f422a03924b9cc5c4
     restart: unless-stopped
     environment:
       TS_STATE_DIR: /var/lib/tailscale
