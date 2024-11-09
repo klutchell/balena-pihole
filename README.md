@@ -118,7 +118,7 @@ Set the following environment variable in your balenaCloud Dashboard to tell Pi-
 
 **Note:** For security and footprint reasons, the Unbound container does not allow shell or terminal access via SSH or the balenaCloud console.
 
-Advanced users can change the Unbound configuration by editing [`unbound.conf`](./unbound/unbound.conf) or [`a-records.conf`](./unbound/a-records.conf) before pushing the app to balenaCloud.
+Advanced users can change the Unbound configuration by editing [`unbound.conf`](./unbound/etc/unbound/unbound.conf) or [`a-records.conf`](./unbound/etc/unbound/custom.conf.d/a-records.conf) before pushing the app to balenaCloud.
 
 ### Tailscale
 
