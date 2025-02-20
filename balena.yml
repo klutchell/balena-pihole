@@ -1,7 +1,7 @@
 name: "Pi-hole"
 type: "sw.application"
 # renovate: datasource=docker depName=pihole/pihole
-version: 2025.2.0
+version: 
 description: "Pi-hole is a Linux network-level advertisement and Internet tracker blocking application!"
 post-provisioning: >-
   ## Usage instructions
