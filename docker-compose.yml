@@ -10,7 +10,13 @@ services:
     build: pihole
     cap_add:
       - SYS_TTY_CONFIG
+      # See https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+      # Required if you are using Pi-hole as your DHCP server, else not needed
       - NET_ADMIN
+      # Required if you are using Pi-hole as your NTP client to be able to set the host's system time
+      - SYS_TIME
+      # Optional, if Pi-hole should get some more processing time
+      - SYS_NICE
     volumes:
       - "pihole_config:/etc/pihole"
     dns:
