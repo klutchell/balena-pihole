@@ -19,7 +19,8 @@ ENV CONSOLE_FONT='ter-u16n'
 ENV FTLCONF_dns_listeningMode='all'
 ENV FTLCONF_dns_upstreams='1.1.1.1;1.0.0.1'
 ENV FTLCONF_webserver_api_password='balena'
-ENV FTLCONF_webserver_port='80,443s'
+# https://github.com/pi-hole/FTL/blob/ac500d5f1ff192d087209d6e9b955515c8f35434/test/pihole.toml#L627-L660
+# ENV FTLCONF_webserver_port='80o,443os,[::]:80o,[::]:443os'
 
 # enable inclusion of dnsmasq.d conf files
 # https://github.com/pi-hole/FTL/pull/1734
