@@ -9,7 +9,6 @@ services:
   pihole:
     build: pihole
     cap_add:
-      - SYS_TTY_CONFIG
       # See https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
       # Required if you are using Pi-hole as your DHCP server, else not needed
       - NET_ADMIN
@@ -23,13 +22,26 @@ services:
       - "127.0.0.1"
       - "1.1.1.1"
     network_mode: host
+    tmpfs:
+      - /tmp
+      - /run
+      - /var/log/pihole
+
+  padd:
+    build: padd
+    network_mode: host
     labels:
       io.balena.features.dbus: "1"
+    volumes:
+      - "pihole_config:/etc/pihole:ro"
+    cap_add:
+      - SYS_TTY_CONFIG
     devices:
       - /dev/tty0
       - /dev/tty1
     tmpfs:
-      - /var/log/pihole
+      - /tmp
+      - /run
 
   unbound:
     build: unbound
