@@ -4,6 +4,7 @@ FROM pihole/pihole:2025.02.4@sha256:d83cd1ca243eace24c9d2f7320634eb47dee06dcdacb
 # https://wiki.alpinelinux.org/wiki/Fonts
 # hadolint ignore=DL3018
 RUN apk add --no-cache dbus font-terminus kbd bash
+RUN wget https://raw.githubusercontent.com/pi-hole/PADD/refs/heads/development/padd.sh -O /usr/local/bin/padd
 
 COPY balena-init.sh /
 
