@@ -9,8 +9,10 @@ ENV CONSOLE_FONT='ter-u16n'
 
 WORKDIR /usr/local/bin
 
-# FIXME: Switch to tags once a v4.x release is available.
-RUN curl -fsSL https://raw.githubusercontent.com/pi-hole/PADD/refs/heads/development/padd.sh -o ./padd \
+# renovate: datasource=github-releases depName=pi-hole/PADD
+ARG PADD_VERSION=v4.0.0
+
+RUN curl -fsSL https://raw.githubusercontent.com/pi-hole/PADD/refs/tags/${PADD_VERSION}/padd.sh -o ./padd \
     && chmod +x ./padd
 
 COPY entrypoint.sh /
