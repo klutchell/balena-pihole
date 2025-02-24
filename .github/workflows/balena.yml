@@ -20,4 +20,3 @@ jobs:
         with:
           balena_token: ${{ secrets.BALENA_API_KEY }}
           fleet: ${{ matrix.fleet }}
-          create_tag: true
