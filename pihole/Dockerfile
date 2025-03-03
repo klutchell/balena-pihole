@@ -5,6 +5,16 @@ FROM pihole/pihole:2025.02.4@sha256:d83cd1ca243eace24c9d2f7320634eb47dee06dcdacb
 # hadolint ignore=DL3018
 RUN apk add --no-cache bash
 
+# Avoid port conflicts in 53 with the resin-dns interface
+# https://docs.pi-hole.net/ftldns/interfaces/
+RUN mkdir -p /etc/dnsmasq.d && \
+    echo "bind-interfaces" >/etc/dnsmasq.d/90-resin-dns.conf && \
+    echo "except-interface=resin-dns" >>/etc/dnsmasq.d/90-resin-dns.conf
+
+# enable inclusion of dnsmasq.d conf files
+# https://github.com/pi-hole/FTL/pull/1734
+ENV FTLCONF_misc_etc_dnsmasq_d='true'
+
 COPY balena-init.sh /
 
 RUN chmod +x /balena-init.sh
@@ -18,7 +28,3 @@ ENV FTLCONF_dns_upstreams='1.1.1.1;1.0.0.1'
 ENV FTLCONF_webserver_api_password='balena'
 # https://github.com/pi-hole/FTL/blob/ac500d5f1ff192d087209d6e9b955515c8f35434/test/pihole.toml#L627-L660
 # ENV FTLCONF_webserver_port='80o,443os,[::]:80o,[::]:443os'
-
-# enable inclusion of dnsmasq.d conf files
-# https://github.com/pi-hole/FTL/pull/1734
-ENV FTLCONF_misc_etc_dnsmasq_d='true'
