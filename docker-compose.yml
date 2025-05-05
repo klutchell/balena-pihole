@@ -66,42 +66,18 @@ services:
     environment:
       SET_HOSTNAME: pihole
 
-  # https://hub.docker.com/r/tailscale/tailscale
-  # https://github.com/tailscale/tailscale/blob/main/cmd/containerboot/main.go
-  # https://tailscale.com/kb/1282/docker
-  # https://tailscale.com/kb/1278/tailscaled
-  # https://tailscale.com/kb/1241/tailscale-up
-  # https://tailscale.com/kb/1242/tailscale-serve
-  # https://tailscale.com/kb/1311/tailscale-funnel
+  # https://github.com/klutchell/balena-tailscale
   tailscale:
-    image: tailscale/tailscale:v1.82.0@sha256:d26fc9bb035b0559900cc6f23506f6b1ddab61a690ffab4f5d84feceb3de811e
-    restart: unless-stopped
-    environment:
-      TS_STATE_DIR: /var/lib/tailscale
-      TS_SOCKET: /var/run/tailscale/tailscaled.sock
-      TS_USERSPACE: false
-      TS_AUTH_ONCE: false
-      TS_HOSTNAME: pi-hole
-      TS_EXTRA_ARGS: --accept-dns=false --reset
+    build: tailscale
+    restart: on-failure
     network_mode: host
     cap_add:
       - NET_ADMIN
-      - NET_RAW
       - SYS_MODULE
     labels:
       io.balena.features.kernel-modules: 1
     tmpfs:
       - /tmp
-      - /run
+      - /var/run/
     volumes:
       - tailscale:/var/lib/tailscale
-    entrypoint:
-      - /bin/sh
-      - -c
-    command:
-      - |
-        modprobe tun || true
-        modprobe wireguard || true
-        mkdir -p /dev/net
-        [ ! -c /dev/net/tun ] && mknod /dev/net/tun c 10 200
-        /usr/local/bin/containerboot
