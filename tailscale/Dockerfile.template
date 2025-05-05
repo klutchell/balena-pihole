@@ -1,0 +1,13 @@
+
+ARG BALENA_ARCH=%%BALENA_ARCH%%
+
+# https://github.com/klutchell/balena-tailscale
+FROM bh.cr/gh_klutchell/tailscale-amd64:1.82.5-rev1 AS balena-tailscale-amd64
+FROM bh.cr/gh_klutchell/tailscale-aarch64:1.82.5-rev1 AS balena-tailscale-aarch64
+FROM bh.cr/gh_klutchell/tailscale-armv7hf:1.82.5-rev1 AS balena-tailscale-armv7hf
+
+# hadolint ignore=DL3006
+FROM balena-tailscale-${BALENA_ARCH}
+
+ENV TS_HOSTNAME="pi-hole"
+ENV TS_EXTRA_ARGS="--accept-dns=false --reset"
