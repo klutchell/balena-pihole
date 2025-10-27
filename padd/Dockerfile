@@ -10,7 +10,7 @@ ENV CONSOLE_FONT='ter-u16n'
 WORKDIR /usr/local/bin
 
 # renovate: datasource=github-releases depName=pi-hole/PADD
-ARG PADD_VERSION=v4.0.0
+ARG PADD_VERSION=v4.1.0
 
 RUN curl -fsSL https://raw.githubusercontent.com/pi-hole/PADD/refs/tags/${PADD_VERSION}/padd.sh -o ./padd \
     && chmod +x ./padd
