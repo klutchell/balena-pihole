@@ -1,5 +1,5 @@
 # https://hub.docker.com/r/pihole/pihole/tags
-FROM pihole/pihole:2025.10.3@sha256:7f2dff3f60615e1b9982824cab30e10d399bd1178691e13a96359ea50323db69
+FROM pihole/pihole:2025.11.1@sha256:91dc91ddd413bf461c283204558f8f21839851e9824799075a7ceff7c77eea40
 
 # https://wiki.alpinelinux.org/wiki/Fonts
 # hadolint ignore=DL3018
