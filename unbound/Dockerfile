@@ -1,6 +1,6 @@
 # https://github.com/klutchell/unbound-docker
 # https://hub.docker.com/r/klutchell/unbound
-FROM klutchell/unbound:1.24.1@sha256:e506a417d3e3673a259bb1c2cd2e843cf20b3847f3f33853f785395766a5d3c4
+FROM klutchell/unbound:1.24.2@sha256:cb9a0f06c803c764395e2ff50bd8a244470601290c78fb2cdcf1bd200a027cd6
 
 COPY etc/unbound/unbound.conf /etc/unbound/unbound.conf
 COPY etc/unbound/custom.conf.d/*.conf /etc/unbound/custom.conf.d/
