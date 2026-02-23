@@ -7,7 +7,7 @@
       "matchUpdateTypes": ["major", "minor", "patch"],
       "postUpgradeTasks": {
         "commands": [
-          "sed \"s|^version: .*$|version: $(npx -q -y -- semver -c -l {{{newVersion}}})|\" -i balena.yml"
+          "sed -e \"s|^version: .*$|version: {{{newVersion}}}|\" -e \"s|\\b0\\+\\([0-9]\\)|\\1|g\" -i balena.yml"
         ],
         "fileFilters": ["balena.yml"],
         "executionMode": "update"
