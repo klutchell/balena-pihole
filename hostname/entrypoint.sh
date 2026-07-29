@@ -12,7 +12,7 @@ API="${BALENA_SUPERVISOR_ADDRESS}/v1/device/host-config"
 AUTH="Authorization: Bearer ${BALENA_SUPERVISOR_API_KEY}"
 CURL="curl -s --connect-timeout 10 --max-time 30"
 
-CURRENT="$(${CURL} -f -H "${AUTH}" "${API}" | jq -r '.network.hostname // empty')"
+CURRENT="$(${CURL} -H "${AUTH}" "${API}" | jq -r '.network.hostname // empty')"
 if [ -z "${CURRENT}" ]; then
     echo "Warning: could not read current hostname from the supervisor."
 fi
@@ -26,7 +26,7 @@ fi
 
 # The supervisor serializes host-config changes against its own apply loop and
 # returns 423 while one is in flight, so retry until it clears.
-+BODY="$(jq -n --arg h "${SET_HOSTNAME}" '{network:{hostname:$h},force:true}')"
+BODY="$(jq -n --arg h "${SET_HOSTNAME}" '{network:{hostname:$h},force:true}')"
 for attempt in 1 2 3 4 5; do
     echo "Setting hostname (attempt ${attempt})..."
     HTTP_CODE="$(${CURL} -s -o /tmp/response -w '%{http_code}' -X PATCH "${API}" \
