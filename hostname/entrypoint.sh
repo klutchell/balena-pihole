@@ -12,7 +12,7 @@ API="${BALENA_SUPERVISOR_ADDRESS}/v1/device/host-config"
 AUTH="Authorization: Bearer ${BALENA_SUPERVISOR_API_KEY}"
 CURL="curl -s --connect-timeout 10 --max-time 30"
 
-CURRENT="$(${CURL} -H "${AUTH}" "${API}" | jq -r '.network.hostname // empty')"
+CURRENT="$(${CURL} -f -H "${AUTH}" "${API}" | jq -r '.network.hostname // empty')"
 if [ -z "${CURRENT}" ]; then
     echo "Warning: could not read current hostname from the supervisor."
 fi
