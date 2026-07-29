@@ -29,7 +29,7 @@ fi
 BODY="$(jq -n --arg h "${SET_HOSTNAME}" '{network:{hostname:$h},force:true}')"
 for attempt in 1 2 3 4 5; do
     echo "Setting hostname (attempt ${attempt})..."
-    HTTP_CODE="$(${CURL} -s -o /tmp/response -w '%{http_code}' -X PATCH "${API}" \
+    HTTP_CODE="$(${CURL} -f -o /tmp/response -w '%{http_code}' -X PATCH "${API}" \
         -H "${AUTH}" \
         -H 'Content-Type: application/json' \
         -d "${BODY}")"
