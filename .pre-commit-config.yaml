@@ -1,0 +1,48 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+    -   id: check-json
+    -   id: check-merge-conflict
+    -   id: check-added-large-files
+
+-   repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: 44.105.4
+    hooks:
+    -   id: renovate-config-validator
+
+-   repo: https://github.com/rhysd/actionlint
+    rev: v1.7.12
+    hooks:
+    -   id: actionlint
+
+-   repo: https://github.com/hadolint/hadolint
+    rev: v2.15.1
+    hooks:
+    -   id: hadolint-docker
+        # The default `types: [dockerfile]` filter misses balena templates.
+        types: [file]
+        files: (^|/)Dockerfile[^/]*$
+
+-   repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.11.0.1
+    hooks:
+    -   id: shellcheck
+
+-   repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.49.1
+    hooks:
+    -   id: markdownlint
+
+-   repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+    # `gitleaks-docker` is not used because its image reference carries no tag.
+    -   id: gitleaks
+        # The default entry scans staged changes only, so it scans nothing in CI.
+        entry: gitleaks dir --redact --verbose .

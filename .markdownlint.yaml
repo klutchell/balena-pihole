@@ -1,0 +1,3 @@
+# Tables carry long URLs and cannot wrap. Prose keeps the 80 column limit.
+MD013:
+  tables: false
