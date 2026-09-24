@@ -52,8 +52,8 @@ for you to customize as needed.
 | `FTLCONF_dns_upstreams`          | `1.1.1.1;1.0.0.1` | Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using Cloudflare by default but you can specify your own using IPs delimited by semi-colons. |
 | `SET_HOSTNAME`                   | `pihole`          | Set a custom device hostname on application start.                                                                                                                 |
 
-Additional supported environment variables can be found
-[here](https://github.com/pi-hole/docker-pi-hole#environment-variables).
+Additional supported environment variables can be found in the
+[docker-pi-hole documentation](https://github.com/pi-hole/docker-pi-hole#environment-variables).
 
 ## Usage
 

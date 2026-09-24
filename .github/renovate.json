@@ -13,5 +13,16 @@
         "executionMode": "update"
       }
     }
+  ],
+  "customManagers": [
+    {
+      "description": "Docker images pinned in pre-commit hook entries",
+      "customType": "regex",
+      "managerFilePatterns": ["/^\\.pre-commit-config\\.yaml$/"],
+      "matchStrings": [
+        "entry:\\s+(?<depName>[^\\s:@]+):(?<currentValue>[^\\s@]+)@(?<currentDigest>sha256:[a-f0-9]+)"
+      ],
+      "datasourceTemplate": "docker"
+    }
   ]
 }
