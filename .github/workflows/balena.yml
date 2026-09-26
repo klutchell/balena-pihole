@@ -9,7 +9,7 @@ on:
 jobs:
   pre_commit:
     name: Pre-commit hooks
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     # The hooks already ran while the pull request was open.
     if: github.event.action != 'closed'
 
@@ -27,7 +27,7 @@ jobs:
     needs: pre_commit
     # A skipped pre_commit job must not block the release on close.
     if: always() && needs.pre_commit.result != 'failure' && needs.pre_commit.result != 'cancelled'
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     strategy:
       fail-fast: true
       matrix:
