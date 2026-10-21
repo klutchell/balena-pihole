@@ -6,9 +6,10 @@ FROM pihole/pihole:2026.09.0@sha256:5b9c8cf51de7d6d3f2240dbe72baf5f06e1fd39cb4d7
 RUN apk add --no-cache bash
 
 # Avoid port conflicts in 53 with the resin-dns interface
+# bind-dynamic (unlike bind-interfaces) also picks up interfaces created later, e.g. tailscale0
 # https://docs.pi-hole.net/ftldns/interfaces/
 RUN mkdir -p /etc/dnsmasq.d && \
-    echo "bind-interfaces" >/etc/dnsmasq.d/90-resin-dns.conf && \
+    echo "bind-dynamic" >/etc/dnsmasq.d/90-resin-dns.conf && \
     echo "except-interface=resin-dns" >>/etc/dnsmasq.d/90-resin-dns.conf
 
 # enable inclusion of dnsmasq.d conf files
