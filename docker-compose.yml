@@ -69,7 +69,7 @@ services:
   # https://github.com/klutchell/balena-tailscale
   tailscale:
     build: tailscale
-    restart: on-failure
+    restart: unless-stopped
     network_mode: host
     cap_add:
       - NET_ADMIN
